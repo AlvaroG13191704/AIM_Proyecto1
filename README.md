@@ -17,8 +17,16 @@ source venv/bin/activate
 # Windows
 venv\Scripts\activate
 
+# Desactivar entorno virtual
+deactivate
+
+# Generar archivo de requerimientos
+pip freeze > requirements.txt
+
 # Instalar requerimientos
 pip install -r requirements.txt
+
+
 ```
 
 # Comandos de git 
