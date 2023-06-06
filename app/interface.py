@@ -26,7 +26,7 @@ def login():
             user_credentials.append((username, password))
 
     entered_username = username_entry.get()
-    entered_password = enc.encrypt_password(password_entry.get())
+    entered_password = enc.encrypt_password(password_entry.get(),"miaproyecto12345")
 
     for username, password in user_credentials:
         if entered_username == username and entered_password == password:
@@ -77,6 +77,7 @@ def open_main_window():
             print("Valor2:", encrypt_read)
             print("Texto:", llave)
 
+            carp.configure(type, encrypt_log, encrypt_read, llave)
             configure_window.withdraw()
 
         # Cargando la imagen de fondo de la ventana configure
