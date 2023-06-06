@@ -5,6 +5,7 @@ from tkinter import messagebox
 import os
 from PIL import Image, ImageTk
 import encriptado as enc
+import carpeta as carp
 
 #--- CONTRASEÑAS ---
 #Pablo42
@@ -13,7 +14,7 @@ import encriptado as enc
 
 # Función para realizar el login
 def login():
-    file_path = "app/log/sesion.txt"
+    file_path = "app/log/miausuarios.txt"
     user_credentials = []
 
     with open(file_path, "r") as file:
@@ -129,6 +130,7 @@ def open_main_window():
             print("body:", body)
             print("path:", path)
 
+            carp.create(name, body, path)
             create_window.withdraw()
 
         # Cargando la imagen de fondo de la ventana create
