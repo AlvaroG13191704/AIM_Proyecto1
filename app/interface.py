@@ -29,7 +29,7 @@ def login():
     entered_password = enc.encrypt_password(password_entry.get(),"miaproyecto12345")
 
     for username, password in user_credentials:
-        if entered_username == username and entered_password == password:
+        if entered_username == username and entered_password == password.lower():
             messagebox.showinfo(title="Login", message="Bienvenido " + username)
             username_entry.delete(0, END)
             password_entry.delete(0, END)
@@ -177,7 +177,7 @@ def open_main_window():
             print("-- DELETE --")
             print("path:", path)
             print("name:", name)
-            
+
             carp.delete(path, name)
             delete_window.withdraw()
 
@@ -222,6 +222,7 @@ def open_main_window():
             print("from:", from_)
             print("to:", to)
 
+            carp.copy(from_, to)
             copy_window.withdraw()
 
         # Cargando la imagen de fondo de la ventana copy
@@ -260,13 +261,14 @@ def open_main_window():
         def aceptar():
             from_ = text_entry1.get()
             to = text_entry2.get()
-            mode = text_entry3.get()
+            mode = selected_option1.get()
             
             print("-- transfer --")
             print("from:", from_)
             print("to:", to)
             print("mode:", mode)
 
+            carp.transfer(from_, to, mode)
             transfer_window.withdraw()
 
         # Cargando la imagen de fondo de la ventana transfer
@@ -283,16 +285,17 @@ def open_main_window():
         canvas2.image = image2  
 
         # widgets de la ventana transfer
+        optionsTYPE = ["Local", "Cloud"]
         text_entry1 = tk.StringVar()
         text_entry2 = tk.StringVar()
-        text_entry3 = tk.StringVar()
+        selected_option1 = tk.StringVar()
 
         entry1 = Entry(transfer_window, font=("Arial", 12), width=40, textvariable=text_entry1)
         entry1.place(x=200, y=95)
         entry2 = Entry(transfer_window, font=("Arial", 12), width=40, textvariable=text_entry2)        
         entry2.place(x=200, y=160)
-        entry3 = Entry(transfer_window, font=("Arial", 12), width=40, textvariable=text_entry3)
-        entry3.place(x=200, y=225)
+        combo1 = ttk.Combobox(transfer_window, width=40, font=("Arial", 12), values=optionsTYPE, state="readonly", textvariable=selected_option1)
+        combo1.place(x=200, y=225)
         aceptar_button = Button(transfer_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
         aceptar_button.place(x=250, y=370)
 
@@ -313,6 +316,7 @@ def open_main_window():
             print("path:", path)
             print("name:", name)
 
+            carp.rename(path, name)
             rename_window.withdraw()
 
         # Cargando la imagen de fondo de la ventana rename
@@ -356,6 +360,7 @@ def open_main_window():
             print("path:", path)
             print("name:", name)
 
+            carp.modify(path, name)
             modify_window.withdraw()
 
         # Cargando la imagen de fondo de la ventana modify
@@ -399,6 +404,7 @@ def open_main_window():
             print("path:", path)
             print("name:", name)
 
+            carp.add(path, name)
             add_window.withdraw()
 
         # Cargando la imagen de fondo de la ventana add
