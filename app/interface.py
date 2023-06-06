@@ -177,7 +177,8 @@ def open_main_window():
             print("-- DELETE --")
             print("path:", path)
             print("name:", name)
-
+            
+            carp.delete(path, name)
             delete_window.withdraw()
 
         # Cargando la imagen de fondo de la ventana delete
