@@ -1,5 +1,6 @@
 import os
 
+# Funcion create que crea un archivo txt
 def create(name, body, path):
     # Ruta completa de la carpeta que deseas crear en tu proyecto
     carpeta_proyecto = os.path.join(os.path.dirname(__file__), "../Archivos", path)
