@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import shutil
 import encriptado as enc
@@ -19,13 +20,13 @@ def configure(type, log, read, llave):
 #Usar casi siempre para el archivo encriptado
 def desencriptar(texto):
     llave=llaveConfigure
-    return enc.decrypt_password(texto, llave)
+    return enc.decrypt(texto, llave)
 
 
 #Usar para encriptar la bitácora
 def encriptar(texto):
     llave=llaveConfigure
-    return enc.encrypt_password(texto, llave)
+    return enc.encrypt(texto, llave)
     
 
 
@@ -42,15 +43,15 @@ def create(name, body, path):
             # Crear el archivo y escribir el contenido
             with open(archivo_proyecto, "w") as archivo:
                 archivo.write(body)
-
-            print(f"Archivo '{name}' creado exitosamente en tu proyecto.")
+            bitacoraReturn=bitacora("Output","Create", f"Archivo {name} creado exitosamente")
+            bitacoraLog(bitacoraReturn)
+            print(f"Archivo {name} creado exitosamente en tu proyecto.")
             print("Carpeta creada exitosamente en tu proyecto.")
         else:
+            bitacoraReturn=bitacora("Output","Create", f"Error: La carpeta y el archivo ya existen")
+            bitacoraLog(bitacoraReturn)
+            print(bitacoraReturn)
             print("La carpeta y el archivo ya existen en tu proyecto.")
-            with open(archivo_proyecto, "w") as archivo:
-                archivo.write(body)
-
-            print(f"Archivo '{name}' creado exitosamente en tu proyecto.")
     else:
         print("Cloud")
 
@@ -66,12 +67,18 @@ def delete(path, name):
         if os.path.exists(archivo_proyecto):
             if os.path.isfile(archivo_proyecto):
                 os.remove(archivo_proyecto)
-                print(f"Archivo '{name}' eliminado exitosamente.")
+                bitacoraReturn=bitacora("Output","Delete", f"Archivo {name} eliminado exitosamente.")
+                bitacoraLog(bitacoraReturn)
+                print(f"Archivo {name} eliminado exitosamente.")
             elif os.path.isdir(archivo_proyecto):
                 shutil.rmtree(archivo_proyecto)
+                bitacoraReturn=bitacora("Output","Delete", f"Carpeta eliminada exitosamente.")
+                bitacoraLog(bitacoraReturn)
                 print(f"Carpeta eliminada exitosamente.")
         else:
-            print(f"No se encontró el archivo o carpeta en la ruta especificada.")
+            bitacoraReturn=bitacora("Output","Delete", f"Error: No se encontro el archivo o carpeta en la ruta especificada.")
+            bitacoraLog(bitacoraReturn)
+            print(f"No se encontro el archivo o carpeta en la ruta especificada.")
     else:
         print("Cloud")
 
@@ -94,17 +101,25 @@ def copy(from_path, to):
             if os.path.isdir(from_path_full):
                 # Validar si ya existe una carpeta con el mismo nombre en la ubicación de destino
                 if os.path.isdir(to_full) and os.path.basename(from_path_full) == os.path.basename(to_full):
+                    bitacoraReturn=bitacora("Output","Copy", f"Error: Ya existe una carpeta con el nombre {os.path.basename(from_path_full)} en la ubicación de destino.")
+                    bitacoraLog(bitacoraReturn)
                     print(f"Advertencia: Ya existe una carpeta con el nombre '{os.path.basename(from_path_full)}' en la ubicación de destino.")
                 else:
                     # Copiar contenido de la carpeta
                     copy_folder_contents(from_path_full, to_full)
+                    bitacoraReturn=bitacora("Output","Copy", f"Contenido de la carpeta '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
+                    bitacoraLog(bitacoraReturn)
                     print(f"Contenido de la carpeta '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
             elif os.path.isfile(from_path_full):
                 # Copiar archivo individual
                 copy_file(from_path_full, to_full)
+                bitacoraReturn=bitacora("Output","Copy", f"Archivo '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
+                bitacoraLog(bitacoraReturn)
                 print(f"Archivo '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
         else:
-            print(f"No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
+            bitacoraReturn=bitacora("Output","Copy", f"Error: No se encontro la carpeta o archivo '{from_path}' en la ruta especificada.")
+            bitacoraLog(bitacoraReturn)
+            print(f"No se encontro la carpeta o archivo '{from_path}' en la ruta especificada.")
     else:
         print("Cloud")
 
@@ -127,15 +142,23 @@ def transfer(from_path, to, mode):
                 if os.path.isdir(from_path_full):
                     # Validar si ya existe una carpeta con el mismo nombre en la ubicación de destino
                     if os.path.isdir(to_full) and os.path.basename(from_path_full) == os.path.basename(to_full):
+                        bitacoraReturn=bitacora("Output","Transfer", f"Error: Ya existe una carpeta con el nombre {os.path.basename(from_path_full)} en la ubicación de destino.")
+                        bitacoraLog(bitacoraReturn)
                         print(f"Advertencia: Ya existe una carpeta con el nombre '{os.path.basename(from_path_full)}' en la ubicación de destino.")
                     else:
                         # Transferir contenido de la carpeta
                         transfer_folder_contents(from_path_full, to_full)
+                        bitacoraReturn=bitacora("Output","Transfer", f"Contenido de la carpeta '{os.path.basename(from_path_full)}' transferido exitosamente a '{to}'.")
+                        bitacoraLog(bitacoraReturn)
                         print(f"Contenido de la carpeta '{os.path.basename(from_path_full)}' transferido exitosamente a '{to}'.")
                 else:
+                    bitacoraReturn=bitacora("Output","Transfer", f"Error: El origen '{from_path_full}' no es una carpeta.")
+                    bitacoraLog(bitacoraReturn)
                     print(f"El origen '{from_path_full}' no es una carpeta.")
             else:
-                print(f"No se encontró la carpeta '{from_path}' en la ruta especificada.")
+                bitacoraReturn=bitacora("Output","Transfer", f"Error: No se encontro la carpeta o archivo '{from_path}' en la ruta especificada.")
+                bitacoraLog(bitacoraReturn)
+                print(f"No se encontro la carpeta '{from_path}' en la ruta especificada.")
         elif mode == "Cloud":
             print("Transferir de Local a Cloud")
         else:
@@ -160,21 +183,31 @@ def rename(path, name):
                 new_path = os.path.join(os.path.dirname(archivo_proyecto), name)
                 # Verificar si el nuevo archivo ya existe
                 if os.path.exists(new_path):
-                    print(f"Ya existe un archivo con el nombre '{name}'.")
+                    bitacoraReturn=bitacora("Output","Rename", f"Error: Ya existe un archivo con el nombre {name}.")
+                    bitacoraLog(bitacoraReturn)
+                    print(f"Ya existe un archivo con el nombre {name}.")
                 else:
                     os.rename(archivo_proyecto, new_path)
-                    print(f"El archivo '{path}' ha sido renombrado a '{name}'.")
+                    bitacoraReturn=bitacora("Output","Rename", f"El archivo '{path}' ha sido renombrado a {name}.")
+                    bitacoraLog(bitacoraReturn)
+                    print(f"El archivo '{path}' ha sido renombrado a {name}.")
             elif os.path.isdir(archivo_proyecto):
                 # Ruta completa de la nueva carpeta
                 parent_dir = os.path.dirname(archivo_proyecto)
                 new_path = os.path.join(parent_dir, name)
                 if not os.path.exists(new_path):
                     shutil.move(archivo_proyecto, new_path)
-                    print(f"La carpeta '{path}' ha sido renombrada a '{name}'.")
+                    bitacoraReturn=bitacora("Output","Rename", f"La carpeta '{path}' ha sido renombrado a {name}.")
+                    bitacoraLog(bitacoraReturn)
+                    print(f"La carpeta '{path}' ha sido renombrada a {name}.")
                 else:
-                    print(f"Ya existe una carpeta con el nombre '{name}'.")
+                    bitacoraReturn=bitacora("Output","Rename", f"Error: Ya existe una carpeta con el nombre {name}.")
+                    bitacoraLog(bitacoraReturn)
+                    print(f"Ya existe una carpeta con el nombre {name}.")
         else:
-            print(f"No se encontró el archivo o carpeta '{path}' en la ruta especificada.")
+            bitacoraReturn=bitacora("Output","Rename", f"Error: No se encontro el archivo o carpeta '{path}' en la ruta especificada.")
+            bitacoraLog(bitacoraReturn)
+            print(f"No se encontro el archivo o carpeta '{path}' en la ruta especificada.")
     else:
         print("Cloud")
 
@@ -189,10 +222,13 @@ def modify(path, body):
             # Modificar el contenido del archivo
             with open(archivo_proyecto, "w") as archivo:
                 archivo.write(body)
-
+            bitacoraReturn=bitacora("Output","Modify", f"Contenido del archivo '{path}' modificado exitosamente.")
+            bitacoraLog(bitacoraReturn)
             print(f"Contenido del archivo '{path}' modificado exitosamente.")
         else:
-            print(f"No se encontró el archivo '{path}' en la ruta especificada.")
+            bitacoraReturn=bitacora("Output","Modify", f"Error: No se encontro el archivo '{path}' en la ruta especificada.")
+            bitacoraLog(bitacoraReturn)
+            print(f"No se encontro el archivo '{path}' en la ruta especificada.")
     else:
         print("Cloud")
 
@@ -208,15 +244,28 @@ def add(path, body):
             # Agregar contenido al archivo
             with open(archivo_proyecto, "a") as archivo:
                 archivo.write(body)
-
+            bitacoraReturn=bitacora("Output","Add", f"Contenido agregado al archivo '{path}' exitosamente.")
+            bitacoraLog(bitacoraReturn)
             print(f"Contenido agregado al archivo '{path}' exitosamente.")
         else:
-            print(f"No se encontró el archivo '{path}' en la ruta especificada.")
+            bitacoraReturn=bitacora("Output","Add", f"Error: No se encontro el archivo '{path}' en la ruta especificada.")
+            bitacoraLog(bitacoraReturn)
+            print(f"No se encontro el archivo '{path}' en la ruta especificada.")
     else:
         print("Cloud")
 
 
 
+
+def bitacora(type, comand, instruction):
+    fecha=""
+    fecha = fechaYhora()
+    print(bitacoraConfigure)
+    if bitacoraConfigure=="True":
+        instruccion = enc.encrypt((f"{fecha} - {type} - {comand} - {instruction}\n"), llaveConfigure)
+    else:
+        instruccion = f"{fecha} - {type} - {comand} - {instruction}\n"        
+    return instruccion
 
 
 
@@ -262,3 +311,29 @@ def transfer_folder_contents(from_folder, to_folder):
             shutil.move(item_path, os.path.join(to_folder, item))
         elif os.path.isdir(item_path):
             transfer_folder_contents(item_path, os.path.join(to_folder, item))
+
+def fechaYhora():
+    current_datetime = datetime.now()
+    formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    return formatted_datetime
+
+
+def bitacoraLog(texto):
+    # Obtener la fecha actual
+    fecha_actual = datetime.now()
+    dia_actual = fecha_actual.day
+    mes_actual = fecha_actual.month
+    año_actual = fecha_actual.year
+
+    # Construir la ruta del archivo de registro
+    ruta_log_archivos = os.path.join(os.path.dirname(__file__), "../Archivos/log", str(dia_actual), str(mes_actual), str(año_actual))
+    os.makedirs(ruta_log_archivos, exist_ok=True)  # Crear directorios si no existen
+
+    nombre_archivo = "log_archivos.txt"
+    ruta_completa = os.path.join(ruta_log_archivos, nombre_archivo)
+
+    # Abrir el archivo en modo de apendizaje (append) y escribir el texto
+    with open(ruta_completa, "a") as archivo:
+        archivo.write(texto)
+
+    print(f"Texto agregado al archivo de registro: {texto}")

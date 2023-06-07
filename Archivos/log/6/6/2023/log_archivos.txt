@@ -1,0 +1,14 @@
+2023-06-06 16:45:38 - Output -  Create - Archivo 'hola' creado exitosamente
+2023-06-06 16:45:58 - Output -  Create - La carpeta y el archivo ya existen en tu proyecto.
+
+2023-06-06 17:23:50 - Output - Create - Archivo pablo creado exitosamente
+2023-06-06 17:24:39 - Output - Delete - Archivo dfsdf.txt eliminado exitosamente.
+2023-06-06 17:25:12 - Output - Copy - Archivo 'pablo.txt' copiado exitosamente a 'amigos'.
+2023-06-06 17:25:58 - Output - Transfer - Error: No se encontró la carpeta o archivo 'familia/hola.txt' en la ruta especificada.
+2023-06-06 17:26:38 - Output - Transfer - Error: No se encontró la carpeta o archivo 'familia/amigos' en la ruta especificada.
+2023-06-06 17:26:59 - Output - Transfer - Contenido de la carpeta 'familia' transferido exitosamente a 'df'.
+2023-06-06 17:27:29 - Output - Rename - Error: Ya existe una carpeta con el nombre amigos.
+2023-06-06 17:27:47 - Output - Rename - La carpeta 'dfg' ha sido renombrado a jojo.
+2023-06-06 17:28:05 - Output - Modify - Error: No se encontró el archivo 'amigos' en la ruta especificada.
+2023-06-06 17:28:22 - Output - Modify - Contenido del archivo 'df/cafe/hola.txt' modificado exitosamente.
+2023-06-06 17:28:44 - Output - Add - Contenido agregado al archivo 'df/cafe/hola.txt' exitosamente.
