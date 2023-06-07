@@ -455,7 +455,7 @@ def open_main_window():
 
     #Backup método
     def backup():
-        bitacoraReturn = carp.bitacora("Input", "Backup", "Realizar un backup")
+        bitacoraReturn = carp.bitacora("Input", "Backup", "Iniciar un backup")
         carp.bitacoraLog(bitacoraReturn)
         print("backup")
 
