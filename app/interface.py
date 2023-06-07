@@ -599,7 +599,7 @@ def open_main_window():
     clear_console_file()
 
     #Textarea de consola
-    console_txt = Text(main_window, width=45, height=18, font=("Arial", 12))
+    console_txt = Text(main_window, width=45, height=18, font=("Arial", 8))
     console_txt.place(x=40, y=90)
 
     # Leer el contenido del archivo

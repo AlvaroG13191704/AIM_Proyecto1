@@ -1,2 +1,6 @@
-Archivo df creado exitosamente
-Archivo sdf creado exitosamente
+Create ejecutando
+2023-06-06 21:42:53 - Output - Create - Archivo fgh creado exitosamente
+
+Delete ejecutando...
+2023-06-06 21:43:29 - Output - Delete - Carpeta eliminada exitosamente.
+

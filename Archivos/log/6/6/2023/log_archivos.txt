@@ -34,3 +34,10 @@
 2023-06-06 21:30:10 - Input - Create - Crear sdf.txt en la ruta dsdf
 2023-06-06 21:30:10 - Output - Create - Archivo sdf creado exitosamente
 2023-06-06 21:30:34 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 21:42:41 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:42:48 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: , Encrypt Read: , Llave: 
+2023-06-06 21:42:53 - Input - Create - Crear fgh.txt en la ruta gfhfg
+2023-06-06 21:42:53 - Output - Create - Archivo fgh creado exitosamente
+2023-06-06 21:43:29 - Input - Delete - Eliminar  de la ruta amigos
+2023-06-06 21:43:29 - Output - Delete - Carpeta eliminada exitosamente.
+2023-06-06 21:43:43 - Output - Sesion - Se cerro sesion Usuario1
