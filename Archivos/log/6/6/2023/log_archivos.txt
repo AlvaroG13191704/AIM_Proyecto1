@@ -1,0 +1,5 @@
+2023-06-06 19:11:37 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 19:11:51 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-06 19:12:21 - Input - Create - Crear si.txt en la ruta amigos
+2023-06-06 19:12:21 - Output - Create - Archivo si creado exitosamente
+2023-06-06 19:15:19 - Output - Sesion - Se cerro sesion Usuario1

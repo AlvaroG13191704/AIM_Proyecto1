@@ -500,6 +500,9 @@ def open_main_window():
         aceptar_button.place(x=250, y=370)
 
 
+    
+
+
     main_window.protocol("WM_DELETE_WINDOW", close_main_window)
 
     # Cargando la imagen de fondo de la ventana principal

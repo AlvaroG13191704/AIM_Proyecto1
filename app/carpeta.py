@@ -1,10 +1,12 @@
 from datetime import datetime
 import os
 import shutil
+import tkinter
 import encriptado as enc
 
 
-
+global bitacoraConfigure
+bitacoraConfigure = "False"
 def configure(type, log, read, llave):
     global tipo
     tipo = type
@@ -46,6 +48,7 @@ def create(name, body, path):
             bitacoraReturn=bitacora("Output","Create", f"Archivo {name} creado exitosamente")
             bitacoraLog(bitacoraReturn)
             print(f"Archivo {name} creado exitosamente en tu proyecto.")
+            #inter.console_txt.insert(tkinter.END, f"Archivo {name} creado exitosamente en tu proyecto.")
             print("Carpeta creada exitosamente en tu proyecto.")
         else:
             bitacoraReturn=bitacora("Output","Create", f"Error: La carpeta y el archivo ya existen")
