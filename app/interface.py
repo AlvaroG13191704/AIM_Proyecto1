@@ -76,16 +76,33 @@ def open_main_window():
             encrypt_read = selected_option3.get()
             llave = text_entry.get()
             if (type !="" and encrypt_log !="" and encrypt_read !=""):
-                bitacoraReturn = carp.bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}")
-                carp.bitacoraLog(bitacoraReturn)
-                print("-- CONFIGURE --")
-                print("Tipo:", type)
-                print("Valor1:", encrypt_log)
-                print("Valor2:", encrypt_read)
-                print("Texto:", llave)
+                
 
-                carp.configure(type, encrypt_log, encrypt_read, llave)
-                configure_window.withdraw()
+                if encrypt_log == "True" or encrypt_read == "True":
+                    if len(llave) != 16:
+                        messagebox.showerror(title="Error", message="La llave debe tener 16 caracteres")
+                    else:
+                        carp.configure(type, encrypt_log, encrypt_read, llave)
+                        configure_window.withdraw()
+                        bitacoraReturn = carp.bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}")
+                        carp.bitacoraLog(bitacoraReturn)
+                        print("-- CONFIGURE --")
+                        print("Tipo:", type)
+                        print("Valor1:", encrypt_log)
+                        print("Valor2:", encrypt_read)
+                        print("Texto:", llave)
+
+                else:
+                    
+                    carp.configure(type, encrypt_log, encrypt_read, llave)
+                    configure_window.withdraw()
+                    bitacoraReturn = carp.bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}")
+                    carp.bitacoraLog(bitacoraReturn)
+                    print("-- CONFIGURE --")
+                    print("Tipo:", type)
+                    print("Valor1:", encrypt_log)
+                    print("Valor2:", encrypt_read)
+                    print("Texto:", llave)
             else:
                 messagebox.showerror(title="Error", message="Existen campos vacíos")
 

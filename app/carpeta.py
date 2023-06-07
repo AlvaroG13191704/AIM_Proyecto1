@@ -192,10 +192,23 @@ def transfer(from_path, to, mode):
                 write(f"Transfer ejecutando...")
                 write(bitacoraReturn)
                 print(f"No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
+
         elif mode == "Cloud":
+            #ESCRBIR ACÁ EL CÓDIGO PARA EL LOCAL A CLOUD
             print("Transferir de Local a Cloud")
+    
     else:
+        #ACÁ YA ES CLOUD
         print("Cloud")
+
+        if mode == "Local":
+            #ESCRBIR ACÁ EL CÓDIGO PARA EL CLOUD A LOCAL
+            print("Transferir de Cloud a Local")
+
+        else:
+            #ESCRBIR ACÁ EL CÓDIGO PARA EL CLOUD A CLOUD
+            print("Transferir de Cloud a Cloud")
+        
 
 
 
