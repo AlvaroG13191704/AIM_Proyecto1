@@ -47,8 +47,8 @@ def create(name, body, path):
                 archivo.write(body)
             bitacoraReturn=bitacora("Output","Create", f"Archivo {name} creado exitosamente")
             bitacoraLog(bitacoraReturn)
-            print(f"Archivo {name} creado exitosamente en tu proyecto.")
-            #inter.console_txt.insert(tkinter.END, f"Archivo {name} creado exitosamente en tu proyecto.")
+            write(f"Archivo {name} creado exitosamente")
+            print(f"Archivo {name} creado exitosamente en tu proyecto.")         
             print("Carpeta creada exitosamente en tu proyecto.")
         else:
             bitacoraReturn=bitacora("Output","Create", f"Error: La carpeta y el archivo ya existen")
@@ -342,3 +342,8 @@ def bitacoraLog(texto):
         archivo.write(texto)
 
     print(f"Texto agregado al archivo de registro: {texto}")
+
+def write(content):
+    with open('app/log/consola.txt', 'a') as file:
+        file.write(content)
+        file.write('\n')  # Agregar un salto de línea después del contenido

@@ -6,10 +6,12 @@ import os
 from PIL import Image, ImageTk
 import encriptado as enc
 import carpeta as carp
-
+import threading
+import time
 #--- CONTRASEÑAS ---
 #Pablo42
 #Alvaro123
+
 
 
 # Función para realizar el login
@@ -59,7 +61,6 @@ def open_main_window():
         show_login()
         bitacoraReturn = carp.bitacora("Output", "Sesion", f"Se cerro sesion {username}")
         carp.bitacoraLog(bitacoraReturn)
-
 
 
     # Ventana configure
@@ -564,9 +565,52 @@ def open_main_window():
     cerrars_b= Button(main_window, text="Cerrar Sesión", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=close_main_window)
     cerrars_b.place(x=500, y=190+espaciado*5)
 
+
+    def read_file(filename):
+        with open(filename, 'r') as file:
+            content = file.read()
+        return content
+
+    def update_console_text(console_text, content):
+        console_text.delete('1.0', tk.END)
+        console_text.insert(tk.END, content)
+
+    def check_file_changes():
+        last_modified = None
+
+        while True:
+            current_modified = time.ctime(os.path.getmtime('app/log/consola.txt'))
+            if current_modified != last_modified:
+                content = read_file('app/log/consola.txt')
+                update_console_text(console_txt, content)
+                last_modified = current_modified
+            time.sleep(0.1)  # Verificar cada 0.1 segundo
+
+    def start_file_observer():
+        file_observer = threading.Thread(target=check_file_changes)
+        file_observer.daemon = True
+        file_observer.start()
+
+    def clear_console_file():
+        with open('app/log/consola.txt', 'w') as file:
+            file.write('')
+
+    # Eliminar el contenido del archivo consola.txt
+    clear_console_file()
+
     #Textarea de consola
     console_txt = Text(main_window, width=45, height=18, font=("Arial", 12))
     console_txt.place(x=40, y=90)
+
+    # Leer el contenido del archivo
+    filename = 'app/log/consola.txt'  # Ruta al archivo que deseas leer
+    content = read_file(filename)
+
+    start_file_observer()
+
+
+   
+    
 
 
 def show_login():

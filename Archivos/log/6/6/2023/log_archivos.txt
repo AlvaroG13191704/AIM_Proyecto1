@@ -3,3 +3,34 @@
 2023-06-06 19:12:21 - Input - Create - Crear si.txt en la ruta amigos
 2023-06-06 19:12:21 - Output - Create - Archivo si creado exitosamente
 2023-06-06 19:15:19 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 20:51:05 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 20:51:11 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 21:03:34 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:03:53 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 21:11:26 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:11:44 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 21:11:58 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:12:15 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 21:12:28 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:12:51 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 21:16:51 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:17:11 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-06 21:17:16 - Input - Create - Crear sda.txt en la ruta asdasd
+2023-06-06 21:17:16 - Output - Create - Archivo sda creado exitosamente
+2023-06-06 21:17:27 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 21:24:47 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:25:49 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:26:32 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 21:27:01 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:27:13 - Input - Create - Crear hola.txt en la ruta dsfsdfsd
+2023-06-06 21:27:27 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-06 21:27:30 - Input - Create - Crear hola.txt en la ruta dsfsdfsd
+2023-06-06 21:27:30 - Output - Create - Archivo hola creado exitosamente
+2023-06-06 21:27:41 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-06 21:29:44 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-06 21:29:59 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: , Encrypt Read: , Llave: 
+2023-06-06 21:30:05 - Input - Create - Crear df.txt en la ruta ds
+2023-06-06 21:30:05 - Output - Create - Archivo df creado exitosamente
+2023-06-06 21:30:10 - Input - Create - Crear sdf.txt en la ruta dsdf
+2023-06-06 21:30:10 - Output - Create - Archivo sdf creado exitosamente
+2023-06-06 21:30:34 - Output - Sesion - Se cerro sesion Usuario1
