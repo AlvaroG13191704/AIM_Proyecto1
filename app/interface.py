@@ -53,7 +53,7 @@ def open_main_window():
     main_window = tk.Toplevel()
     main_window.title("Ventana Principal")
     main_window.resizable(False, False)
-    main_window.geometry("840x440")
+    main_window.geometry("840x640")
     main_window.protocol("WM_DELETE_WINDOW", show_login)  # Volver al login al cerrar
 
     def close_main_window():
@@ -512,7 +512,7 @@ def open_main_window():
     image = ImageTk.PhotoImage(bg_img)
 
     
-    canvas = Canvas(main_window, width=840, height=440)
+    canvas = Canvas(main_window, width=840, height=640)
     canvas.pack()
 
     
@@ -558,12 +558,15 @@ def open_main_window():
     backup_b.place(x=500, y=170+espaciado*4)
 
     #Boton execu
-    execu_b= Button(main_window, text="execu", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=execu)
+    execu_b= Button(main_window, text="exec", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=execu)
     execu_b.place(x=650, y=170+espaciado*4)
 
     #Boton cerrar sesion
     cerrars_b= Button(main_window, text="Cerrar Sesión", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=close_main_window)
     cerrars_b.place(x=500, y=190+espaciado*5)
+
+    enter_b= Button(main_window, text="enter", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=close_main_window)
+    enter_b.place(x=650, y=190+espaciado*5)
 
 
     def read_file(filename):
@@ -599,14 +602,20 @@ def open_main_window():
     clear_console_file()
 
     #Textarea de consola
-    console_txt = Text(main_window, width=45, height=18, font=("Arial", 8))
-    console_txt.place(x=40, y=90)
+    console_txt2 = Text(main_window, width=70, height=22, font=("Arial", 8))
+    console_txt2.place(x=40, y=90)
+
+    console_txt = Text(main_window, width=120, height=12, font=("Arial", 8))
+    console_txt.place(x=40, y=440)
+
 
     # Leer el contenido del archivo
     filename = 'app/log/consola.txt'  # Ruta al archivo que deseas leer
     content = read_file(filename)
 
     start_file_observer()
+
+    
 
 
    
