@@ -1,21 +1,6 @@
-Create ejecutando
-2023-06-07 12:05:23 - Output - Create - Archivo hola creado exitosamente
-
-Delete ejecutando...
-2023-06-07 12:05:31 - Output - Delete - Carpeta eliminada exitosamente.
+Configure ejecutando...
+2023-06-07 16:56:57 - Output - Configure - Archivo configurado exitosamente
 
 Copy ejecutando...
-2023-06-07 12:05:47 - Output - Copy - Contenido de la carpeta 'ds' copiado exitosamente a 'dsdf'.
-
-Transfer ejecutando...
-2023-06-07 12:06:10 - Output - Transfer - Contenido de la carpeta 's' transferido exitosamente a 'MIAlab'.
-
-Rename ejecutando...
-2023-06-07 12:06:33 - Output - Rename - La carpeta 'ds' ha sido renombrado a holaamigos.
-
-Modify ejecutando...
-2023-06-07 12:07:07 - Output - Modify - Contenido del archivo 'MIAlab/hola.txt' modificado exitosamente.
-
-Add ejecutando...
-2023-06-07 12:07:41 - Output - Add - Contenido agregado al archivo 'MIAlab/hola.txt' exitosamente.
+2023-06-07 16:57:45 - Output - Copy - Advertencia: Ya existe un archivo con el nombre 'familia' en la ubicación de destino.
 

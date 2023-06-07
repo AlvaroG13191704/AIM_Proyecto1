@@ -75,17 +75,19 @@ def open_main_window():
             encrypt_log = selected_option2.get()
             encrypt_read = selected_option3.get()
             llave = text_entry.get()
+            if (type !="" and encrypt_log !="" and encrypt_read !=""):
+                bitacoraReturn = carp.bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- CONFIGURE --")
+                print("Tipo:", type)
+                print("Valor1:", encrypt_log)
+                print("Valor2:", encrypt_read)
+                print("Texto:", llave)
 
-            bitacoraReturn = carp.bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}")
-            carp.bitacoraLog(bitacoraReturn)
-            print("-- CONFIGURE --")
-            print("Tipo:", type)
-            print("Valor1:", encrypt_log)
-            print("Valor2:", encrypt_read)
-            print("Texto:", llave)
-
-            carp.configure(type, encrypt_log, encrypt_read, llave)
-            configure_window.withdraw()
+                carp.configure(type, encrypt_log, encrypt_read, llave)
+                configure_window.withdraw()
+            else:
+                messagebox.showerror(title="Error", message="Existen campos vacíos")
 
         # Cargando la imagen de fondo de la ventana configure
         img_path2 = os.path.join(os.path.dirname(__file__), "images/configure.png")
@@ -132,16 +134,18 @@ def open_main_window():
             name = text_entry1.get()
             body = text_entry2.get()
             path = text_entry3.get()
-            
-            bitacoraReturn = carp.bitacora("Input", "Create", f"Crear {name}.txt en la ruta {path}")
-            carp.bitacoraLog(bitacoraReturn)
-            print("-- CREATE --")
-            print("name:", name)
-            print("body:", body)
-            print("path:", path)
+            if (path != "" and body != "" and name != ""):
+                bitacoraReturn = carp.bitacora("Input", "Create", f"Crear {name}.txt en la ruta {path}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- CREATE --")
+                print("name:", name)
+                print("body:", body)
+                print("path:", path)
 
-            carp.create(name, body, path)
-            create_window.withdraw()
+                carp.create(name, body, path)
+                create_window.withdraw()
+            else:
+                messagebox.showerror(title="Error", message="Existen campos vacíos")
 
         # Cargando la imagen de fondo de la ventana create
         img_path2 = os.path.join(os.path.dirname(__file__), "images/create.png")
@@ -182,15 +186,17 @@ def open_main_window():
         def aceptar():
             path = text_entry1.get()
             name = text_entry2.get()
-            
-            bitacoraReturn = carp.bitacora("Input", "Delete", f"Eliminar {name} de la ruta {path}")
-            carp.bitacoraLog(bitacoraReturn)
-            print("-- DELETE --")
-            print("path:", path)
-            print("name:", name)
+            if (path != ""):
+                bitacoraReturn = carp.bitacora("Input", "Delete", f"Eliminar {name} de la ruta {path}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- DELETE --")
+                print("path:", path)
+                print("name:", name)
 
-            carp.delete(path, name)
-            delete_window.withdraw()
+                carp.delete(path, name)
+                delete_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
 
         # Cargando la imagen de fondo de la ventana delete
         img_path2 = os.path.join(os.path.dirname(__file__), "images/delete.png")
@@ -228,15 +234,17 @@ def open_main_window():
         def aceptar():
             from_ = text_entry1.get()
             to = text_entry2.get()
-            
-            bitacoraReturn = carp.bitacora("Input", "Copy", f"Copiar el contenido de {from_} a {to}")
-            carp.bitacoraLog(bitacoraReturn)
-            print("-- COPY --")
-            print("from:", from_)
-            print("to:", to)
+            if (from_ != "" and to !=""):
+                bitacoraReturn = carp.bitacora("Input", "Copy", f"Copiar el contenido de {from_} a {to}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- COPY --")
+                print("from:", from_)
+                print("to:", to)
 
-            carp.copy(from_, to)
-            copy_window.withdraw()
+                carp.copy(from_, to)
+                copy_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
 
         # Cargando la imagen de fondo de la ventana copy
         img_path2 = os.path.join(os.path.dirname(__file__), "images/copy.png")
@@ -275,16 +283,18 @@ def open_main_window():
             from_ = text_entry1.get()
             to = text_entry2.get()
             mode = selected_option1.get()
-            
-            bitacoraReturn = carp.bitacora("Input", "Transfer", f"Transferir el contenido de {from_} a {to} en {mode}")
-            carp.bitacoraLog(bitacoraReturn)
-            print("-- transfer --")
-            print("from:", from_)
-            print("to:", to)
-            print("mode:", mode)
+            if (from_ != "" and to !="" and mode != ""):
+                bitacoraReturn = carp.bitacora("Input", "Transfer", f"Transferir el contenido de {from_} a {to} en {mode}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- transfer --")
+                print("from:", from_)
+                print("to:", to)
+                print("mode:", mode)
 
-            carp.transfer(from_, to, mode)
-            transfer_window.withdraw()
+                carp.transfer(from_, to, mode)
+                transfer_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
 
         # Cargando la imagen de fondo de la ventana transfer
         img_path2 = os.path.join(os.path.dirname(__file__), "images/transfer.png")
@@ -326,15 +336,17 @@ def open_main_window():
         def aceptar():
             path = text_entry1.get()
             name = text_entry2.get()
-            
-            bitacoraReturn = carp.bitacora("Input", "Rename", f"Cambiar el nombre en {path} a {name}")
-            carp.bitacoraLog(bitacoraReturn)
-            print("-- rename --")
-            print("path:", path)
-            print("name:", name)
+            if (path != "" and name !=""):
+                bitacoraReturn = carp.bitacora("Input", "Rename", f"Cambiar el nombre en {path} a {name}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- rename --")
+                print("path:", path)
+                print("name:", name)
 
-            carp.rename(path, name)
-            rename_window.withdraw()
+                carp.rename(path, name)
+                rename_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
 
         # Cargando la imagen de fondo de la ventana rename
         img_path2 = os.path.join(os.path.dirname(__file__), "images/rename.png")
@@ -372,15 +384,17 @@ def open_main_window():
         def aceptar():
             path = text_entry1.get()
             body = text_entry2.get()
-            
-            bitacoraReturn = carp.bitacora("Input", "Modify", f"Modificar el contenido de {path} a {body}")
-            carp.bitacoraLog(bitacoraReturn)
-            print("-- modify --")
-            print("path:", path)
-            print("body:", body)
+            if (path != "" and body !=""):
+                bitacoraReturn = carp.bitacora("Input", "Modify", f"Modificar el contenido de {path} a {body}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- modify --")
+                print("path:", path)
+                print("body:", body)
 
-            carp.modify(path, body)
-            modify_window.withdraw()
+                carp.modify(path, body)
+                modify_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
 
         # Cargando la imagen de fondo de la ventana modify
         img_path2 = os.path.join(os.path.dirname(__file__), "images/modify.png")
@@ -418,15 +432,17 @@ def open_main_window():
         def aceptar():
             path = text_entry1.get()
             body = text_entry2.get()
-            
-            bitacoraReturn = carp.bitacora("Input", "Add", f"Agregar {body} a {path}")
-            carp.bitacoraLog(bitacoraReturn)
-            print("-- add --")
-            print("path:", path)
-            print("body:", body)
+            if (path != "" and body !=""):
+                bitacoraReturn = carp.bitacora("Input", "Add", f"Agregar {body} a {path}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- add --")
+                print("path:", path)
+                print("body:", body)
 
-            carp.add(path, body)
-            add_window.withdraw()
+                carp.add(path, body)
+                add_window.withdraw()
+            else: 
+                messagebox.showerror("Error", "Existen campos vacíos")
 
         # Cargando la imagen de fondo de la ventana add
         img_path2 = os.path.join(os.path.dirname(__file__), "images/add.png")
@@ -471,13 +487,15 @@ def open_main_window():
 
         def aceptar():
             path = text_entry1.get()
-            
-            bitacoraReturn = carp.bitacora("Input", "Exec", f"Ejecutar {path}")
-            carp.bitacoraLog(bitacoraReturn)
-            print("-- EXEC --")
-            print("path:", path)
+            if path != "":
+                bitacoraReturn = carp.bitacora("Input", "Exec", f"Ejecutar {path}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- EXEC --")
+                print("path:", path)
 
-            execu_window.withdraw()
+                execu_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
 
         # Cargando la imagen de fondo de la ventana execu
         img_path2 = os.path.join(os.path.dirname(__file__), "images/exec.png")

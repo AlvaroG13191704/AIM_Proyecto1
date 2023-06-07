@@ -1,7 +1,6 @@
 from datetime import datetime
 import os
 import shutil
-import tkinter
 import encriptado as enc
 
 
@@ -16,6 +15,10 @@ def configure(type, log, read, llave):
     archivoConfigure = read
     global llaveConfigure
     llaveConfigure = llave
+    bitacoraReturn=bitacora("Output","Configure", f"Archivo configurado exitosamente")
+    bitacoraLog(bitacoraReturn)
+    write(f"Configure ejecutando...")
+    write(bitacoraReturn)
 
 
 
@@ -114,35 +117,46 @@ def copy(from_path, to):
             if os.path.isdir(from_path_full):
                 # Validar si ya existe una carpeta con el mismo nombre en la ubicación de destino
                 if os.path.isdir(to_full) and os.path.basename(from_path_full) == os.path.basename(to_full):
-                    bitacoraReturn=bitacora("Output","Copy", f"Error: Ya existe una carpeta con el nombre {os.path.basename(from_path_full)} en la ubicación de destino.")
+                    bitacoraReturn = bitacora("Output", "Copy", f"Error: Ya existe una carpeta con el nombre '{os.path.basename(from_path_full)}' en la ubicación de destino.")
                     bitacoraLog(bitacoraReturn)
                     write(f"Copy ejecutando...")
                     write(bitacoraReturn)
                     print(f"Advertencia: Ya existe una carpeta con el nombre '{os.path.basename(from_path_full)}' en la ubicación de destino.")
                 else:
                     # Copiar contenido de la carpeta
-                    copy_folder_contents(from_path_full, to_full)
-                    bitacoraReturn=bitacora("Output","Copy", f"Contenido de la carpeta '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
+                    copyCarpeta(from_path_full, to_full)
+                    bitacoraReturn = bitacora("Output", "Copy", f"Contenido de la carpeta '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
                     bitacoraLog(bitacoraReturn)
                     write(f"Copy ejecutando...")
                     write(bitacoraReturn)
                     print(f"Contenido de la carpeta '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
             elif os.path.isfile(from_path_full):
-                # Copiar archivo individual
-                copy_file(from_path_full, to_full)
-                bitacoraReturn=bitacora("Output","Copy", f"Archivo '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
-                bitacoraLog(bitacoraReturn)
-                write(f"Copy ejecutando...")
-                write(bitacoraReturn)
-                print(f"Archivo '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
+                # Verificar si ya existe un archivo con el mismo nombre en la ubicación de destino
+                if os.path.exists(to_full):
+                    bitacoraReturn = bitacora("Output", "Copy", f"Advertencia: Ya existe un archivo con el nombre '{os.path.basename(from_path_full)}' en la ubicación de destino.")
+                    bitacoraLog(bitacoraReturn)
+                    write(f"Copy ejecutando...")
+                    write(bitacoraReturn)
+                    print(f"Advertencia: Ya existe un archivo con el nombre '{os.path.basename(from_path_full)}' en la ubicación de destino.")
+
+                else:
+                    # Copiar archivo individual
+                    copyArchivo(from_path_full, to_full)
+                    bitacoraReturn = bitacora("Output", "Copy", f"Archivo '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
+                    bitacoraLog(bitacoraReturn)
+                    write(f"Copy ejecutando...")
+                    write(bitacoraReturn)
+                    print(f"Archivo '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
         else:
-            bitacoraReturn=bitacora("Output","Copy", f"Error: No se encontro la carpeta o archivo '{from_path}' en la ruta especificada.")
+            bitacoraReturn = bitacora("Output", "Copy", f"Error: No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
             bitacoraLog(bitacoraReturn)
             write(f"Copy ejecutando...")
             write(bitacoraReturn)
-            print(f"No se encontro la carpeta o archivo '{from_path}' en la ruta especificada.")
+            print(f"No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
     else:
         print("Cloud")
+
+
 
 
 
@@ -160,42 +174,28 @@ def transfer(from_path, to, mode):
             to_full = os.path.join(os.path.dirname(__file__), "../Archivos", to)
 
             if os.path.exists(from_path_full):
-                if os.path.isdir(from_path_full):
-                    # Validar si ya existe una carpeta con el mismo nombre en la ubicación de destino
-                    if os.path.isdir(to_full) and os.path.basename(from_path_full) == os.path.basename(to_full):
-                        bitacoraReturn=bitacora("Output","Transfer", f"Error: Ya existe una carpeta con el nombre {os.path.basename(from_path_full)} en la ubicación de destino.")
-                        bitacoraLog(bitacoraReturn)
-                        write(f"Transfer ejecutando...")
-                        write(bitacoraReturn)
-                        print(f"Advertencia: Ya existe una carpeta con el nombre '{os.path.basename(from_path_full)}' en la ubicación de destino.")
-                    else:
-                        # Transferir contenido de la carpeta
-                        transfer_folder_contents(from_path_full, to_full)
-                        bitacoraReturn=bitacora("Output","Transfer", f"Contenido de la carpeta '{os.path.basename(from_path_full)}' transferido exitosamente a '{to}'.")
-                        bitacoraLog(bitacoraReturn)
-                        write(f"Transfer ejecutando...")
-                        write(bitacoraReturn)
-                        print(f"Contenido de la carpeta '{os.path.basename(from_path_full)}' transferido exitosamente a '{to}'.")
+                if os.path.isfile(from_path_full):
+                    # Transferir archivo individual
+                    transferArchivo(from_path_full, to_full)
+                elif os.path.isdir(from_path_full):
+                    # Transferir contenido de la carpeta
+                    transferCarpeta(from_path_full, to_full)
                 else:
-                    bitacoraReturn=bitacora("Output","Transfer", f"Error: El origen '{from_path_full}' no es una carpeta.")
+                    bitacoraReturn = bitacora("Output", "Transfer", f"Error: El origen '{from_path_full}' no es una carpeta ni un archivo válido.")
                     bitacoraLog(bitacoraReturn)
                     write(f"Transfer ejecutando...")
                     write(bitacoraReturn)
-                    print(f"El origen '{from_path_full}' no es una carpeta.")
+                    print(f"El origen '{from_path_full}' no es una carpeta ni un archivo válido.")
             else:
-                bitacoraReturn=bitacora("Output","Transfer", f"Error: No se encontro la carpeta o archivo '{from_path}' en la ruta especificada.")
+                bitacoraReturn = bitacora("Output", "Transfer", f"Error: No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
                 bitacoraLog(bitacoraReturn)
                 write(f"Transfer ejecutando...")
                 write(bitacoraReturn)
-                print(f"No se encontro la carpeta '{from_path}' en la ruta especificada.")
+                print(f"No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
         elif mode == "Cloud":
             print("Transferir de Local a Cloud")
-        else:
-            print("Modo no válido.")
     else:
         print("Cloud")
-
-
 
 
 
@@ -331,7 +331,7 @@ def validate_filename(name):
     return name
 
 
-def copy_folder_contents(from_folder, to_folder):
+def copyCarpeta(from_folder, to_folder):
     # Crear la carpeta de destino si no existe
     os.makedirs(to_folder, exist_ok=True)
 
@@ -339,25 +339,84 @@ def copy_folder_contents(from_folder, to_folder):
     for item in os.listdir(from_folder):
         item_path = os.path.join(from_folder, item)
         if os.path.isfile(item_path):
-            copy_file(item_path, os.path.join(to_folder, item))
+            copyArchivo(item_path, os.path.join(to_folder, item))
         elif os.path.isdir(item_path):
-            copy_folder_contents(item_path, os.path.join(to_folder, item))
+            copyCarpeta(item_path, os.path.join(to_folder, item))
 
-def copy_file(src, dst):
-    shutil.copy2(src, dst)  # Copiar archivo preservando los metadatos
+def copyArchivo(src, dst):
+    shutil.copy2(src, dst)  
 
 
-def transfer_folder_contents(from_folder, to_folder):
-    # Crear la carpeta de destino si no existe
-    os.makedirs(to_folder, exist_ok=True)
+def transferCarpeta(from_path, to_path):
+    # Si no existe la carpeta de destino, se crea
+    if not os.path.exists(to_path):
+        os.makedirs(to_path)
 
-    # Mover los archivos y subdirectorios dentro de la carpeta de origen
-    for item in os.listdir(from_folder):
-        item_path = os.path.join(from_folder, item)
+    # Obtener el nombre de la carpeta de origen
+    folder_name = os.path.basename(from_path)
+
+    # Verificar si ya existe una carpeta con el mismo nombre en la ubicación de destino
+    if os.path.exists(os.path.join(to_path, folder_name)):
+        # Imprimir mensaje de advertencia
+        bitacoraReturn=bitacora("Output","Transfer", f"Error: La carpeta '{folder_name}' ya existe en la ubicación de destino.")
+        bitacoraLog(bitacoraReturn)
+        write(f"Transfer ejecutando...")
+        write(bitacoraReturn)
+        print(f"Advertencia: La carpeta '{folder_name}' ya existe en la ubicación de destino.")
+
+    # Mover el contenido de la carpeta de origen a la ubicación de destino
+    for item in os.listdir(from_path):
+        item_path = os.path.join(from_path, item)
         if os.path.isfile(item_path):
-            shutil.move(item_path, os.path.join(to_folder, item))
+            # Transferir archivo individual
+            transferArchivo(item_path, os.path.join(to_path, item))
         elif os.path.isdir(item_path):
-            transfer_folder_contents(item_path, os.path.join(to_folder, item))
+            # Transferir contenido de la subcarpeta recursivamente
+            transferCarpeta(item_path, os.path.join(to_path, item))
+
+    # Imprimir mensaje de información
+    bitacoraReturn=bitacora("Output","Transfer", f"Contenido de la carpeta '{folder_name}' transferido exitosamente a '{to_path}'.")
+    bitacoraLog(bitacoraReturn)
+    write(f"Transfer ejecutando...")
+    write(bitacoraReturn)
+    print(f"Contenido de la carpeta '{folder_name}' transferido exitosamente a '{to_path}'.")
+
+
+
+def transferArchivo(from_path, to_path):
+    # Si no existe la carpeta de destino, se crea
+    to_folder = os.path.dirname(to_path)
+    if not os.path.exists(to_folder):
+        os.makedirs(to_folder)
+
+    # Obtener el nombre del archivo de origen
+    file_name = os.path.basename(from_path)
+
+    # Verificar si ya existe un archivo con el mismo nombre en la ubicación de destino
+    if os.path.exists(to_path):
+        # Generar un nuevo nombre de archivo con un contador
+        base_name, extension = os.path.splitext(file_name)
+        counter = 1
+        while True:
+            new_file_name = f"{base_name}({counter}){extension}"
+            new_file_path = os.path.join(to_folder, new_file_name)
+            if not os.path.exists(new_file_path):
+                break
+            counter += 1
+
+        # Mover el archivo de origen a la ubicación de destino con el nuevo nombre
+        shutil.move(from_path, new_file_path)
+
+        # Imprimir mensaje de información
+        bitacoraReturn=bitacora("Output","Transfer", f"El archivo '{file_name}' ya existe en la ubicación de destino. Se ha renombrado como '{new_file_name}'.")
+        bitacoraLog(bitacoraReturn)
+        write(f"Transfer ejecutando...")
+        write(bitacoraReturn)
+        print(f"El archivo '{file_name}' ya existe en la ubicación de destino. Se ha renombrado como '{new_file_name}'.")
+    else:
+        # Mover el archivo de origen a la ubicación de destino
+        shutil.move(from_path, to_path)
+        
 
 def fechaYhora():
     current_datetime = datetime.now()
