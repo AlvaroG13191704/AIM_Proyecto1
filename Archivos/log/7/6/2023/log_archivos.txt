@@ -23,3 +23,23 @@
 2023-06-07 18:09:01 - Input - Create - Crear gdfg.txt en la ruta fdgd
 2023-06-07 18:09:01 - Output - Configure - Error: No se ha configurado el tipo de almacenamiento
 2023-06-07 18:09:28 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:29:19 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:29:32 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:30:05 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:30:12 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:30:39 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:30:54 - Input - Exec - Ejecutar hola
+2023-06-07 18:31:07 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 18:31:07 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-07 18:31:12 - Input - Exec - Ejecutar si
+2023-06-07 18:31:17 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:34:34 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:35:04 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 18:35:04 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-07 18:35:29 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:35:47 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:35:53 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 18:35:53 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-07 18:37:49 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:38:09 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:38:44 - Output - Sesion - Se cerro sesion Usuario1

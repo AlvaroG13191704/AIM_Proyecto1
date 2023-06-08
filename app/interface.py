@@ -509,7 +509,7 @@ def open_main_window():
                 carp.bitacoraLog(bitacoraReturn)
                 print("-- EXEC --")
                 print("path:", path)
-
+                eliminarConsola()
                 execu_window.withdraw()
             else:
                 messagebox.showerror("Error", "Existen campos vacíos")
@@ -535,6 +535,18 @@ def open_main_window():
         aceptar_button = Button(execu_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
         aceptar_button.place(x=250, y=370)
 
+    def enter():
+        content = console_txt.get("1.0", tk.END)
+        rows = content.split("\n")
+        if rows[-1] == "":
+            rows = rows[:-1]
+
+        # FILAS PARA ENVIAR AL MÉTODO
+        # for row in rows:
+        #     print(row)
+
+        eliminarConsola()
+        print("enter")
 
     
 
@@ -600,7 +612,7 @@ def open_main_window():
     cerrars_b= Button(main_window, text="Cerrar Sesión", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=close_main_window)
     cerrars_b.place(x=500, y=190+espaciado*5)
 
-    enter_b= Button(main_window, text="enter", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=close_main_window)
+    enter_b= Button(main_window, text="enter", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=enter)
     enter_b.place(x=650, y=190+espaciado*5)
 
 
@@ -622,7 +634,7 @@ def open_main_window():
                 content = read_file('app/log/consola.txt')
                 update_console_text(console_txt, content)
                 last_modified = current_modified
-            time.sleep(0.1)  # Verificar cada 0.1 segundo
+            time.sleep(0.1)  
 
     def start_file_observer():
         file_observer = threading.Thread(target=check_file_changes)
@@ -633,10 +645,8 @@ def open_main_window():
         with open('app/log/consola.txt', 'w') as file:
             file.write('')
 
-    # Eliminar el contenido del archivo consola.txt
     clear_console_file()
 
-    #Textarea de consola
     console_txt2 = Text(main_window, width=70, height=22, font=("Arial", 8))
     console_txt2.place(x=40, y=90)
 
@@ -644,18 +654,22 @@ def open_main_window():
     console_txt.place(x=40, y=440)
 
 
-    # Leer el contenido del archivo
-    filename = 'app/log/consola.txt'  # Ruta al archivo que deseas leer
+    filename = 'app/log/consola.txt'  
     content = read_file(filename)
 
     start_file_observer()
 
+
+    def eliminarConsola():
+        archivo = 'app/log/Consola.txt'     
+        try:
+            with open(archivo, 'w') as archivo_consola:
+                archivo_consola.write('')
+                      
+        except FileNotFoundError:
+            print(f'El archivo {archivo} no existe.')
+
     
-
-
-   
-    
-
 
 def show_login():
     # Mostrar la ventana de inicio de sesión

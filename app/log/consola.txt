@@ -1,2 +1,0 @@
-2023-06-07 18:09:01 - Output - Configure - Error: No se ha configurado el tipo de almacenamiento
-
