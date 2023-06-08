@@ -50,18 +50,26 @@ def create(name, body, path):
                 archivo.write(body)
             bitacoraReturn=bitacora("Output","Create", f"Archivo {name} creado exitosamente")
             bitacoraLog(bitacoraReturn)
-            write(f"Create ejecutando")
+            write(f"Create ejecutando...")
             write(bitacoraReturn)
             print(f"Archivo {name} creado exitosamente en tu proyecto.")         
             print("Carpeta creada exitosamente en tu proyecto.")
         else:
             bitacoraReturn=bitacora("Output","Create", f"Error: La carpeta y el archivo ya existen")
             bitacoraLog(bitacoraReturn)
-            write(f"Create ejecutando")
+            write(f"Create ejecutando...")
             write(bitacoraReturn)
             print("La carpeta y el archivo ya existen en tu proyecto.")
-    else:
+    
+    elif tipo == "Cloud":
         print("Cloud")
+    
+    
+    else:
+        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraLog(bitacoraReturn)
+        write(bitacoraReturn)
+        print("Error: No se ha configurado el tipo de almacenamiento")
 
 
 
@@ -95,8 +103,16 @@ def delete(path, name):
             write(f"Delete ejecutando...")
             write(bitacoraReturn)
             print(f"No se encontro el archivo o carpeta en la ruta especificada.")
-    else:
+    
+    elif tipo == "Cloud":
         print("Cloud")
+    
+    
+    else:
+        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraLog(bitacoraReturn)
+        write(bitacoraReturn)
+        print("Error: No se ha configurado el tipo de almacenamiento")
 
 
 
@@ -153,8 +169,16 @@ def copy(from_path, to):
             write(f"Copy ejecutando...")
             write(bitacoraReturn)
             print(f"No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
-    else:
+    
+    elif tipo == "Cloud":
         print("Cloud")
+    
+    
+    else:
+        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraLog(bitacoraReturn)
+        write(bitacoraReturn)
+        print("Error: No se ha configurado el tipo de almacenamiento")
 
 
 
@@ -197,8 +221,7 @@ def transfer(from_path, to, mode):
             #ESCRBIR ACÁ EL CÓDIGO PARA EL LOCAL A CLOUD
             print("Transferir de Local a Cloud")
     
-    else:
-        #ACÁ YA ES CLOUD
+    elif tipo == "Cloud":
         print("Cloud")
 
         if mode == "Local":
@@ -208,6 +231,12 @@ def transfer(from_path, to, mode):
         else:
             #ESCRBIR ACÁ EL CÓDIGO PARA EL CLOUD A CLOUD
             print("Transferir de Cloud a Cloud")
+
+    else:
+        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraLog(bitacoraReturn)
+        write(bitacoraReturn)
+        print("Error: No se ha configurado el tipo de almacenamiento")
         
 
 
@@ -260,8 +289,16 @@ def rename(path, name):
             write(f"Rename ejecutando...")
             write(bitacoraReturn)
             print(f"No se encontro el archivo o carpeta '{path}' en la ruta especificada.")
-    else:
+    
+    elif tipo == "Cloud":
         print("Cloud")
+    
+    
+    else:
+        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraLog(bitacoraReturn)
+        write(bitacoraReturn)
+        print("Error: No se ha configurado el tipo de almacenamiento")
 
 
 
@@ -285,8 +322,16 @@ def modify(path, body):
             write(f"Modify ejecutando...")
             write(bitacoraReturn)
             print(f"No se encontro el archivo '{path}' en la ruta especificada.")
-    else:
+    
+    elif tipo == "Cloud":
         print("Cloud")
+    
+    
+    else:
+        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraLog(bitacoraReturn)
+        write(bitacoraReturn)
+        print("Error: No se ha configurado el tipo de almacenamiento")
 
 
 
@@ -311,8 +356,17 @@ def add(path, body):
             write(f"Add ejecutando...")
             write(bitacoraReturn)
             print(f"No se encontro el archivo '{path}' en la ruta especificada.")
-    else:
+    
+    elif tipo == "Cloud":
         print("Cloud")
+    
+    
+    else:
+        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraLog(bitacoraReturn)
+        write(bitacoraReturn)
+        print("Error: No se ha configurado el tipo de almacenamiento")
+
 
 
 
