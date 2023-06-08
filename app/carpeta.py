@@ -2,10 +2,19 @@ from datetime import datetime
 import os
 import shutil
 import encriptado as enc
+from cloud.addStorage import add_cloud
+from cloud.deleteStorage import delete_cloud
+from cloud.modifyStorage import modify_cloud
+from cloud.renameStorage import rename_cloud
+from cloud.copyStorage import copy_cloud
+from cloud.transferStorage import transfer_cloud
+from cloud.createStorage import create_cloud
+
+
 
 
 global bitacoraConfigure
-bitacoraConfigure = "False"
+bitacoraConfigure = "false"
 global tipo
 tipo = ""
 def configure(type, log, read, llave):
@@ -39,10 +48,12 @@ def encriptar(texto):
 
 
 def create(name, body, path):
-    if tipo == "Local":
+    if tipo == "local":
+        name = validate_filename(name)
+        path = path.replace('"', '')
+        path = path.lstrip('/')
         # Ruta completa de la carpeta y el archivo que deseas crear en tu proyecto
-        archivo_proyecto = os.path.join(os.path.dirname(__file__), "../Archivos", path, name+".txt")
-
+        archivo_proyecto = os.path.join(os.path.dirname(__file__), "../Archivos", path, name)
         # Verificar si la carpeta y el archivo ya existen antes de crearlos
         if not os.path.exists(archivo_proyecto):
             # Crear la carpeta y el archivo en tu proyecto
@@ -63,8 +74,8 @@ def create(name, body, path):
             write(bitacoraReturn)
             print("La carpeta y el archivo ya existen en tu proyecto.")
     
-    elif tipo == "Cloud":
-        print("Cloud")
+    elif tipo == "cloud":
+        create_cloud(name, body, path)
     
     
     else:
@@ -78,12 +89,12 @@ def create(name, body, path):
 
 
 def delete(path, name):
-    if tipo == "Local":
-        name = validate_filename(name)
-        path = path.replace('"', '')  
+    if tipo == "local":
+        path = path.replace('"', '')
         path = path.lstrip('/')
+        path = path.rstrip('/')
         archivo_proyecto = os.path.join(os.path.dirname(__file__), "../Archivos", path, name)
-
+        print(archivo_proyecto)
         if os.path.exists(archivo_proyecto):
             if os.path.isfile(archivo_proyecto):
                 os.remove(archivo_proyecto)
@@ -106,8 +117,8 @@ def delete(path, name):
             write(bitacoraReturn)
             print(f"No se encontro el archivo o carpeta en la ruta especificada.")
     
-    elif tipo == "Cloud":
-        print("Cloud")
+    elif tipo == "cloud":
+        delete_cloud(path, name)
     
     
     else:
@@ -119,13 +130,14 @@ def delete(path, name):
 
 
 
-
 def copy(from_path, to):
-    if tipo == "Local":
+    if tipo == "local":
         from_path = from_path.replace('"', '')
         to = to.replace('"', '')
         from_path = from_path.lstrip('/')
+        from_path = from_path.rstrip('/')
         to = to.lstrip('/')
+        to = to.rstrip('/')
 
         # Construir las rutas completas de origen y destino
         from_path_full = os.path.join(os.path.dirname(__file__), "../Archivos", from_path)
@@ -149,22 +161,24 @@ def copy(from_path, to):
                     write(bitacoraReturn)
                     print(f"Contenido de la carpeta '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
             elif os.path.isfile(from_path_full):
+                # Obtener el nombre del archivo
+                file_name = os.path.basename(from_path_full)
+
                 # Verificar si ya existe un archivo con el mismo nombre en la ubicación de destino
-                if os.path.exists(to_full):
-                    bitacoraReturn = bitacora("Output", "Copy", f"Advertencia: Ya existe un archivo con el nombre '{os.path.basename(from_path_full)}' en la ubicación de destino.")
+                if os.path.exists(os.path.join(to_full, file_name)):
+                    bitacoraReturn = bitacora("Output", "Copy", f"Error: Ya existe un archivo con el nombre '{file_name}' en la ubicación de destino.")
                     bitacoraLog(bitacoraReturn)
                     write(f"Copy ejecutando...")
                     write(bitacoraReturn)
-                    print(f"Advertencia: Ya existe un archivo con el nombre '{os.path.basename(from_path_full)}' en la ubicación de destino.")
-
+                    print(f"Advertencia: Ya existe un archivo con el nombre '{file_name}' en la ubicación de destino.")
                 else:
                     # Copiar archivo individual
-                    copyArchivo(from_path_full, to_full)
-                    bitacoraReturn = bitacora("Output", "Copy", f"Archivo '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
+                    copyArchivo(from_path_full, os.path.join(to_full, file_name))
+                    bitacoraReturn = bitacora("Output", "Copy", f"Archivo '{file_name}' copiado exitosamente a '{to}'.")
                     bitacoraLog(bitacoraReturn)
                     write(f"Copy ejecutando...")
                     write(bitacoraReturn)
-                    print(f"Archivo '{os.path.basename(from_path_full)}' copiado exitosamente a '{to}'.")
+                    print(f"Archivo '{file_name}' copiado exitosamente a '{to}'.")
         else:
             bitacoraReturn = bitacora("Output", "Copy", f"Error: No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
             bitacoraLog(bitacoraReturn)
@@ -172,9 +186,8 @@ def copy(from_path, to):
             write(bitacoraReturn)
             print(f"No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
     
-    elif tipo == "Cloud":
-        print("Cloud")
-    
+    elif tipo == "cloud":
+        copy_cloud(from_path, to)
     
     else:
         bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
@@ -186,14 +199,15 @@ def copy(from_path, to):
 
 
 
-
 def transfer(from_path, to, mode):
-    if tipo == "Local":
-        if mode == "Local":
+    if tipo == "local":
+        if mode == "local":
             from_path = from_path.replace('"', '')
             to = to.replace('"', '')
             from_path = from_path.lstrip('/')
+            from_path = from_path.rstrip('/')
             to = to.lstrip('/')
+            to = to.rstrip('/')
 
             # Construir las rutas completas de origen y destino
             from_path_full = os.path.join(os.path.dirname(__file__), "../Archivos", from_path)
@@ -218,24 +232,19 @@ def transfer(from_path, to, mode):
                 write(f"Transfer ejecutando...")
                 write(bitacoraReturn)
                 print(f"No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
-
-        elif mode == "Cloud":
-            #ESCRBIR ACÁ EL CÓDIGO PARA EL LOCAL A CLOUD
-            print("Transferir de Local a Cloud")
-    
-    elif tipo == "Cloud":
-        print("Cloud")
-
-        if mode == "Local":
-            #ESCRBIR ACÁ EL CÓDIGO PARA EL CLOUD A LOCAL
-            print("Transferir de Cloud a Local")
-
+        elif mode == "cloud":
+            # ESCRIBIR ACÁ EL CÓDIGO PARA EL LOCAL A CLOUD
+            print("Transferir de local a cloud")
+    elif tipo == "cloud":
+        print("cloud")
+        if mode == "local":
+            # ESCRIBIR ACÁ EL CÓDIGO PARA EL CLOUD A LOCAL
+            print("Transferir de cloud a local")
         else:
-            #ESCRBIR ACÁ EL CÓDIGO PARA EL CLOUD A CLOUD
-            print("Transferir de Cloud a Cloud")
-
+            # ESCRIBIR ACÁ EL CÓDIGO PARA EL CLOUD A CLOUD
+            transfer_cloud(from_path, to)
     else:
-        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraReturn = bitacora("Output", "Configure", f"Error: No se ha configurado el tipo de almacenamiento")
         bitacoraLog(bitacoraReturn)
         write(bitacoraReturn)
         print("Error: No se ha configurado el tipo de almacenamiento")
@@ -245,9 +254,10 @@ def transfer(from_path, to, mode):
 
 
 def rename(path, name):
-    if tipo == "Local":
-        name = name.strip()
+    if tipo == "local":
+        path = path.replace('"', '')
         path = path.lstrip('/')
+        path = path.rstrip('/')
         archivo_proyecto = os.path.join(os.path.dirname(__file__), "../Archivos", path)
 
         if os.path.exists(archivo_proyecto):
@@ -292,8 +302,8 @@ def rename(path, name):
             write(bitacoraReturn)
             print(f"No se encontro el archivo o carpeta '{path}' en la ruta especificada.")
     
-    elif tipo == "Cloud":
-        print("Cloud")
+    elif tipo == "cloud":
+        rename_cloud(path, name)
     
     
     else:
@@ -305,8 +315,10 @@ def rename(path, name):
 
 
 def modify(path, body):
-    if tipo == "Local":
+    if tipo == "local":
+        path = path.replace('"', '')
         path = path.lstrip('/')
+        path = path.rstrip('/')
         archivo_proyecto = os.path.join(os.path.dirname(__file__), "../Archivos", path)
 
         if os.path.isfile(archivo_proyecto):
@@ -325,8 +337,8 @@ def modify(path, body):
             write(bitacoraReturn)
             print(f"No se encontro el archivo '{path}' en la ruta especificada.")
     
-    elif tipo == "Cloud":
-        print("Cloud")
+    elif tipo == "cloud":
+        modify_cloud(path, body)
     
     
     else:
@@ -339,8 +351,10 @@ def modify(path, body):
 
 
 def add(path, body):
-    if tipo == "Local":
+    if tipo == "local":
+        path = path.replace('"', '')
         path = path.lstrip('/')
+        path = path.rstrip('/')
         archivo_proyecto = os.path.join(os.path.dirname(__file__), "../Archivos", path)
 
         if os.path.isfile(archivo_proyecto):
@@ -359,8 +373,8 @@ def add(path, body):
             write(bitacoraReturn)
             print(f"No se encontro el archivo '{path}' en la ruta especificada.")
     
-    elif tipo == "Cloud":
-        print("Cloud")
+    elif tipo == "cloud":
+        add_cloud(path, body)
     
     
     else:
@@ -373,10 +387,10 @@ def add(path, body):
 
 
 def backup():
-    if tipo == "Local":
-        pass
-    elif tipo == "Cloud":
-        pass
+    if tipo == "local":
+        print("Backup LOCAL -- - - - - - - ")
+    elif tipo == "cloud":
+        print("Backup CLOUD -- - - - - - - ")
     else:
         bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
         bitacoraLog(bitacoraReturn)
@@ -391,7 +405,7 @@ def bitacora(type, comand, instruction):
     fecha=""
     fecha = fechaYhora()
     print(bitacoraConfigure)
-    if bitacoraConfigure=="True":
+    if bitacoraConfigure=="true":
         instruccion = enc.encrypt((f"{fecha} - {type} - {comand} - {instruction}\n"), llaveConfigure)
     else:
         instruccion = f"{fecha} - {type} - {comand} - {instruction}\n"        
@@ -475,31 +489,49 @@ def transferArchivo(from_path, to_path):
     # Obtener el nombre del archivo de origen
     file_name = os.path.basename(from_path)
 
-    # Verificar si ya existe un archivo con el mismo nombre en la ubicación de destino
-    if os.path.exists(to_path):
-        # Generar un nuevo nombre de archivo con un contador
-        base_name, extension = os.path.splitext(file_name)
-        counter = 1
-        while True:
-            new_file_name = f"{base_name}({counter}){extension}"
-            new_file_path = os.path.join(to_folder, new_file_name)
-            if not os.path.exists(new_file_path):
-                break
-            counter += 1
+    # Verificar si el archivo de origen existe
+    if os.path.exists(from_path):
+        # Verificar si ya existe un archivo con el mismo nombre en la ubicación de destino
+        if os.path.exists(to_path):
+            # Generar un nuevo nombre de archivo con un contador
+            base_name, extension = os.path.splitext(file_name)
+            counter = 1
+            while True:
+                new_file_name = f"{base_name}({counter}){extension}"
+                new_file_path = os.path.join(to_path, new_file_name)
+                if not os.path.exists(new_file_path):
+                    break
+                counter += 1
 
-        # Mover el archivo de origen a la ubicación de destino con el nuevo nombre
-        shutil.move(from_path, new_file_path)
+            # Copiar el archivo de origen a la ubicación de destino con el nuevo nombre
+            print("*** * *sd*d*fd*fd *fd*gfg*dfg*drfgdf*****"+ new_file_path)
+            shutil.move(from_path, new_file_path)
 
-        # Imprimir mensaje de información
-        bitacoraReturn=bitacora("Output","Transfer", f"El archivo '{file_name}' ya existe en la ubicación de destino. Se ha renombrado como '{new_file_name}'.")
+            # Imprimir mensaje de información
+            bitacoraReturn = bitacora("Output", "Transfer", f"El archivo '{file_name}' ya existe en la ubicación de destino. Se ha copiado como '{new_file_name}'.")
+            bitacoraLog(bitacoraReturn)
+            write(f"Transfer ejecutando...")
+            write(bitacoraReturn)
+            print(f"El archivo '{file_name}' ya existe en la ubicación de destino. Se ha copiado como '{new_file_name}'.")
+        else:
+            # Mover el archivo de origen a la ubicación de destino
+            bitacoraReturn = bitacora("Output", "Transfer", f"El archivo '{file_name}' se ha movido exitosamente.")
+            bitacoraLog(bitacoraReturn)
+            write(f"Transfer ejecutando...")
+            write(bitacoraReturn)
+            shutil.move(from_path, to_path)
+    else:
+        bitacoraReturn = bitacora("Output", "Transfer", f"Error: No se encontró el archivo de origen '{from_path}'.")
         bitacoraLog(bitacoraReturn)
         write(f"Transfer ejecutando...")
         write(bitacoraReturn)
-        print(f"El archivo '{file_name}' ya existe en la ubicación de destino. Se ha renombrado como '{new_file_name}'.")
-    else:
-        # Mover el archivo de origen a la ubicación de destino
-        shutil.move(from_path, to_path)
+        print(f"No se encontró el archivo de origen '{from_path}'.")
+
         
+
+
+
+
 
 def fechaYhora():
     current_datetime = datetime.now()

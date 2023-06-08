@@ -8,6 +8,8 @@ import encriptado as enc
 import carpeta as carp
 import threading
 import time
+from scanner.tokens import extract_commands
+import scanner.scanner as scan
 #--- CONTRASEÑAS ---
 #Pablo42
 #Alvaro123
@@ -120,8 +122,8 @@ def open_main_window():
         canvas2.image = image2  
 
         # widgets de la ventana configure
-        optionsTYPE = ["Local", "Cloud"]
-        optionsTF = [True, False]
+        optionsTYPE = ["local", "cloud"]
+        optionsTF = ["true", "false"]
         selected_option1 = tk.StringVar()
         selected_option2 = tk.StringVar()
         selected_option3 = tk.StringVar()
@@ -327,7 +329,7 @@ def open_main_window():
         canvas2.image = image2  
 
         # widgets de la ventana transfer
-        optionsTYPE = ["Local", "Cloud"]
+        optionsTYPE = ["local", "cloud"]
         text_entry1 = tk.StringVar()
         text_entry2 = tk.StringVar()
         selected_option1 = tk.StringVar()
@@ -537,10 +539,51 @@ def open_main_window():
         aceptar_button.place(x=250, y=370)
 
     def enter():
-        content = console_txt2.get("1.0", tk.END)
-        # print(content)
-        # print("enter")
         eliminarConsola()
+        content = console_txt2.get("1.0", tk.END)
+        comandos = extract_commands(content)
+        for token in comandos:
+            if(token.get("configure")):
+                configure, type, encrypt_log, encrypt_read = scan.scan_command_line_configure(token.get("configure"))
+                llave ="miaproyecto12345"
+                carp.configure(type, encrypt_log, encrypt_read, llave)
+            elif(token.get("create")):
+                create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                name = name.rstrip()
+                path = path.rstrip()
+                carp.create(name, body, path)
+            elif(token.get("delete")):
+                delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                path = path.rstrip()
+                name = name.rstrip()
+                carp.delete(path, name)
+            elif(token.get("copy")):
+                copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                from_ = from_.rstrip()
+                to = to.rstrip()
+                carp.copy(from_, to)
+            elif(token.get("transfer")):
+                transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                from_ = from_.rstrip()
+                to = to.rstrip()
+                mode = mode.rstrip()
+                carp.transfer(from_, to, mode)
+            elif(token.get("rename")):
+                rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                path = path.rstrip()
+                name = name.rstrip()
+                carp.rename(path, name)
+            elif(token.get("modify")):
+                modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                path = path.rstrip()
+                carp.modify(path, body)
+            elif(token.get("add")):
+                add, path, body = scan.scan_command_line_add(token.get("add"))
+                path = path.rstrip()
+                carp.add(path, body)
+            elif(token.get("backup")):
+                carp.backup()
+        
         
 
     
