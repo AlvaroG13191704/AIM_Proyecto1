@@ -18,18 +18,24 @@ bitacoraConfigure = "false"
 global tipo
 tipo = ""
 def configure(type, log, read, llave):
-    global tipo
-    tipo = type
-    global bitacoraConfigure
-    bitacoraConfigure = log
-    global archivoConfigure
-    archivoConfigure = read
-    global llaveConfigure
-    llaveConfigure = llave
-    bitacoraReturn=bitacora("Output","Configure", f"Archivo configurado exitosamente")
-    bitacoraLog(bitacoraReturn)
-    write(f"Configure ejecutando...")
-    write(bitacoraReturn)
+    if type == None or log == None or read == None or llave == None:
+        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraLog(bitacoraReturn)
+        write(bitacoraReturn)
+        print("Error: No se ha configurado el tipo de almacenamiento")
+    else:
+        global tipo
+        tipo = type
+        global bitacoraConfigure
+        bitacoraConfigure = log
+        global archivoConfigure
+        archivoConfigure = read
+        global llaveConfigure
+        llaveConfigure = llave
+        bitacoraReturn=bitacora("Output","Configure", f"Archivo configurado exitosamente")
+        bitacoraLog(bitacoraReturn)
+        write(f"Configure ejecutando...")
+        write(bitacoraReturn)
 
 
 
