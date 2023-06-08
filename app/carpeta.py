@@ -17,8 +17,12 @@ global bitacoraConfigure
 bitacoraConfigure = "false"
 global tipo
 tipo = ""
+global contadorLocal
+contadorLocal = 0
+global contadorCloud
+contadorCloud = 0
 def configure(type, log, read, llave):
-    if type == None or log == None or read == None or llave == None:
+    if type == None or log == None or read == None:
         bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
         bitacoraLog(bitacoraReturn)
         write(bitacoraReturn)
@@ -81,7 +85,11 @@ def create(name, body, path):
             print("La carpeta y el archivo ya existen en tu proyecto.")
     
     elif tipo == "cloud":
-        create_cloud(name, body, path)
+        tmp = create_cloud(name, body, path)
+        bitacoraReturn=bitacora("Output","Configure", tmp)
+        bitacoraLog(bitacoraReturn)
+        write(f"Create ejecutando...")
+        write(bitacoraReturn)
     
     
     else:
@@ -124,8 +132,11 @@ def delete(path, name):
             print(f"No se encontro el archivo o carpeta en la ruta especificada.")
     
     elif tipo == "cloud":
-        delete_cloud(path, name)
-    
+        tmp = delete_cloud(path, name)
+        bitacoraReturn=bitacora("Output","Configure", tmp)
+        bitacoraLog(bitacoraReturn)
+        write(f"Delete ejecutando...")
+        write(bitacoraReturn)
     
     else:
         bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
@@ -193,7 +204,11 @@ def copy(from_path, to):
             print(f"No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
     
     elif tipo == "cloud":
-        copy_cloud(from_path, to)
+        tmp = copy_cloud(from_path, to)
+        bitacoraReturn=bitacora("Output","Configure", tmp)
+        bitacoraLog(bitacoraReturn)
+        write(f"Copy ejecutando...")
+        write(bitacoraReturn)
     
     else:
         bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
@@ -248,7 +263,11 @@ def transfer(from_path, to, mode):
             print("Transferir de cloud a local")
         else:
             # ESCRIBIR ACÁ EL CÓDIGO PARA EL CLOUD A CLOUD
-            transfer_cloud(from_path, to)
+            tmp = transfer_cloud(from_path, to)
+            bitacoraReturn=bitacora("Output","Configure", tmp)
+            bitacoraLog(bitacoraReturn)
+            write(f"Delete ejecutando...")
+            write(bitacoraReturn)
     else:
         bitacoraReturn = bitacora("Output", "Configure", f"Error: No se ha configurado el tipo de almacenamiento")
         bitacoraLog(bitacoraReturn)
