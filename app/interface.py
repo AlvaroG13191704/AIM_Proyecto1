@@ -512,7 +512,7 @@ def open_main_window():
                 carp.bitacoraLog(bitacoraReturn)
                 print("-- EXEC --")
                 print("path:", path)
-                eliminarConsola()
+                exec_aux(path)
                 execu_window.withdraw()
             else:
                 messagebox.showerror("Error", "Existen campos vacíos")
@@ -584,7 +584,56 @@ def open_main_window():
             elif(token.get("backup")):
                 carp.backup()
         
-        
+    
+    def exec_aux(path):
+        eliminarConsola()
+        directorio_actual = os.getcwd()
+        ruta_archivo = os.path.join(directorio_actual, "Archivos", path)
+        print(ruta_archivo)
+        with open(ruta_archivo, "r") as archivo:
+            content = archivo.read()
+        comandos = extract_commands(content)
+        for token in comandos:
+            if(token.get("configure")):
+                configure, type, encrypt_log, encrypt_read = scan.scan_command_line_configure(token.get("configure"))
+                llave ="miaproyecto12345"
+                carp.configure(type, encrypt_log, encrypt_read, llave)
+            elif(token.get("create")):
+                create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                name = name.rstrip()
+                path = path.rstrip()
+                carp.create(name, body, path)
+            elif(token.get("delete")):
+                delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                path = path.rstrip()
+                name = name.rstrip()
+                carp.delete(path, name)
+            elif(token.get("copy")):
+                copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                from_ = from_.rstrip()
+                to = to.rstrip()
+                carp.copy(from_, to)
+            elif(token.get("transfer")):
+                transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                from_ = from_.rstrip()
+                to = to.rstrip()
+                mode = mode.rstrip()
+                carp.transfer(from_, to, mode)
+            elif(token.get("rename")):
+                rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                path = path.rstrip()
+                name = name.rstrip()
+                carp.rename(path, name)
+            elif(token.get("modify")):
+                modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                path = path.rstrip()
+                carp.modify(path, body)
+            elif(token.get("add")):
+                add, path, body = scan.scan_command_line_add(token.get("add"))
+                path = path.rstrip()
+                carp.add(path, body)
+            elif(token.get("backup")):
+                carp.backup()
 
     
 
@@ -672,7 +721,7 @@ def open_main_window():
                 content = read_file('app/log/consola.txt')
                 update_console_text(console_txt, content)
                 last_modified = current_modified
-            time.sleep(0.1)  
+            time.sleep(0.4)  
 
     def start_file_observer():
         file_observer = threading.Thread(target=check_file_changes)
