@@ -86,7 +86,7 @@ def create(name, body, path):
     
     elif tipo == "cloud":
         tmp = create_cloud(name, body, path)
-        bitacoraReturn=bitacora("Output","Configure", tmp)
+        bitacoraReturn=bitacora("Output","Create", tmp)
         bitacoraLog(bitacoraReturn)
         write(f"Create ejecutando...")
         write(bitacoraReturn)
@@ -133,7 +133,7 @@ def delete(path, name):
     
     elif tipo == "cloud":
         tmp = delete_cloud(path, name)
-        bitacoraReturn=bitacora("Output","Configure", tmp)
+        bitacoraReturn=bitacora("Output","Delete", tmp)
         bitacoraLog(bitacoraReturn)
         write(f"Delete ejecutando...")
         write(bitacoraReturn)
@@ -205,7 +205,7 @@ def copy(from_path, to):
     
     elif tipo == "cloud":
         tmp = copy_cloud(from_path, to)
-        bitacoraReturn=bitacora("Output","Configure", tmp)
+        bitacoraReturn=bitacora("Output","Copy", tmp)
         bitacoraLog(bitacoraReturn)
         write(f"Copy ejecutando...")
         write(bitacoraReturn)
@@ -264,9 +264,9 @@ def transfer(from_path, to, mode):
         else:
             # ESCRIBIR ACÁ EL CÓDIGO PARA EL CLOUD A CLOUD
             tmp = transfer_cloud(from_path, to)
-            bitacoraReturn=bitacora("Output","Configure", tmp)
+            bitacoraReturn=bitacora("Output","Transfer", tmp)
             bitacoraLog(bitacoraReturn)
-            write(f"Delete ejecutando...")
+            write(f"Transfer ejecutando...")
             write(bitacoraReturn)
     else:
         bitacoraReturn = bitacora("Output", "Configure", f"Error: No se ha configurado el tipo de almacenamiento")
@@ -328,7 +328,11 @@ def rename(path, name):
             print(f"No se encontro el archivo o carpeta '{path}' en la ruta especificada.")
     
     elif tipo == "cloud":
-        rename_cloud(path, name)
+        tmp = rename_cloud(path, name)
+        bitacoraReturn=bitacora("Output","Rename", tmp)
+        bitacoraLog(bitacoraReturn)
+        write(f"Rename ejecutando...")
+        write(bitacoraReturn)
     
     
     else:
@@ -363,7 +367,11 @@ def modify(path, body):
             print(f"No se encontro el archivo '{path}' en la ruta especificada.")
     
     elif tipo == "cloud":
-        modify_cloud(path, body)
+        tmp = modify_cloud(path, body)
+        bitacoraReturn=bitacora("Output","Modify", tmp)
+        bitacoraLog(bitacoraReturn)
+        write(f"Modify ejecutando...")
+        write(bitacoraReturn)
     
     
     else:
@@ -399,7 +407,11 @@ def add(path, body):
             print(f"No se encontro el archivo '{path}' en la ruta especificada.")
     
     elif tipo == "cloud":
-        add_cloud(path, body)
+        tmp = add_cloud(path, body)
+        bitacoraReturn=bitacora("Output","Add", tmp)
+        bitacoraLog(bitacoraReturn)
+        write(f"Add ejecutando...")
+        write(bitacoraReturn)
     
     
     else:
