@@ -14,6 +14,7 @@ def delete_cloud(blob_name):
   if blob_name.endswith("/"):
       # Directory deletion
       blobs = list(bucket.list_blobs(prefix=blob_name))  # Convert the iterator to a list
+
       if not blobs:
           print(f"Directory {blob_name} does not exist.")
           return False
@@ -34,5 +35,5 @@ def delete_cloud(blob_name):
 
 
 if __name__ == "__main__":
-  delete_cloud(blob_name="ARCHIVOS/carpeta1/") # delete the directory
+  delete_cloud(blob_name="ARCHIVOS/carpeta3/") # delete the directory
   delete_cloud(blob_name="ARCHIVOS/carpeta 2/prueba 2.txt") # delete the file

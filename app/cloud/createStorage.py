@@ -10,6 +10,11 @@ def create_cloud(file_data, destination_blob_name):
   bucket = storage_client.bucket("iam_project1_bucket")
   blob = bucket.blob(destination_blob_name)
 
+  # CHECK IF THE FILE ALREADY EXISTS
+  if blob.exists():
+    print(f"File {destination_blob_name} already exists.")
+    return False
+
   blob.upload_from_string(file_data)
 
   print(f"File data uploaded to {destination_blob_name}.")
@@ -22,7 +27,7 @@ if __name__ == "__main__":
 
   create_cloud(
       file_data=file_data,
-      destination_blob_name="ARCHIVOS/carpeta1/example3.txt",
+      destination_blob_name="ARCHIVOS/carpeta5/sub5/exampleSub1.txt",
   )
 #  create_cloud(bucket_name="iam_project1_bucket", file_data=body, destination_blob_name=f"ARCHIVOS{path[:-1]}{name}")
 

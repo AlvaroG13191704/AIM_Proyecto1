@@ -1,0 +1,1 @@
+# if the configuration is cloud, download the backup file from the cloud storage and add it to the local storage
