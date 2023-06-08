@@ -372,6 +372,20 @@ def add(path, body):
 
 
 
+def backup():
+    if tipo == "Local":
+        pass
+    elif tipo == "Cloud":
+        pass
+    else:
+        bitacoraReturn=bitacora("Output","Configure", f"Error: No se ha configurado el tipo de almacenamiento")
+        bitacoraLog(bitacoraReturn)
+        write(bitacoraReturn)
+        print("Error: No se ha configurado el tipo de almacenamiento")
+
+
+
+
 
 def bitacora(type, comand, instruction):
     fecha=""

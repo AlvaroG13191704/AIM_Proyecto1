@@ -43,3 +43,7 @@
 2023-06-07 18:37:49 - Output - Sesion - Se cerro sesion Usuario1
 2023-06-07 18:38:09 - Input - Sesion - Inicio de sesion de Usuario1
 2023-06-07 18:38:44 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 19:06:12 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 19:07:12 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 19:07:23 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 19:07:41 - Output - Sesion - Se cerro sesion Usuario1

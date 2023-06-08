@@ -491,6 +491,7 @@ def open_main_window():
     def backup():
         bitacoraReturn = carp.bitacora("Input", "Backup", "Iniciar un backup")
         carp.bitacoraLog(bitacoraReturn)
+        carp.backup()
         print("backup")
 
 
@@ -536,17 +537,11 @@ def open_main_window():
         aceptar_button.place(x=250, y=370)
 
     def enter():
-        content = console_txt.get("1.0", tk.END)
-        rows = content.split("\n")
-        if rows[-1] == "":
-            rows = rows[:-1]
-
-        # FILAS PARA ENVIAR AL MÉTODO
-        # for row in rows:
-        #     print(row)
-
+        content = console_txt2.get("1.0", tk.END)
+        # print(content)
+        # print("enter")
         eliminarConsola()
-        print("enter")
+        
 
     
 
