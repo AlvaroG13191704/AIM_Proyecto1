@@ -4,11 +4,19 @@ from cloud.createStorage import create_cloud
 def main():
   # Define a command line string
   command_string = '''
-  configure -type->local -encrypt_log->false -encrypt_read->false
+  configure -type->local -encrypt_log->falsE -encrypt_read->false
   create -name->prueba1.txt -path->/carpeta1/ -body->"Este es el contenido del archivo 1"
   create -namE->"prueba 2.txt" -path->/"carpeta 2"/ -boDy->"Este es el contenido del archivo 2"
   delete -path->/carpeta1/ -name->prueba1.txt
+  Copy -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/
+  Copy -from->/"carpeta 2"/ -to->/carpeta1/
+  transfer -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/ -mode->"local"
+  transfer -from->/"carpeta 2"/ -to->/carpeta1/ -mode->"cloud"
+  renaMe -paTh->/carpeta1/prueba1.txt -name->b1.txt
+  modify -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"
+  add -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"
   backup
+  exec -path->/home/Desktop/miaejecutable.mia
   '''
   result = extract_commands(command_string)
   for token in result:
@@ -29,7 +37,7 @@ def main():
       print(f"Body: {body}\n")
       # create the file in the cloud
       #delete the last character of the path 
-      create_cloud(file_data=body, destination_blob_name=f"ARCHIVOS{path[:-1]}{name}")
+      # create_cloud(file_data=body, destination_blob_name=f"ARCHIVOS{path[:-1]}{name}")
 
     elif(token.get("delete")):
       delete, path, name = scan_command_line_delete(token.get("delete"))
@@ -37,6 +45,14 @@ def main():
       print(f"Delete: {delete}")
       print(f"Path: {path}")
       print(f"Name: {name}\n")
+
+    elif(token.get("rename")):
+      rename, path, name = scan_command_line_rename(token.get("rename"))
+      print(f"Command Rename:")
+      print(f"Rename: {rename}")
+      print(f"Path: {path}")
+      print(f"Name: {name}\n")
+      
     
 
   command_configure = 'Configure -type->local -encrypt_log->false -encrypt_read->false'

@@ -21,7 +21,7 @@ def scan_command_line_configure(command_line):
   encrypt_read = match_encrypt_read.group(1) if match_encrypt_read else None
 
   # Return the extracted values
-  return configure,type, encrypt_log, encrypt_read
+  return configure.lower(),type.lower(), encrypt_log.lower(), encrypt_read.lower()
 
 # Scan create command line
 def scan_command_line_create(command_line):
@@ -50,7 +50,7 @@ def scan_command_line_create(command_line):
   body = match_body.group(1) if match_body else None
 
   # Return the extracted values
-  return create, name, path, body
+  return create.lower(), name, path, body
 
 
 # Scan delete command line
@@ -83,7 +83,7 @@ def scan_command_line_delete(command_line):
 
 
   # Return the extracted values
-  return delete, path, name
+  return delete.lower(), path, name
 
 
 # Scan copy command line
@@ -114,7 +114,7 @@ def scan_command_line_copy(command_line):
     to_path = None
 
   # Return the extracted values
-  return copy, from_path, to_path
+  return copy.lower(), from_path, to_path
 
 # Scan transfer command line
 def scan_command_line_transfer(command_line):
@@ -155,7 +155,7 @@ def scan_command_line_transfer(command_line):
     mode = None
 
   # Return the extracted values
-  return transfer, from_path, to_path, mode
+  return transfer.lower(), from_path, to_path, mode
 
 # Scan rename command line
 def scan_command_line_rename(command_line):
@@ -174,7 +174,7 @@ def scan_command_line_rename(command_line):
   path = None
   try:
     if match_path and match_path.group() is not None:
-      path = match_path.group().split("->")[1].replace('"', '')
+      path = match_path.group().split("->")[1].replace('"', '').replace(" -name","")
   except AttributeError:
     path = None
 
@@ -186,7 +186,7 @@ def scan_command_line_rename(command_line):
     new_name = None
 
   # Return the extracted values
-  return rename, path, new_name
+  return rename.lower(), path, new_name
 
 # Scan modify command line
 def scan_command_line_modify(command_line):
@@ -212,7 +212,7 @@ def scan_command_line_modify(command_line):
   new_body = match_new_body.group(1) if match_new_body else None
 
   # Return the extracted values
-  return modify, path, new_body
+  return modify.lower(), path, new_body
 
 # Scan add command line
 def scan_command_line_add(command_line):
@@ -238,7 +238,7 @@ def scan_command_line_add(command_line):
   new_body = match_new_body.group(1) if match_new_body else None
 
   # Return the extracted values
-  return add, path, new_body
+  return add.lower(), path, new_body
 
 
 # Scan exec command line
@@ -261,4 +261,4 @@ def scan_command_line_exec(command_line):
     path = None
 
   # Return the extracted values
-  return exec, path
+  return exec.lower(), path
