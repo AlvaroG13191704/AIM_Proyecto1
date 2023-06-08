@@ -16,3 +16,10 @@
 2023-06-07 17:54:37 - Input - Delete - Eliminar  de la ruta amigos
 2023-06-07 17:54:37 - Output - Delete - Error: No se encontro el archivo o carpeta en la ruta especificada.
 2023-06-07 17:54:47 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:08:02 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:08:10 - Input - Create - Crear dsfsd.txt en la ruta sdfsd
+2023-06-07 18:08:17 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:08:55 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:09:01 - Input - Create - Crear gdfg.txt en la ruta fdgd
+2023-06-07 18:09:01 - Output - Configure - Error: No se ha configurado el tipo de almacenamiento
+2023-06-07 18:09:28 - Output - Sesion - Se cerro sesion Usuario1

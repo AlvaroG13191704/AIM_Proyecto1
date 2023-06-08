@@ -6,6 +6,8 @@ import encriptado as enc
 
 global bitacoraConfigure
 bitacoraConfigure = "False"
+global tipo
+tipo = ""
 def configure(type, log, read, llave):
     global tipo
     tipo = type
