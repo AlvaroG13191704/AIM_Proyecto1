@@ -1,6 +1,6 @@
-from .scanner.scanner import scan_command_line_create, scan_command_line_configure,scan_command_line_delete,scan_command_line_copy, scan_command_line_transfer, scan_command_line_rename, scan_command_line_modify, scan_command_line_add, scan_command_line_exec
-from .scanner.tokens import extract_commands
-from .cloud.createStorage import create_cloud
+from scanner.scanner import scan_command_line_create, scan_command_line_configure,scan_command_line_delete,scan_command_line_copy, scan_command_line_transfer, scan_command_line_rename, scan_command_line_modify, scan_command_line_add, scan_command_line_exec
+from scanner.tokens import extract_commands
+from cloud.createStorage import create_cloud
 def main():
   # Define a command line string
   command_string = '''
@@ -29,7 +29,7 @@ def main():
       print(f"Body: {body}\n")
       # create the file in the cloud
       #delete the last character of the path 
-      create_cloud(bucket_name="iam_project1_bucket", file_data=body, destination_blob_name=f"ARCHIVOS{path[:-1]}{name}")
+      create_cloud(file_data=body, destination_blob_name=f"ARCHIVOS{path[:-1]}{name}")
 
     elif(token.get("delete")):
       delete, path, name = scan_command_line_delete(token.get("delete"))

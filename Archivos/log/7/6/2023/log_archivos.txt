@@ -47,3 +47,7 @@
 2023-06-07 19:07:12 - Output - Sesion - Se cerro sesion Usuario1
 2023-06-07 19:07:23 - Input - Sesion - Inicio de sesion de Usuario1
 2023-06-07 19:07:41 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 22:53:06 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 22:53:36 - Input - Backup - Iniciar un backup
+2023-06-07 22:53:36 - Output - Configure - Error: No se ha configurado el tipo de almacenamiento
+2023-06-07 22:53:53 - Output - Sesion - Se cerro sesion Usuario1
