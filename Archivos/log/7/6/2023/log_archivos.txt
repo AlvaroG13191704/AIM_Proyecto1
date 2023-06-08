@@ -1,0 +1,49 @@
+2023-06-07 17:46:30 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 17:46:42 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-07 17:46:42 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 17:46:50 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: True, Encrypt Read: True, Llave: asd
+2023-06-07 17:47:59 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 17:48:08 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-07 17:48:08 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 17:48:17 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: True, Encrypt Read: True, Llave: 
+2023-06-07 17:50:51 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: True, Encrypt Read: True, Llave: 
+2023-06-07 17:51:36 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 17:51:56 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 17:52:16 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 17:52:16 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+4e93f429873a398247c23e5db67deaaa921031c286907866e719ada115bcc00b3f2381907d9f6a9819700aad8f691e790364e19ae2e52f7aece7948b907c2d6187294b6cf99f5cdcbcc063f2d7e11e4e4e93f429873a398247c23e5db67deaaa921031c286907866e719ada115bcc00b5dbfeab6bcf566fd7fa58d45e7f47dfe2edb2ff620bc77e86003cae16716f1672c517872454d5f90c6f4b5b6fe4acc793bc07695015a92cd53b7c8feefec100cf8ea3e348d38426f4e9dc70cfb10e109bd59a51207d52f37391c8cd5d1a76b682965184501f4e74222b362054774b21d392fe3123061e2ca254e1c49ba6c4e8219b4fea48aa411e8e43984ed10ee313e2023-06-07 17:53:09 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 17:53:10 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: True, Llave: miaproyecto12345
+2023-06-07 17:54:37 - Input - Delete - Eliminar  de la ruta amigos
+2023-06-07 17:54:37 - Output - Delete - Error: No se encontro el archivo o carpeta en la ruta especificada.
+2023-06-07 17:54:47 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:08:02 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:08:10 - Input - Create - Crear dsfsd.txt en la ruta sdfsd
+2023-06-07 18:08:17 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:08:55 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:09:01 - Input - Create - Crear gdfg.txt en la ruta fdgd
+2023-06-07 18:09:01 - Output - Configure - Error: No se ha configurado el tipo de almacenamiento
+2023-06-07 18:09:28 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:29:19 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:29:32 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:30:05 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:30:12 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:30:39 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:30:54 - Input - Exec - Ejecutar hola
+2023-06-07 18:31:07 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 18:31:07 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-07 18:31:12 - Input - Exec - Ejecutar si
+2023-06-07 18:31:17 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:34:34 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:35:04 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 18:35:04 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-07 18:35:29 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:35:47 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:35:53 - Output - Configure - Archivo configurado exitosamente
+2023-06-07 18:35:53 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: Local, Encrypt Log: False, Encrypt Read: False, Llave: 
+2023-06-07 18:37:49 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 18:38:09 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 18:38:44 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 19:06:12 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 19:07:12 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-07 19:07:23 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-07 19:07:41 - Output - Sesion - Se cerro sesion Usuario1
