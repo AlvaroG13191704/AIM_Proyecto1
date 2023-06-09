@@ -1,0 +1,46 @@
+from datetime import datetime
+import os
+import local.encriptado as enc
+
+def bitacora(type, comand, instruction, bitacoraConfigure, llaveConfigure):
+    fecha=""
+    fecha = fechaYhora()
+    print(bitacoraConfigure)
+    if bitacoraConfigure=="true":
+        instruccion = enc.encrypt((f"{fecha} - {type} - {comand} - {instruction}\n"), llaveConfigure)
+    else:
+        instruccion = f"{fecha} - {type} - {comand} - {instruction}\n"        
+    bitacoraLog(instruccion)
+    ejecucion = f"{comand} ejecutando..."
+    write(ejecucion)
+    write(instruccion)
+
+
+def fechaYhora():
+    current_datetime = datetime.now()
+    formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    return formatted_datetime
+
+
+def bitacoraLog(texto):
+    fecha_actual = datetime.now()
+    dia_actual = fecha_actual.day
+    mes_actual = fecha_actual.month
+    año_actual = fecha_actual.year
+
+    ruta_log_archivos = os.path.join(os.path.dirname(__file__), "../../Archivos/log", str(año_actual), str(mes_actual), str(dia_actual))
+    os.makedirs(ruta_log_archivos, exist_ok=True) 
+
+    nombre_archivo = "log_archivos.txt"
+    ruta_completa = os.path.join(ruta_log_archivos, nombre_archivo)
+
+    with open(ruta_completa, "a") as archivo:
+        archivo.write(texto)
+
+    print(f"Texto agregado al archivo de registro: {texto}")
+
+def write(content):
+    with open('app/log/consola.txt', 'a') as file:
+        file.write(content)
+        file.write('\n')  
+

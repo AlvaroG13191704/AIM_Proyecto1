@@ -10,6 +10,7 @@ import threading
 import time
 from scanner.tokens import extract_commands
 import scanner.scanner as scan
+from local.bitacora import bitacora
 #--- CONTRASEÑAS ---
 #Pablo42
 #Alvaro123
@@ -34,8 +35,7 @@ def login():
 
     for username, password in user_credentials:
         if entered_username == username and entered_password == password.lower():
-            bitacoraReturn = carp.bitacora("Input", "Sesion", f"Inicio de sesion de {username}")
-            carp.bitacoraLog(bitacoraReturn)
+            bitacora("Input", "Sesion", f"Inicio de sesion de {username}", "", "")
             messagebox.showinfo(title="Login", message="Bienvenido " + username)
             username_entry.delete(0, END)
             password_entry.delete(0, END)
@@ -61,8 +61,8 @@ def open_main_window():
     def close_main_window():
         main_window.withdraw()
         show_login()
-        bitacoraReturn = carp.bitacora("Output", "Sesion", f"Se cerro sesion {username}")
-        carp.bitacoraLog(bitacoraReturn)
+        bitacora("Output", "Sesion", f"Se cerro sesion {username}", "", "")
+        
 
 
     # Ventana configure
@@ -86,25 +86,13 @@ def open_main_window():
                     else:
                         carp.configure(type, encrypt_log, encrypt_read, llave)
                         configure_window.withdraw()
-                        bitacoraReturn = carp.bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}")
-                        carp.bitacoraLog(bitacoraReturn)
-                        print("-- CONFIGURE --")
-                        print("Tipo:", type)
-                        print("Valor1:", encrypt_log)
-                        print("Valor2:", encrypt_read)
-                        print("Texto:", llave)
+                        bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}", "", "")
 
                 else:
                     
                     carp.configure(type, encrypt_log, encrypt_read, llave)
                     configure_window.withdraw()
-                    bitacoraReturn = carp.bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}")
-                    carp.bitacoraLog(bitacoraReturn)
-                    print("-- CONFIGURE --")
-                    print("Tipo:", type)
-                    print("Valor1:", encrypt_log)
-                    print("Valor2:", encrypt_read)
-                    print("Texto:", llave)
+                    bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}", "", "")
             else:
                 messagebox.showerror(title="Error", message="Existen campos vacíos")
 
@@ -154,13 +142,7 @@ def open_main_window():
             body = text_entry2.get()
             path = text_entry3.get()
             if (path != "" and body != "" and name != ""):
-                bitacoraReturn = carp.bitacora("Input", "Create", f"Crear {name}.txt en la ruta {path}")
-                carp.bitacoraLog(bitacoraReturn)
-                print("-- CREATE --")
-                print("name:", name)
-                print("body:", body)
-                print("path:", path)
-
+                bitacora("Input", "Create", f"Crear {name}.txt en la ruta {path}", "", "")
                 carp.create(name, body, path)
                 create_window.withdraw()
             else:
@@ -206,11 +188,7 @@ def open_main_window():
             path = text_entry1.get()
             name = text_entry2.get()
             if (path != ""):
-                bitacoraReturn = carp.bitacora("Input", "Delete", f"Eliminar {name} de la ruta {path}")
-                carp.bitacoraLog(bitacoraReturn)
-                print("-- DELETE --")
-                print("path:", path)
-                print("name:", name)
+                bitacora("Input", "Delete", f"Eliminar {name} de la ruta {path}", "", "")
 
                 carp.delete(path, name)
                 delete_window.withdraw()
@@ -254,11 +232,7 @@ def open_main_window():
             from_ = text_entry1.get()
             to = text_entry2.get()
             if (from_ != "" and to !=""):
-                bitacoraReturn = carp.bitacora("Input", "Copy", f"Copiar el contenido de {from_} a {to}")
-                carp.bitacoraLog(bitacoraReturn)
-                print("-- COPY --")
-                print("from:", from_)
-                print("to:", to)
+                bitacora("Input", "Copy", f"Copiar el contenido de {from_} a {to}", "", "")
 
                 carp.copy(from_, to)
                 copy_window.withdraw()
@@ -303,12 +277,7 @@ def open_main_window():
             to = text_entry2.get()
             mode = selected_option1.get()
             if (from_ != "" and to !="" and mode != ""):
-                bitacoraReturn = carp.bitacora("Input", "Transfer", f"Transferir el contenido de {from_} a {to} en {mode}")
-                carp.bitacoraLog(bitacoraReturn)
-                print("-- transfer --")
-                print("from:", from_)
-                print("to:", to)
-                print("mode:", mode)
+                bitacora("Input", "Transfer", f"Transferir el contenido de {from_} a {to} en {mode}", "", "")
 
                 carp.transfer(from_, to, mode)
                 transfer_window.withdraw()
@@ -356,11 +325,7 @@ def open_main_window():
             path = text_entry1.get()
             name = text_entry2.get()
             if (path != "" and name !=""):
-                bitacoraReturn = carp.bitacora("Input", "Rename", f"Cambiar el nombre en {path} a {name}")
-                carp.bitacoraLog(bitacoraReturn)
-                print("-- rename --")
-                print("path:", path)
-                print("name:", name)
+                bitacoraReturn = carp.bitacora("Input", "Rename", f"Cambiar el nombre en {path} a {name}", "", "")
 
                 carp.rename(path, name)
                 rename_window.withdraw()
@@ -404,11 +369,7 @@ def open_main_window():
             path = text_entry1.get()
             body = text_entry2.get()
             if (path != "" and body !=""):
-                bitacoraReturn = carp.bitacora("Input", "Modify", f"Modificar el contenido de {path} a {body}")
-                carp.bitacoraLog(bitacoraReturn)
-                print("-- modify --")
-                print("path:", path)
-                print("body:", body)
+                bitacora("Input", "Modify", f"Modificar el contenido de {path} a {body}", "", "")
 
                 carp.modify(path, body)
                 modify_window.withdraw()
@@ -452,11 +413,7 @@ def open_main_window():
             path = text_entry1.get()
             body = text_entry2.get()
             if (path != "" and body !=""):
-                bitacoraReturn = carp.bitacora("Input", "Add", f"Agregar {body} a {path}")
-                carp.bitacoraLog(bitacoraReturn)
-                print("-- add --")
-                print("path:", path)
-                print("body:", body)
+                bitacora("Input", "Add", f"Agregar {body} a {path}", "", "")
 
                 carp.add(path, body)
                 add_window.withdraw()
@@ -491,10 +448,8 @@ def open_main_window():
 
     #Backup método
     def backup():
-        bitacoraReturn = carp.bitacora("Input", "Backup", "Iniciar un backup")
-        carp.bitacoraLog(bitacoraReturn)
+        bitacora("Input", "Backup", "Iniciar un backup", "", "")
         carp.backup()
-        print("backup")
 
 
 
@@ -508,10 +463,7 @@ def open_main_window():
         def aceptar():
             path = text_entry1.get()
             if path != "":
-                bitacoraReturn = carp.bitacora("Input", "Exec", f"Ejecutar {path}")
-                carp.bitacoraLog(bitacoraReturn)
-                print("-- EXEC --")
-                print("path:", path)
+                bitacora("Input", "Exec", f"Ejecutar {path}", "", "")
                 exec_aux(path)
                 execu_window.withdraw()
             else:
@@ -544,8 +496,7 @@ def open_main_window():
         comandos = extract_commands(content)
         for token in comandos:
             if(token.get("configure")):
-                configure, type, encrypt_log, encrypt_read = scan.scan_command_line_configure(token.get("configure"))
-                llave ="miaproyecto12345"
+                configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(token.get("configure"))
                 carp.configure(type, encrypt_log, encrypt_read, llave)
             elif(token.get("create")):
                 create, name, path, body = scan.scan_command_line_create(token.get("create"))
@@ -595,8 +546,7 @@ def open_main_window():
         comandos = extract_commands(content)
         for token in comandos:
             if(token.get("configure")):
-                configure, type, encrypt_log, encrypt_read = scan.scan_command_line_configure(token.get("configure"))
-                llave ="miaproyecto12345"
+                configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(token.get("configure"))
                 carp.configure(type, encrypt_log, encrypt_read, llave)
             elif(token.get("create")):
                 create, name, path, body = scan.scan_command_line_create(token.get("create"))
