@@ -11,18 +11,18 @@ def modify_cloud(blob_name, new_content):
 
     bucket = storage_client.bucket("iam_project1_bucket")
 
+    path_name = "ARCHIVOS" + blob_name
     try:
-        blob = bucket.blob(blob_name)
+        blob = bucket.blob(path_name)
         if blob.exists():
             blob.upload_from_string(new_content)
-            print(f"Content of file {blob_name} modified successfully.")
+            print(f"Content of file {path_name} modified successfully.")
         else:
-            print(f"File {blob_name} does not exist.")
+            print(f"File {path_name} does not exist.")
             return False
     except NotFound:
-        print(f"File or Directory {blob_name} does not exist.")
+        print(f"File or Directory {path_name} does not exist.")
 
-    return None
 
 
 if __name__ == "__main__":

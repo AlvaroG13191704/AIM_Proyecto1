@@ -12,27 +12,29 @@ def copy_cloud(blob_name, destination_blob_name):
     source_bucket = storage_client.bucket("iam_project1_bucket")
     destination_bucket = storage_client.bucket("iam_project1_bucket")
 
+    path_name = "ARCHIVOS" + blob_name 
+    path_destination = "ARCHIVOS" + destination_blob_name
     try:
-        if blob_name.endswith("/"):
+        if path_name.endswith("/"):
             # CHECK IF THE ORIGIN DIRECTORY EXISTS
-            blobs = list(source_bucket.list_blobs(prefix=blob_name))
+            blobs = list(source_bucket.list_blobs(prefix=path_name))
             if not blobs:
-                print(f"Directory {blob_name} does not exist or does not contain any files.")
+                print(f"Directory {path_name} does not exist or does not contain any files.")
                 return False
             # CHECK IF THE DESTINATION DIRECTORY EXISTS
-            blobs_destination = list(destination_bucket.list_blobs(prefix=destination_blob_name))
+            blobs_destination = list(destination_bucket.list_blobs(prefix=path_destination))
             if not blobs_destination:
-                print(f"Directory {destination_blob_name} does not exist.")
+                print(f"Directory {path_destination} does not exist.")
                 return False
             # Check if the blobs of the destination already exist
             for blob in blobs_destination:
-                if blob.name[len(destination_blob_name):] in [blob.name[len(blob_name):] for blob in blobs]:
-                    print(f"File {blob.name[len(destination_blob_name):]} already exists in {destination_blob_name}")
+                if blob.name[len(path_destination):] in [blob.name[len(path_name):] for blob in blobs]:
+                    print(f"File {blob.name[len(path_destination):]} already exists in {path_destination}")
                     return False
 
             for blob in blobs:
                 # Copy the blob to the destination
-                destination = destination_blob_name + str(blob.name[len(blob_name):])
+                destination = path_destination + str(blob.name[len(path_name):])
                 source_blob = source_bucket.blob(blob.name)
                 destination_blob = destination_bucket.blob(destination)
                 destination_blob.rewrite(source_blob)
@@ -40,18 +42,18 @@ def copy_cloud(blob_name, destination_blob_name):
             print("Files copied successfully.")
         else:
             # CHECK IF THE DESTINATION DIRECTORY EXISTS
-            blobs = list(destination_bucket.list_blobs(prefix=destination_blob_name))
+            blobs = list(destination_bucket.list_blobs(prefix=path_destination))
             if not blobs:
-                print(f"Directory {destination_blob_name} does not exist.")
+                print(f"Directory {path_destination} does not exist.")
                 return False
             # Check if the blobs of the destination already exist
             for blob in blobs:
-                if blob.name[len(destination_blob_name):] == blob_name.split("/")[::-1][0]:
-                    print(f"File {blob_name.split('/')[::-1][0]} already exists in {destination_blob_name}")
+                if blob.name[len(path_destination):] == blob_name.split("/")[::-1][0]:
+                    print(f"File {blob_name.split('/')[::-1][0]} already exists in {path_destination}")
                     return False
 
-            destination = destination_blob_name + str(blob_name.split("/")[::-1][0])
-            source_blob = source_bucket.blob(blob_name)
+            destination = path_destination + str(path_name.split("/")[::-1][0])
+            source_blob = source_bucket.blob(path_name)
             destination_blob = destination_bucket.blob(destination)
             destination_blob.rewrite(source_blob)
             print(
@@ -61,15 +63,15 @@ def copy_cloud(blob_name, destination_blob_name):
                 )
             )
     except NotFound:
-        print(f"Blob or directory {blob_name} does not exist.")
+        print(f"Blob or directory {path_name} does not exist.")
 
     return None
 
 
 if __name__ == "__main__":
     copy_cloud(
-        blob_name="ARCHIVOS/carpeta1/",
-        destination_blob_name="ARCHIVOS/carpeta3/",
+        blob_name="/carpeta1/",
+        destination_blob_name="/carpeta 2/",
     )
 
 

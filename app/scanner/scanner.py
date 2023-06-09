@@ -7,21 +7,22 @@ def scan_command_line_configure(command_line):
   pattern_type = r'-type->(.*?)\s'
   pattern_encrypt_log = r'-encrypt_log->(.*?)\s' # \s is a whitespace character
   pattern_encrypt_read = r'-encrypt_read->(.*?)(\s|$)' # $ is the end of the string
-
+  patter_key = r'-llave->"(.*?)"(\s|$)'
   # Match the components using regular expressions
   match_configure = re.search(pattern_configure, command_line,re.I)
   match_type = re.search(pattern_type, command_line,re.I)
   match_encrypt_log = re.search(pattern_encrypt_log, command_line,re.I)
   match_encrypt_read = re.search(pattern_encrypt_read, command_line,re.I)
+  match_key = re.search(patter_key, command_line,re.I)
 
   # Extract the values from the matches
   configure = match_configure.group(0) if match_configure else None
   type = match_type.group(1) if match_type else None
   encrypt_log = match_encrypt_log.group(1) if match_encrypt_log else None
   encrypt_read = match_encrypt_read.group(1) if match_encrypt_read else None
-
+  key = match_key.group(1) if match_key else None
   # Return the extracted values
-  return configure.lower(),type.lower(), encrypt_log.lower(), encrypt_read.lower()
+  return configure.lower(),type.lower(), encrypt_log.lower(), encrypt_read.lower(), key
 
 # Scan create command line
 def scan_command_line_create(command_line):
@@ -50,7 +51,7 @@ def scan_command_line_create(command_line):
   body = match_body.group(1) if match_body else None
 
   # Return the extracted values
-  return create.lower(), name, path, body
+  return create.lower(), name.rstrip(" ").replace("\n",""), path.rstrip(" ").replace("\n",""), body
 
 
 # Scan delete command line
@@ -83,7 +84,7 @@ def scan_command_line_delete(command_line):
 
 
   # Return the extracted values
-  return delete.lower(), path, name
+  return delete.lower(), path.rstrip(" ").replace("\n",""), name.rstrip(" ").replace("\n","")
 
 
 # Scan copy command line
@@ -114,7 +115,7 @@ def scan_command_line_copy(command_line):
     to_path = None
 
   # Return the extracted values
-  return copy.lower(), from_path, to_path
+  return copy.lower(), from_path.rstrip(" "), to_path.rstrip(" ").replace("\n","")
 
 # Scan transfer command line
 def scan_command_line_transfer(command_line):
@@ -155,7 +156,7 @@ def scan_command_line_transfer(command_line):
     mode = None
 
   # Return the extracted values
-  return transfer.lower(), from_path, to_path, mode
+  return transfer.lower(), from_path.rstrip(" "), to_path.rstrip(" "), mode.rstrip(" ").replace("\n","")
 
 # Scan rename command line
 def scan_command_line_rename(command_line):
@@ -186,7 +187,7 @@ def scan_command_line_rename(command_line):
     new_name = None
 
   # Return the extracted values
-  return rename.lower(), path, new_name
+  return rename.lower(), path.rstrip(" "), new_name.rstrip(" ").replace("\n","")
 
 # Scan modify command line
 def scan_command_line_modify(command_line):
@@ -212,7 +213,7 @@ def scan_command_line_modify(command_line):
   new_body = match_new_body.group(1) if match_new_body else None
 
   # Return the extracted values
-  return modify.lower(), path, new_body
+  return modify.lower(), path.rstrip(" "), new_body
 
 # Scan add command line
 def scan_command_line_add(command_line):
@@ -238,7 +239,7 @@ def scan_command_line_add(command_line):
   new_body = match_new_body.group(1) if match_new_body else None
 
   # Return the extracted values
-  return add.lower(), path, new_body
+  return add.lower(), path.rstrip(" "), new_body
 
 
 # Scan exec command line
@@ -261,4 +262,4 @@ def scan_command_line_exec(command_line):
     path = None
 
   # Return the extracted values
-  return exec.lower(), path
+  return exec.lower(), path.rstrip(" ").replace("\n","")

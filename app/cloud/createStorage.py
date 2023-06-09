@@ -1,23 +1,23 @@
-import sys
 from google.oauth2 import service_account
 from google.cloud import storage
 
 google_credentials = service_account.Credentials.from_service_account_file("app/cloud/key.json")
 
-def create_cloud(file_data, destination_blob_name):
+def create_cloud(file_data, destination_blob_name, name):
   """Uploads file data to the bucket."""
   storage_client = storage.Client(credentials=google_credentials)
   bucket = storage_client.bucket("iam_project1_bucket")
-  blob = bucket.blob(destination_blob_name)
+  path_name = "ARCHIVOS" + destination_blob_name + name
+  blob = bucket.blob(path_name)
 
   # CHECK IF THE FILE ALREADY EXISTS
   if blob.exists():
-    print(f"File {destination_blob_name} already exists.")
+    print(f"File {path_name} already exists.")
     return False
 
   blob.upload_from_string(file_data)
 
-  print(f"File data uploaded to {destination_blob_name}.")
+  print(f"File data uploaded to {path_name}.")
 
 
 if __name__ == "__main__":
@@ -27,7 +27,8 @@ if __name__ == "__main__":
 
   create_cloud(
       file_data=file_data,
-      destination_blob_name="ARCHIVOS/carpeta5/sub5/exampleSub1.txt",
+      destination_blob_name="/carpeta5/subcarpeta5/",
+      name ="exampleSub.txt",
   )
 #  create_cloud(bucket_name="iam_project1_bucket", file_data=body, destination_blob_name=f"ARCHIVOS{path[:-1]}{name}")
 

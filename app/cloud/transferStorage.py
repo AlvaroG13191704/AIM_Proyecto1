@@ -12,38 +12,39 @@ def transfer_cloud(blob_name, destination_blob_name):
     source_bucket = storage_client.bucket("iam_project1_bucket")
     destination_bucket = storage_client.bucket("iam_project1_bucket")
 
+    path_name = "ARCHIVOS" + blob_name 
+    path_destination = "ARCHIVOS" + destination_blob_name
+
     try:
-        if blob_name.endswith("/"):
+        if path_name.endswith("/"):
             # CHECK IF THE ORIGIN DIRECTORY EXISTS
-            blobs = list(source_bucket.list_blobs(prefix=blob_name))
+            blobs = list(source_bucket.list_blobs(prefix=path_name))
             if not blobs:
-                print(f"Directory {blob_name} does not exist or does not contain any files.")
+                print(f"Directory {path_name} does not exist or does not contain any files.")
                 return False
             # CHECK IF THE DESTINATION DIRECTORY EXISTS
-            blobs_destination = list(destination_bucket.list_blobs(prefix=destination_blob_name))
+            blobs_destination = list(destination_bucket.list_blobs(prefix=path_destination))
             if not blobs_destination:
-                print(f"Directory {destination_blob_name} does not exist.")
+                print(f"Directory {path_destination} does not exist.")
                 return False
             # Check if the blobs of the destination already exist - add (1) to the name or 
             list_names_exist = []
             for blob in blobs_destination:
-                if blob.name[len(destination_blob_name):] in [blob.name[len(blob_name):] for blob in blobs]:
+                if blob.name[len(path_destination):] in [blob.name[len(path_name):] for blob in blobs]:
                     # append the name to the list
-                    list_names_exist.append(blob.name[len(destination_blob_name):])
+                    list_names_exist.append(blob.name[len(path_destination):])
                     # print(f"File {blob.name[len(destination_blob_name):]} already exists in {destination_blob_name}")
 
             for blob in blobs:
-                if blob.name[len(blob_name):] in list_names_exist:
+                if blob.name[len(path_name):] in list_names_exist:
                     # change the name add (1)
-                    destination = destination_blob_name + str(blob.name[len(blob_name):].replace(".txt", "(1).txt"))
+                    destination = path_destination + str(blob.name[len(path_name):].replace(".txt", "(1).txt"))
                     source_blob = source_bucket.blob(blob.name)
                     destination_blob = destination_bucket.blob(destination)
                     destination_blob.rewrite(source_blob)   
-                    # Delete the source blob
-                    source_blob.delete()
 
                 # Move the blob to the destination
-                destination = destination_blob_name + str(blob.name[len(blob_name):])
+                destination = path_destination + str(blob.name[len(path_name):])
                 source_blob = source_bucket.blob(blob.name)
                 destination_blob = destination_bucket.blob(destination)
                 destination_blob.rewrite(source_blob)
@@ -54,23 +55,22 @@ def transfer_cloud(blob_name, destination_blob_name):
             print("Files moved successfully.")
         else:
             # CHECK IF THE DESTINATION DIRECTORY EXISTS
-            blobs = list(destination_bucket.list_blobs(prefix=destination_blob_name))
+            blobs = list(destination_bucket.list_blobs(prefix=path_destination))
             if not blobs:
-                print(f"Directory {destination_blob_name} does not exist.")
+                print(f"Directory {path_destination} does not exist.")
                 return False
             # Check if the blobs of the destination already exist
             for blob in blobs:
-                if blob.name[len(destination_blob_name):] == blob_name.split("/")[::-1][0]:
+                if blob.name[len(path_destination):] == path_name.split("/")[::-1][0]:
                     # change the name add (1)
-                    destination = destination_blob_name + str(blob_name.split("/")[::-1][0].replace(".txt", "(1).txt"))
-                    source_blob = source_bucket.blob(blob_name)
+                    destination = path_destination + str(path_name.split("/")[::-1][0].replace(".txt", "(1).txt"))
+                    source_blob = source_bucket.blob(path_name)
                     destination_blob = destination_bucket.blob(destination)
                     destination_blob.rewrite(source_blob)
-                    # Delete the source blob
-                    source_blob.delete()
 
-            destination = destination_blob_name + str(blob_name.split("/")[::-1][0])
-            source_blob = source_bucket.blob(blob_name)
+
+            destination = destination_blob_name + str(path_name.split("/")[::-1][0])
+            source_blob = source_bucket.blob(path_name)
             destination_blob = destination_bucket.blob(destination)
             destination_blob.rewrite(source_blob)
 
@@ -84,7 +84,7 @@ def transfer_cloud(blob_name, destination_blob_name):
                 )
             )
     except NotFound:
-        print(f"Blob or directory {blob_name} does not exist. Error: {NotFound}")
+        print(f"Blob or directory {path_name} does not exist. Error: {NotFound}")
         return False
 
     return None
@@ -92,6 +92,6 @@ def transfer_cloud(blob_name, destination_blob_name):
 
 if __name__ == "__main__":
     transfer_cloud(
-      blob_name="ARCHIVOS/carpeta5/",
-      destination_blob_name="ARCHIVOS/carpeta 2/",
+      blob_name="/carpeta5/",
+      destination_blob_name="/carpeta 2/",
     )

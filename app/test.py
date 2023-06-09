@@ -1,21 +1,28 @@
 from scanner.scanner import scan_command_line_create, scan_command_line_configure,scan_command_line_delete,scan_command_line_copy, scan_command_line_transfer, scan_command_line_rename, scan_command_line_modify, scan_command_line_add, scan_command_line_exec
 from scanner.tokens import extract_commands
 from cloud.createStorage import create_cloud
+from cloud.deleteStorage import delete_cloud
+from cloud.copyStorage import copy_cloud
+from cloud.transferStorage import transfer_cloud
+from cloud.renameStorage import rename_cloud
+from cloud.modifyStorage import modify_cloud
+from cloud.addStorage import add_cloud
 from encriptado import decrypt
 def main():
   # Define a command line string
   command_string = '''
-  configure -type->local -encrypt_log->falsE -encrypt_read->false
+  configure -type->local -encrypt_log->falsE -encrypt_read->false -llave->"hola123" 
   create -name->prueba1.txt -path->/carpeta1/ -body->"Este es el contenido del archivo 1"
   create -namE->"prueba 2.txt" -path->/"carpeta 2"/ -boDy->"Este es el contenido del archivo 2"
   delete -path->/carpeta1/ -name->prueba1.txt
-  Copy -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/
-  Copy -from->/"carpeta 2"/ -to->/carpeta1/
+  delete -path->/"carpeta 2"/
+  Copy -from->/carpeta5/exampleSub1.txt -to->/carpeta1/
+  Copy -from->/carpeta5/ -to->/"carpeta 2"/
   transfer -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/ -mode->"local"
-  transfer -from->/"carpeta 2"/ -to->/carpeta1/ -mode->"cloud"
-  renaMe -paTh->/carpeta1/prueba1.txt -name->b1.txt
-  modify -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"
-  add -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"
+  transfer -from->/carpeta5/exampleSub2.txt -to->/"carpeta 2"/ -mode->"cloud"
+  renaMe -paTh->/carpeta 2/exampleSub2(1).txt -name->alvaro.txt
+  modify -path->/"carpeta 2"/exampleSub1.txt -body->"este es el nuevo contenido del archivo"
+  add -path->/"carpeta 2"/exampleSub1.txt -body->"este es el nuevo contenido del archivo"
   backup
   exec -path->/home/Desktop/miaejecutable.mia
   '''
@@ -25,11 +32,11 @@ def main():
   '''
   result_crypted, message_crypted = extract_commands(commad_crypted)
   message_decrypted = decrypt(message_crypted, "miaproyecto12345")
-  print(result_crypted, message_crypted)
-  print(message_decrypted)
-  list_commands = extract_commands(message_decrypted)
-  for l in list_commands:
-    print(l)
+  # print(result_crypted, message_crypted)
+  # print(message_decrypted)
+  # list_commands = extract_commands(message_decrypted)
+  # for l in list_commands:
+  #   print(l)
 
 
 
@@ -44,12 +51,13 @@ def main():
   for token in result:
     print(token)
     if(token.get("configure")):
-      configure, type, encrypt_log, encrypt_read = scan_command_line_configure(token.get("configure"))
+      configure, type, encrypt_log, encrypt_read, key = scan_command_line_configure(token.get("configure"))
       print(f"Command Configure:")
       print(f"Configure: {configure}")
       print(f"Type: {type}")
       print(f"Encrypt Log: {encrypt_log}")
-      print(f"Encrypt Read: {encrypt_read} \n")
+      print(f"Encrypt Read: {encrypt_read}")
+      print(f"Key: {key}\n")
     elif(token.get("create")):
       create, name, path, body = scan_command_line_create(token.get("create"))
       print(f"Command Line Create:")
@@ -59,7 +67,7 @@ def main():
       print(f"Body: {body}\n")
       # create the file in the cloud
       #delete the last character of the path 
-      # create_cloud(file_data=body, destination_blob_name=f"ARCHIVOS{path[:-1]}{name}")
+      # create_cloud(file_data=body, destination_blob_name=path, name=name) 
 
     elif(token.get("delete")):
       delete, path, name = scan_command_line_delete(token.get("delete"))
@@ -67,6 +75,22 @@ def main():
       print(f"Delete: {delete}")
       print(f"Path: {path}")
       print(f"Name: {name}\n")
+      # delete_cloud(blob_name=path, name=name)
+    elif(token.get("copy")):
+      copy, from_path, to_path = scan_command_line_copy(token.get("copy"))
+      print(f"Command Copy:")
+      print(f"Copy: {copy}")
+      print(f"From: {from_path}")
+      print(f"To: {to_path}\n")
+      # copy_cloud(blob_name=from_path, destination_blob_name=to_path)
+    elif(token.get("transfer")):
+      transfer, from_path, to_path, mode = scan_command_line_transfer(token.get("transfer"))
+      print(f"Command Transfer:")
+      print(f"Transfer: {transfer}")
+      print(f"From: {from_path}")
+      print(f"To: {to_path}")
+      print(f"Mode: {mode}\n")
+      # transfer_cloud(from_path,to_path)
 
     elif(token.get("rename")):
       rename, path, name = scan_command_line_rename(token.get("rename"))
@@ -74,6 +98,22 @@ def main():
       print(f"Rename: {rename}")
       print(f"Path: {path}")
       print(f"Name: {name}\n")
+      # rename_cloud(blob_name=path, new_name=name)
+    elif(token.get("modify")):
+      modify, path, body = scan_command_line_modify(token.get("modify"))
+      print(f"Command Modify:")
+      print(f"Modify: {modify}")
+      print(f"Path: {path}")
+      print(f"Body: {body}\n")
+      # modify_cloud(blob_name=path, new_content=body)
+    elif(token.get("add")):
+      add, path, body = scan_command_line_add(token.get("add"))
+      print(f"Command Add:")
+      print(f"Add: {add}")
+      print(f"Path: {path}")
+      print(f"Body: {body}\n")
+      add_cloud(blob_name=path, additional_content=body)
+
       
     
 
@@ -86,8 +126,8 @@ def main():
   command_line_copy2 = 'Copy -from->/"carpeta 2"/ -to->/carpeta1/'
   command_line_transfer1 = 'transfer -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/ -mode->"local"'
   command_line_transfer2 = 'transfer -from->/"carpeta 2"/ -to->/carpeta1/ -mode->"cloud"'
-  command_line_rename1 = 'renaMe -paTh->/carpeta1/prueba1.txt -name->b1.txt'
-  command_line_modify = 'modify -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"'
+  command_line_rename1 = 'renaMe -paTh->/"carpeta 2"/exampleSub1.txt -name->b1.txt'
+  command_line_modify = 'modify -path->/"carpeta 2"/exampleSub1.txt -body->"este es el nuevo contenido del archivo"'
   command_line_add = 'add -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"'
   command_line_exec = 'exec -path->/home/Desktop/miaejecutable.mia '
   # Scan the command line string
