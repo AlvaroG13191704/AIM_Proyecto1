@@ -11,6 +11,7 @@ import time
 from scanner.tokens import extract_commands
 import scanner.scanner as scan
 from local.bitacora import bitacora
+from local.bitacora import procesadosTotales
 #--- CONTRASEÑAS ---
 #Pablo42
 #Alvaro123
@@ -532,6 +533,9 @@ def open_main_window():
                 add, path, body = scan.scan_command_line_add(token.get("add"))
                 path = path.rstrip()
                 carp.add(path, body)
+            elif(token.get("exec")):
+                execu, path = scan.scan_command_line_exec(token.get("exec"))
+                exec_aux(path)
             elif(token.get("backup")):
                 carp.backup()
         
@@ -584,6 +588,8 @@ def open_main_window():
                 carp.add(path, body)
             elif(token.get("backup")):
                 carp.backup()
+        procesadosTotales()
+        
 
     
 
@@ -671,7 +677,7 @@ def open_main_window():
                 content = read_file('app/log/consola.txt')
                 update_console_text(console_txt, content)
                 last_modified = current_modified
-            time.sleep(0.4)  
+            time.sleep(1)  
 
     def start_file_observer():
         file_observer = threading.Thread(target=check_file_changes)

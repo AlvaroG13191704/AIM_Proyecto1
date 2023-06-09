@@ -5,7 +5,6 @@ import local.encriptado as enc
 def bitacora(type, comand, instruction, bitacoraConfigure, llaveConfigure):
     fecha=""
     fecha = fechaYhora()
-    print(bitacoraConfigure)
     if bitacoraConfigure=="true":
         instruccion = enc.encrypt((f"{fecha} - {type} - {comand} - {instruction}\n"), llaveConfigure)
     else:
@@ -37,10 +36,45 @@ def bitacoraLog(texto):
     with open(ruta_completa, "a") as archivo:
         archivo.write(texto)
 
-    print(f"Texto agregado al archivo de registro: {texto}")
 
 def write(content):
     with open('app/log/consola.txt', 'a') as file:
         file.write(content)
         file.write('\n')  
 
+
+totalLocal = 0
+def tiempoLocal(numero):
+        global totalLocal
+        totalLocal += numero
+        return totalLocal
+
+
+totalCloud = 0
+def tiempoCloud(numero):
+        global totalCloud
+        totalCloud += numero
+        return totalCloud
+
+
+totalProcesadosLocales = 0
+def procesadosLocales(numero):
+        global totalProcesadosLocales
+        totalProcesadosLocales += numero
+        return totalProcesadosLocales
+
+
+totalProcesadosCloud = 0
+def procesadosCloud(numero):
+        global totalProcesadosCloud
+        totalProcesadosCloud += numero
+        return totalProcesadosLocales
+
+def procesadosTotales():
+    tiempo_local = tiempoLocal(0)
+    tiempo_cloud = tiempoCloud(0)
+    procesados_locales = procesadosLocales(0)
+    procesados_cloud = procesadosCloud(0)
+    fecha_y_hora = fechaYhora()
+    total = f'{fecha_y_hora} - Output - Exec - Archivos procesados localmente: {procesados_locales} - Tiempo procesamiento local: {tiempo_local}ms - Archivos procesados en cloud: {procesados_cloud} -  Tiempo procesamiento cloud: {tiempo_cloud}ms'
+    write(total)
