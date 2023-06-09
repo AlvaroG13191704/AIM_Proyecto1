@@ -1,36 +1,42 @@
 Configure ejecutando...
-2023-06-08 14:44:51 - Output - Configure - Archivo configurado exitosamente
+2023-06-09 14:10:23 - Output - Configure - Archivo configurado exitosamente
 
 Create ejecutando...
-2023-06-08 14:44:51 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-09 14:10:23 - Output - Create - Archivo prueba1.txt creado exitosamente
 
 Create ejecutando...
-2023-06-08 14:44:51 - Output - Create - Archivo prueba 2.txt creado exitosamente
+2023-06-09 14:10:23 - Output - Create - Archivo prueba 2.txt creado exitosamente
 
 Delete ejecutando...
-2023-06-08 14:44:51 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.
+2023-06-09 14:10:23 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.
 
 Create ejecutando...
-2023-06-08 14:44:51 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-09 14:10:23 - Output - Create - Archivo prueba1.txt creado exitosamente
 
 Copy ejecutando...
-2023-06-08 14:44:51 - Output - Copy - Archivo 'prueba1.txt' copiado exitosamente a 'carpeta 2'.
+2023-06-09 14:10:24 - Output - Copy - Archivo 'prueba1.txt' copiado exitosamente a 'carpeta 2'.
 
 Copy ejecutando...
-2023-06-08 14:44:51 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.
+2023-06-09 14:10:24 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.
 
 Transfer ejecutando...
-2023-06-08 14:44:51 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicación de destino. Se ha copiado como 'prueba1(1).txt'.
+2023-06-09 14:10:24 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicación de destino. Se ha copiado como 'prueba1(1).txt'.
+
+Transfer ejecutando...
+2023-06-09 14:10:24 - Output - Transfer - None
 
 Create ejecutando...
-2023-06-08 14:44:51 - Output - Create - Error: La carpeta y el archivo ya existen
+2023-06-09 14:10:24 - Output - Create - Archivo prueba 3.txt creado exitosamente
 
 Rename ejecutando...
-2023-06-08 14:44:51 - Output - Rename - El archivo 'carpeta 2/prueba 2.txt' ha sido renombrado a b1.txt.
+2023-06-09 14:10:24 - Output - Rename - El archivo 'carpeta 2/prueba 2.txt' ha sido renombrado a b1.txt.
 
 Modify ejecutando...
-2023-06-08 14:44:51 - Output - Modify - Error: No se encontro el archivo 'carpeta 2/prueba 2.txt' en la ruta especificada.
+2023-06-09 14:10:24 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.
 
 Add ejecutando...
-2023-06-08 14:44:51 - Output - Add - Error: No se encontro el archivo 'carpeta 2/prueba 2.txt' en la ruta especificada.
+2023-06-09 14:10:24 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.
+
+Sesion ejecutando...
+2023-06-09 14:10:41 - Output - Sesion - Se cerro sesion Usuario1
 
