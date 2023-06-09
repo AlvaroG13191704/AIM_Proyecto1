@@ -1,155 +1,797 @@
-from scanner.scanner import scan_command_line_create, scan_command_line_configure,scan_command_line_delete,scan_command_line_copy, scan_command_line_transfer, scan_command_line_rename, scan_command_line_modify, scan_command_line_add, scan_command_line_exec
+from tkinter import *
+from tkinter import ttk
+import tkinter as tk
+from tkinter import messagebox
+import os
+from PIL import Image, ImageTk
+import encriptado as enc
+import carpeta as carp
+import threading
+import time
 from scanner.tokens import extract_commands
-from cloud.createStorage import create_cloud
-def main():
-  # Define a command line string
-  command_string = '''
-  configure -type->local -encrypt_log->falsE -encrypt_read->false
-  create -name->prueba1.txt -path->/carpeta1/ -body->"Este es el contenido del archivo 1"
-  create -namE->"prueba 2.txt" -path->/"carpeta 2"/ -boDy->"Este es el contenido del archivo 2"
-  delete -path->/carpeta1/ -name->prueba1.txt
-  Copy -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/
-  Copy -from->/"carpeta 2"/ -to->/carpeta1/
-  transfer -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/ -mode->"local"
-  transfer -from->/"carpeta 2"/ -to->/carpeta1/ -mode->"cloud"
-  renaMe -paTh->/carpeta1/prueba1.txt -name->b1.txt
-  modify -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"
-  add -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"
-  backup
-  exec -path->/home/Desktop/miaejecutable.mia
-  '''
-  result = extract_commands(command_string)
-  for token in result:
-    print(token)
-    if(token.get("configure")):
-      configure, type, encrypt_log, encrypt_read = scan_command_line_configure(token.get("configure"))
-      print(f"Command Configure:")
-      print(f"Configure: {configure}")
-      print(f"Type: {type}")
-      print(f"Encrypt Log: {encrypt_log}")
-      print(f"Encrypt Read: {encrypt_read} \n")
-    elif(token.get("create")):
-      create, name, path, body = scan_command_line_create(token.get("create"))
-      print(f"Command Line Create:")
-      print(f"Create: {create}")
-      print(f"Name: {name}")
-      print(f"Path: {path}")
-      print(f"Body: {body}\n")
-      # create the file in the cloud
-      #delete the last character of the path 
-      # create_cloud(file_data=body, destination_blob_name=f"ARCHIVOS{path[:-1]}{name}")
+import scanner.scanner as scan
+#--- CONTRASEÑAS ---
+#Pablo42
+#Alvaro123
 
-    elif(token.get("delete")):
-      delete, path, name = scan_command_line_delete(token.get("delete"))
-      print(f"Command Delete:")
-      print(f"Delete: {delete}")
-      print(f"Path: {path}")
-      print(f"Name: {name}\n")
 
-    elif(token.get("rename")):
-      rename, path, name = scan_command_line_rename(token.get("rename"))
-      print(f"Command Rename:")
-      print(f"Rename: {rename}")
-      print(f"Path: {path}")
-      print(f"Name: {name}\n")
-      
+
+# Función para realizar el login
+def login():
+    file_path = "app/log/miausuarios.txt"
+    user_credentials = []
+    global username
+    with open(file_path, "r") as file:
+        lines = file.readlines()
+
+        for i in range(0, len(lines), 2):
+            username = lines[i].strip()
+            password = lines[i + 1].strip()
+            user_credentials.append((username, password))
+
+    entered_username = username_entry.get()
+    entered_password = enc.encrypt(password_entry.get(),"miaproyecto12345")
+
+    for username, password in user_credentials:
+        if entered_username == username and entered_password == password.lower():
+            bitacoraReturn = carp.bitacora("Input", "Sesion", f"Inicio de sesion de {username}")
+            carp.bitacoraLog(bitacoraReturn)
+            messagebox.showinfo(title="Login", message="Bienvenido " + username)
+            username_entry.delete(0, END)
+            password_entry.delete(0, END)
+            # Ocultar la ventana de inicio de sesión
+            root.withdraw()
+            # Abrir la ventana principal
+            open_main_window()
+            break
+    else:
+        messagebox.showerror(title="Error", message="Acceso denegado")
+
+
+
+# Función para mostrar la ventana de inicio de sesión
+def open_main_window():
+    # Crear la ventana principal
+    main_window = tk.Toplevel()
+    main_window.title("Ventana Principal")
+    main_window.resizable(False, False)
+    main_window.geometry("840x640")
+    main_window.protocol("WM_DELETE_WINDOW", show_login)  # Volver al login al cerrar
+
+    def close_main_window():
+        main_window.withdraw()
+        show_login()
+        bitacoraReturn = carp.bitacora("Output", "Sesion", f"Se cerro sesion {username}")
+        carp.bitacoraLog(bitacoraReturn)
+
+
+    # Ventana configure
+    def configure():
+        configure_window = tk.Toplevel()
+        configure_window.title("configure")
+        configure_window.resizable(False, False)
+        configure_window.geometry("640x440")
+
+        def aceptar():
+            type = selected_option1.get()
+            encrypt_log = selected_option2.get()
+            encrypt_read = selected_option3.get()
+            llave = text_entry.get()
+            if (type !="" and encrypt_log !="" and encrypt_read !=""):
+                
+
+                if encrypt_log == "True" or encrypt_read == "True":
+                    if len(llave) != 16:
+                        messagebox.showerror(title="Error", message="La llave debe tener 16 caracteres")
+                    else:
+                        carp.configure(type, encrypt_log, encrypt_read, llave)
+                        configure_window.withdraw()
+                        bitacoraReturn = carp.bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}")
+                        carp.bitacoraLog(bitacoraReturn)
+                        print("-- CONFIGURE --")
+                        print("Tipo:", type)
+                        print("Valor1:", encrypt_log)
+                        print("Valor2:", encrypt_read)
+                        print("Texto:", llave)
+
+                else:
+                    
+                    carp.configure(type, encrypt_log, encrypt_read, llave)
+                    configure_window.withdraw()
+                    bitacoraReturn = carp.bitacora("Output", "Configure", f"Se configuro el programa con los siguientes datos: Tipo: {type}, Encrypt Log: {encrypt_log}, Encrypt Read: {encrypt_read}, Llave: {llave}")
+                    carp.bitacoraLog(bitacoraReturn)
+                    print("-- CONFIGURE --")
+                    print("Tipo:", type)
+                    print("Valor1:", encrypt_log)
+                    print("Valor2:", encrypt_read)
+                    print("Texto:", llave)
+            else:
+                messagebox.showerror(title="Error", message="Existen campos vacíos")
+
+        # Cargando la imagen de fondo de la ventana configure
+        img_path2 = os.path.join(os.path.dirname(__file__), "images/configure.png")
+        bg_img2 = Image.open(img_path2)
+        image2 = ImageTk.PhotoImage(bg_img2)
+
+        
+        canvas2 = Canvas(configure_window, width=640, height=440)
+        canvas2.pack()
+
+        
+        canvas2.create_image(0, 0, image=image2, anchor=NW)
+        canvas2.image = image2  
+
+        # widgets de la ventana configure
+        optionsTYPE = ["local", "cloud"]
+        optionsTF = ["true", "false"]
+        selected_option1 = tk.StringVar()
+        selected_option2 = tk.StringVar()
+        selected_option3 = tk.StringVar()
+        text_entry = tk.StringVar()
+
+        combo1 = ttk.Combobox(configure_window, width=40, font=("Arial", 12), values=optionsTYPE, state="readonly", textvariable=selected_option1)
+        combo1.place(x=200, y=95)
+        combo2 = ttk.Combobox(configure_window, width=40, font=("Arial", 12), values=optionsTF, state="readonly", textvariable=selected_option2)
+        combo2.place(x=200, y=160)
+        combo3 = ttk.Combobox(configure_window, width=40, font=("Arial", 12), values=optionsTF, state="readonly", textvariable=selected_option3)
+        combo3.place(x=200, y=225)
+        entry = Entry(configure_window, font=("Arial", 12), width=40, textvariable=text_entry)
+        entry.place(x=200, y=290)
+        aceptar_button = Button(configure_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
+        aceptar_button.place(x=250, y=370)
+
+
+
+    # Ventana create
+    def create():
+        create_window = tk.Toplevel()
+        create_window.title("create")
+        create_window.resizable(False, False)
+        create_window.geometry("640x440")
+
+        def aceptar():
+            name = text_entry1.get()
+            body = text_entry2.get()
+            path = text_entry3.get()
+            if (path != "" and body != "" and name != ""):
+                bitacoraReturn = carp.bitacora("Input", "Create", f"Crear {name}.txt en la ruta {path}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- CREATE --")
+                print("name:", name)
+                print("body:", body)
+                print("path:", path)
+
+                carp.create(name, body, path)
+                create_window.withdraw()
+            else:
+                messagebox.showerror(title="Error", message="Existen campos vacíos")
+
+        # Cargando la imagen de fondo de la ventana create
+        img_path2 = os.path.join(os.path.dirname(__file__), "images/create.png")
+        bg_img2 = Image.open(img_path2)
+        image2 = ImageTk.PhotoImage(bg_img2)
+
+        
+        canvas2 = Canvas(create_window, width=640, height=440)
+        canvas2.pack()
+
+        
+        canvas2.create_image(0, 0, image=image2, anchor=NW)
+        canvas2.image = image2  
+
+        # widgets de la ventana create
+        text_entry1 = tk.StringVar()
+        text_entry2 = tk.StringVar()
+        text_entry3 = tk.StringVar()
+
+        entry1 = Entry(create_window, font=("Arial", 12), width=40, textvariable=text_entry1)
+        entry1.place(x=200, y=95)
+        entry2 = Entry(create_window, font=("Arial", 12), width=40, textvariable=text_entry2)        
+        entry2.place(x=200, y=160)
+        entry3 = Entry(create_window, font=("Arial", 12), width=40, textvariable=text_entry3)
+        entry3.place(x=200, y=225)
+        aceptar_button = Button(create_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
+        aceptar_button.place(x=250, y=370)
+
+
+
+    #ventana delete
+    def delete():
+        delete_window = tk.Toplevel()
+        delete_window.title("delete")
+        delete_window.resizable(False, False)
+        delete_window.geometry("640x440")
+
+        def aceptar():
+            path = text_entry1.get()
+            name = text_entry2.get()
+            if (path != ""):
+                bitacoraReturn = carp.bitacora("Input", "Delete", f"Eliminar {name} de la ruta {path}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- DELETE --")
+                print("path:", path)
+                print("name:", name)
+
+                carp.delete(path, name)
+                delete_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
+
+        # Cargando la imagen de fondo de la ventana delete
+        img_path2 = os.path.join(os.path.dirname(__file__), "images/delete.png")
+        bg_img2 = Image.open(img_path2)
+        image2 = ImageTk.PhotoImage(bg_img2)
+
+        
+        canvas2 = Canvas(delete_window, width=640, height=440)
+        canvas2.pack()
+
+        
+        canvas2.create_image(0, 0, image=image2, anchor=NW)
+        canvas2.image = image2  
+
+        # widgets de la ventana delete
+        text_entry1 = tk.StringVar()
+        text_entry2 = tk.StringVar()
+
+        entry1 = Entry(delete_window, font=("Arial", 12), width=40, textvariable=text_entry1)
+        entry1.place(x=200, y=95)
+        entry2 = Entry(delete_window, font=("Arial", 12), width=40, textvariable=text_entry2)        
+        entry2.place(x=200, y=160)
+        aceptar_button = Button(delete_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
+        aceptar_button.place(x=250, y=370)
+
+
+
+    #Ventana copy
+    def copy():
+        copy_window = tk.Toplevel()
+        copy_window.title("copy")
+        copy_window.resizable(False, False)
+        copy_window.geometry("640x440")
+
+        def aceptar():
+            from_ = text_entry1.get()
+            to = text_entry2.get()
+            if (from_ != "" and to !=""):
+                bitacoraReturn = carp.bitacora("Input", "Copy", f"Copiar el contenido de {from_} a {to}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- COPY --")
+                print("from:", from_)
+                print("to:", to)
+
+                carp.copy(from_, to)
+                copy_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
+
+        # Cargando la imagen de fondo de la ventana copy
+        img_path2 = os.path.join(os.path.dirname(__file__), "images/copy.png")
+        bg_img2 = Image.open(img_path2)
+        image2 = ImageTk.PhotoImage(bg_img2)
+
+        
+        canvas2 = Canvas(copy_window, width=640, height=440)
+        canvas2.pack()
+
+        
+        canvas2.create_image(0, 0, image=image2, anchor=NW)
+        canvas2.image = image2  
+
+        # widgets de la ventana copy
+        text_entry1 = tk.StringVar()
+        text_entry2 = tk.StringVar()
+
+        entry1 = Entry(copy_window, font=("Arial", 12), width=40, textvariable=text_entry1)
+        entry1.place(x=200, y=95)
+        entry2 = Entry(copy_window, font=("Arial", 12), width=40, textvariable=text_entry2)        
+        entry2.place(x=200, y=160)
+        aceptar_button = Button(copy_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
+        aceptar_button.place(x=250, y=370)
+
+
+
+    #Ventana transfer
+    def transfer():
+        transfer_window = tk.Toplevel()
+        transfer_window.title("transfer")
+        transfer_window.resizable(False, False)
+        transfer_window.geometry("640x440")
+
+        def aceptar():
+            from_ = text_entry1.get()
+            to = text_entry2.get()
+            mode = selected_option1.get()
+            if (from_ != "" and to !="" and mode != ""):
+                bitacoraReturn = carp.bitacora("Input", "Transfer", f"Transferir el contenido de {from_} a {to} en {mode}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- transfer --")
+                print("from:", from_)
+                print("to:", to)
+                print("mode:", mode)
+
+                carp.transfer(from_, to, mode)
+                transfer_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
+
+        # Cargando la imagen de fondo de la ventana transfer
+        img_path2 = os.path.join(os.path.dirname(__file__), "images/transfer.png")
+        bg_img2 = Image.open(img_path2)
+        image2 = ImageTk.PhotoImage(bg_img2)
+
+        
+        canvas2 = Canvas(transfer_window, width=640, height=440)
+        canvas2.pack()
+
+        
+        canvas2.create_image(0, 0, image=image2, anchor=NW)
+        canvas2.image = image2  
+
+        # widgets de la ventana transfer
+        optionsTYPE = ["local", "cloud"]
+        text_entry1 = tk.StringVar()
+        text_entry2 = tk.StringVar()
+        selected_option1 = tk.StringVar()
+
+        entry1 = Entry(transfer_window, font=("Arial", 12), width=40, textvariable=text_entry1)
+        entry1.place(x=200, y=95)
+        entry2 = Entry(transfer_window, font=("Arial", 12), width=40, textvariable=text_entry2)        
+        entry2.place(x=200, y=160)
+        combo1 = ttk.Combobox(transfer_window, width=40, font=("Arial", 12), values=optionsTYPE, state="readonly", textvariable=selected_option1)
+        combo1.place(x=200, y=225)
+        aceptar_button = Button(transfer_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
+        aceptar_button.place(x=250, y=370)
+
+
+
+    #Ventana rename
+    def rename():
+        rename_window = tk.Toplevel()
+        rename_window.title("rename")
+        rename_window.resizable(False, False)
+        rename_window.geometry("640x440")
+
+        def aceptar():
+            path = text_entry1.get()
+            name = text_entry2.get()
+            if (path != "" and name !=""):
+                bitacoraReturn = carp.bitacora("Input", "Rename", f"Cambiar el nombre en {path} a {name}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- rename --")
+                print("path:", path)
+                print("name:", name)
+
+                carp.rename(path, name)
+                rename_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
+
+        # Cargando la imagen de fondo de la ventana rename
+        img_path2 = os.path.join(os.path.dirname(__file__), "images/rename.png")
+        bg_img2 = Image.open(img_path2)
+        image2 = ImageTk.PhotoImage(bg_img2)
+
+        
+        canvas2 = Canvas(rename_window, width=640, height=440)
+        canvas2.pack()
+
+        
+        canvas2.create_image(0, 0, image=image2, anchor=NW)
+        canvas2.image = image2  
+
+        # widgets de la ventana rename
+        text_entry1 = tk.StringVar()
+        text_entry2 = tk.StringVar()
+
+        entry1 = Entry(rename_window, font=("Arial", 12), width=40, textvariable=text_entry1)
+        entry1.place(x=200, y=95)
+        entry2 = Entry(rename_window, font=("Arial", 12), width=40, textvariable=text_entry2)        
+        entry2.place(x=200, y=160)
+        aceptar_button = Button(rename_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
+        aceptar_button.place(x=250, y=370)
+
+
+
+    #Ventana modify
+    def modify():
+        modify_window = tk.Toplevel()
+        modify_window.title("modify")
+        modify_window.resizable(False, False)
+        modify_window.geometry("640x440")
+
+        def aceptar():
+            path = text_entry1.get()
+            body = text_entry2.get()
+            if (path != "" and body !=""):
+                bitacoraReturn = carp.bitacora("Input", "Modify", f"Modificar el contenido de {path} a {body}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- modify --")
+                print("path:", path)
+                print("body:", body)
+
+                carp.modify(path, body)
+                modify_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
+
+        # Cargando la imagen de fondo de la ventana modify
+        img_path2 = os.path.join(os.path.dirname(__file__), "images/modify.png")
+        bg_img2 = Image.open(img_path2)
+        image2 = ImageTk.PhotoImage(bg_img2)
+
+        
+        canvas2 = Canvas(modify_window, width=640, height=440)
+        canvas2.pack()
+
+        
+        canvas2.create_image(0, 0, image=image2, anchor=NW)
+        canvas2.image = image2  
+
+        # widgets de la ventana modify
+        text_entry1 = tk.StringVar()
+        text_entry2 = tk.StringVar()
+
+        entry1 = Entry(modify_window, font=("Arial", 12), width=40, textvariable=text_entry1)
+        entry1.place(x=200, y=95)
+        entry2 = Entry(modify_window, font=("Arial", 12), width=40, textvariable=text_entry2)        
+        entry2.place(x=200, y=160)
+        aceptar_button = Button(modify_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
+        aceptar_button.place(x=250, y=370)
+
+
+
+    #Ventana add
+    def add():
+        add_window = tk.Toplevel()
+        add_window.title("add")
+        add_window.resizable(False, False)
+        add_window.geometry("640x440")
+
+        def aceptar():
+            path = text_entry1.get()
+            body = text_entry2.get()
+            if (path != "" and body !=""):
+                bitacoraReturn = carp.bitacora("Input", "Add", f"Agregar {body} a {path}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- add --")
+                print("path:", path)
+                print("body:", body)
+
+                carp.add(path, body)
+                add_window.withdraw()
+            else: 
+                messagebox.showerror("Error", "Existen campos vacíos")
+
+        # Cargando la imagen de fondo de la ventana add
+        img_path2 = os.path.join(os.path.dirname(__file__), "images/add.png")
+        bg_img2 = Image.open(img_path2)
+        image2 = ImageTk.PhotoImage(bg_img2)
+
+        
+        canvas2 = Canvas(add_window, width=640, height=440)
+        canvas2.pack()
+
+        
+        canvas2.create_image(0, 0, image=image2, anchor=NW)
+        canvas2.image = image2  
+
+        # widgets de la ventana add
+        text_entry1 = tk.StringVar()
+        text_entry2 = tk.StringVar()
+
+        entry1 = Entry(add_window, font=("Arial", 12), width=40, textvariable=text_entry1)
+        entry1.place(x=200, y=95)
+        entry2 = Entry(add_window, font=("Arial", 12), width=40, textvariable=text_entry2)        
+        entry2.place(x=200, y=160)
+        aceptar_button = Button(add_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
+        aceptar_button.place(x=250, y=370)
+
+
+
+    #Backup método
+    def backup():
+        bitacoraReturn = carp.bitacora("Input", "Backup", "Iniciar un backup")
+        carp.bitacoraLog(bitacoraReturn)
+        carp.backup()
+        print("backup")
+
+
+
+    #Ventana execu
+    def execu():
+        execu_window = tk.Toplevel()
+        execu_window.title("execu")
+        execu_window.resizable(False, False)
+        execu_window.geometry("640x440")
+
+        def aceptar():
+            path = text_entry1.get()
+            if path != "":
+                bitacoraReturn = carp.bitacora("Input", "Exec", f"Ejecutar {path}")
+                carp.bitacoraLog(bitacoraReturn)
+                print("-- EXEC --")
+                print("path:", path)
+                exec_aux(path)
+                execu_window.withdraw()
+            else:
+                messagebox.showerror("Error", "Existen campos vacíos")
+
+        # Cargando la imagen de fondo de la ventana execu
+        img_path2 = os.path.join(os.path.dirname(__file__), "images/exec.png")
+        bg_img2 = Image.open(img_path2)
+        image2 = ImageTk.PhotoImage(bg_img2)
+
+        
+        canvas2 = Canvas(execu_window, width=640, height=440)
+        canvas2.pack()
+
+        
+        canvas2.create_image(0, 0, image=image2, anchor=NW)
+        canvas2.image = image2  
+
+        # widgets de la ventana execu
+        text_entry1 = tk.StringVar()
+
+        entry1 = Entry(execu_window, font=("Arial", 12), width=40, textvariable=text_entry1)
+        entry1.place(x=200, y=95)
+        aceptar_button = Button(execu_window, text="Aceptar", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=10, command=aceptar)
+        aceptar_button.place(x=250, y=370)
+
+    def enter():
+        eliminarConsola()
+        content = console_txt2.get("1.0", tk.END)
+        comandos = extract_commands(content)
+        for token in comandos:
+            if(token.get("configure")):
+                configure, type, encrypt_log, encrypt_read = scan.scan_command_line_configure(token.get("configure"))
+                llave ="miaproyecto12345"
+                carp.configure(type, encrypt_log, encrypt_read, llave)
+            elif(token.get("create")):
+                create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                name = name.rstrip()
+                path = path.rstrip()
+                carp.create(name, body, path)
+            elif(token.get("delete")):
+                delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                path = path.rstrip()
+                name = name.rstrip()
+                carp.delete(path, name)
+            elif(token.get("copy")):
+                copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                from_ = from_.rstrip()
+                to = to.rstrip()
+                carp.copy(from_, to)
+            elif(token.get("transfer")):
+                transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                from_ = from_.rstrip()
+                to = to.rstrip()
+                mode = mode.rstrip()
+                carp.transfer(from_, to, mode)
+            elif(token.get("rename")):
+                rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                path = path.rstrip()
+                name = name.rstrip()
+                carp.rename(path, name)
+            elif(token.get("modify")):
+                modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                path = path.rstrip()
+                carp.modify(path, body)
+            elif(token.get("add")):
+                add, path, body = scan.scan_command_line_add(token.get("add"))
+                path = path.rstrip()
+                carp.add(path, body)
+            elif(token.get("backup")):
+                carp.backup()
+        
+    
+    def exec_aux(path):
+        eliminarConsola()
+        directorio_actual = os.getcwd()
+        ruta_archivo = os.path.join(directorio_actual, "Archivos", path)
+        print(ruta_archivo)
+        with open(ruta_archivo, "r") as archivo:
+            content = archivo.read()
+        comandos = extract_commands(content)
+        for token in comandos:
+            if(token.get("configure")):
+                configure, type, encrypt_log, encrypt_read = scan.scan_command_line_configure(token.get("configure"))
+                llave ="miaproyecto12345"
+                carp.configure(type, encrypt_log, encrypt_read, llave)
+            elif(token.get("create")):
+                create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                name = name.rstrip()
+                path = path.rstrip()
+                carp.create(name, body, path)
+            elif(token.get("delete")):
+                delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                path = path.rstrip()
+                name = name.rstrip()
+                carp.delete(path, name)
+            elif(token.get("copy")):
+                copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                from_ = from_.rstrip()
+                to = to.rstrip()
+                carp.copy(from_, to)
+            elif(token.get("transfer")):
+                transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                from_ = from_.rstrip()
+                to = to.rstrip()
+                mode = mode.rstrip()
+                carp.transfer(from_, to, mode)
+            elif(token.get("rename")):
+                rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                path = path.rstrip()
+                name = name.rstrip()
+                carp.rename(path, name)
+            elif(token.get("modify")):
+                modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                path = path.rstrip()
+                carp.modify(path, body)
+            elif(token.get("add")):
+                add, path, body = scan.scan_command_line_add(token.get("add"))
+                path = path.rstrip()
+                carp.add(path, body)
+            elif(token.get("backup")):
+                carp.backup()
+
     
 
-  command_configure = 'Configure -type->local -encrypt_log->false -encrypt_read->false'
-  command_line_create1 = 'create -name->prueba1.txt -path->/carpeta1/ -body->"Este es el contenido del archivo 1"'
-  command_line_create2 = 'create -namE->"prueba 2.txt" -path->/"carpeta 2"/ -boDy->"Este es el contenido del archivo 2"'
-  command_line_delete1 = 'delete -path->/carpeta1/ -name->prueba1.txt'
-  command_line_delete2 = 'delete -path->/"carpeta 2"/ '
-  command_line_copy1 = 'Copy -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/'
-  command_line_copy2 = 'Copy -from->/"carpeta 2"/ -to->/carpeta1/'
-  command_line_transfer1 = 'transfer -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/ -mode->"local"'
-  command_line_transfer2 = 'transfer -from->/"carpeta 2"/ -to->/carpeta1/ -mode->"cloud"'
-  command_line_rename1 = 'renaMe -paTh->/carpeta1/prueba1.txt -name->b1.txt'
-  command_line_modify = 'modify -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"'
-  command_line_add = 'add -path->/carpeta1/prueba1.txt -body->"este es el nuevo contenido del archivo"'
-  command_line_exec = 'exec -path->/home/Desktop/miaejecutable.mia '
-  # Scan the command line string
-  # configure, type, encrypt_log, encrypt_read = scan_command_line_configure(command_configure)
-  # create, name, path, body = scan_command_line_create(command_line_create1)
-  # delete, path, name = scan_command_line_delete(command_line_delete1)
-  # copy, from_path, to_path = scan_command_line_copy(command_line_copy2)
-  # transfer, from_path, to_path, mode = scan_command_line_transfer(command_line_transfer2)
-  # rename, path, name = scan_command_line_rename(command_line_rename1)
-  # modify, path, body = scan_command_line_modify(command_line_modify)
-  # add, path, body = scan_command_line_add(command_line_add)
-  # exec, path = scan_command_line_exec(command_line_exec)
-  # Print the extracted values
 
-  # print(f"Command Exec:")
-  # print(f"Exec: {exec}")
-  # print(f"Path: {path}\n")
+    main_window.protocol("WM_DELETE_WINDOW", close_main_window)
+
+    # Cargando la imagen de fondo de la ventana principal
+    img_path = os.path.join(os.path.dirname(__file__), "images/ventanaprincipal.png")
+    bg_img = Image.open(img_path)
+    image = ImageTk.PhotoImage(bg_img)
+
+    
+    canvas = Canvas(main_window, width=840, height=640)
+    canvas.pack()
+
+    
+    canvas.create_image(0, 0, image=image, anchor=NW)
+    canvas.image = image  
 
 
-  # print(f"Command Add:")
-  # print(f"Add: {add}")
-  # print(f"Path: {path}")
-  # print(f"Body: {body}\n")
+    espaciado=35
+    # Contenido de la ventana principal
+    configure_b = Button(main_window, text="configure", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=configure)
+    configure_b.place(x=500, y=90)
 
-  # print(f"Command Modify:")
-  # print(f"Modify: {modify}")
-  # print(f"Path: {path}")
-  # print(f"Body: {body}\n")
+    #Boton transfer
+    transfer_b= Button(main_window, text="transfer", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=transfer)
+    transfer_b.place(x=650, y=90)
 
-  # print(f"Command Rename:")
-  # print(f"Rename: {rename}")
-  # print(f"Path: {path}")
-  # print(f"Name: {name}\n")
-  
+    #Boton create
+    create_b = Button(main_window, text="create", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=create)
+    create_b.place(x=500, y=110+espaciado)
 
-  # print(f"Command Transfer:")
-  # print(f"Transfer: {transfer}")
-  # print(f"From: {from_path}")
-  # print(f"To: {to_path}")
-  # print(f"Mode: {mode}\n")
+    #Boton rename
+    rename_b= Button(main_window, text="rename", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=rename)
+    rename_b.place(x=650, y=110+espaciado)
 
-  # print(f"Command Copy:")
-  # print(f"Copy: {copy}")
-  # print(f"From: {from_path}")
-  # print(f"To: {to_path}\n")
+    #Boton delete
+    delete_b= Button(main_window, text="delete", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=delete)
+    delete_b.place(x=500, y=130+espaciado*2)
 
-  # print(f"Command Delete:")
-  # print(f"Delete: {delete}")
-  # print(f"Path: {path}")
-  # print(f"Name: {name}\n")
+    #Boton modify
+    modify_b= Button(main_window, text="modify", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=modify)
+    modify_b.place(x=650, y=130+espaciado*2)
 
-  # Print the extracted values
-  # print(f"Command Configure:")
-  # print(f"Configure: {configure}")
-  # print(f"Type: {type}")
-  # print(f"Encrypt Log: {encrypt_log}")
-  # print(f"Encrypt Read: {encrypt_read} \n")
+    #Boton copy
+    copy_b= Button(main_window, text="copy", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=copy)
+    copy_b.place(x=500, y=150+ espaciado*3)
 
-  # print(f"Command Line Create:")
-  # print(f"Create: {create}")
-  # print(f"Name: {name}")
-  # print(f"Path: {path}")
-  # print(f"Body: {body}\n")
+    #Boton add
+    add_b = Button(main_window, text="add", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=add)
+    add_b.place(x=650, y=150+espaciado*3)
 
+    #Boton backup
+    backup_b= Button(main_window, text="backup", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=backup)
+    backup_b.place(x=500, y=170+espaciado*4)
 
-  # print(f"\nCommand Line 2:")
-  # print(f"Name: {name2}")
-  # print(f"Path: {path2}")
-  # print(f"Body: {body2}")
+    #Boton execu
+    execu_b= Button(main_window, text="exec", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=execu)
+    execu_b.place(x=650, y=170+espaciado*4)
 
-#   lexer.input(command_line1)
-#   while True:
-#       token = lexer.token()
-#       if not token:
-#           break
-#       print(token)
+    #Boton cerrar sesion
+    cerrars_b= Button(main_window, text="Cerrar Sesión", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=close_main_window)
+    cerrars_b.place(x=500, y=190+espaciado*5)
 
-#   lexer.input(command_line2)
-#   while True:
-#       token = lexer.token()
-#       if not token:
-#           break
-#       print(token)
+    enter_b= Button(main_window, text="enter", font=("Arial", 12), bg="#49B8A9", fg="#FFFFFF", width=12, command=enter)
+    enter_b.place(x=650, y=190+espaciado*5)
 
 
-if __name__ == '__main__':
-  main()
+    def read_file(filename):
+        with open(filename, 'r') as file:
+            content = file.read()
+        return content
+
+    def update_console_text(console_text, content):
+        console_text.delete('1.0', tk.END)
+        console_text.insert(tk.END, content)
+
+    def check_file_changes():
+        last_modified = None
+
+        while True:
+            current_modified = time.ctime(os.path.getmtime('app/log/consola.txt'))
+            if current_modified != last_modified:
+                content = read_file('app/log/consola.txt')
+                update_console_text(console_txt, content)
+                last_modified = current_modified
+            time.sleep(0.4)  
+
+    def start_file_observer():
+        file_observer = threading.Thread(target=check_file_changes)
+        file_observer.daemon = True
+        file_observer.start()
+
+    def clear_console_file():
+        with open('app/log/consola.txt', 'w') as file:
+            file.write('')
+
+    clear_console_file()
+
+    console_txt2 = Text(main_window, width=70, height=22, font=("Arial", 8))
+    console_txt2.place(x=40, y=90)
+
+    console_txt = Text(main_window, width=120, height=12, font=("Arial", 8))
+    console_txt.place(x=40, y=440)
+
+
+    filename = 'app/log/consola.txt'  
+    content = read_file(filename)
+
+    start_file_observer()
+
+
+    def eliminarConsola():
+        archivo = 'app/log/Consola.txt'     
+        try:
+            with open(archivo, 'w') as archivo_consola:
+                archivo_consola.write('')
+                      
+        except FileNotFoundError:
+            print(f'El archivo {archivo} no existe.')
+
+    
+
+def show_login():
+    # Mostrar la ventana de inicio de sesión
+    root.deiconify()
+
+
+root = Tk()
+root.geometry("540x440")
+root.resizable(False, False)
+root.title("Login")
+
+# Cargando la imagen de fondo de la ventana de inicio de sesión
+img_path = os.path.join(os.path.dirname(__file__), "images/login.png")
+bg_img = Image.open(img_path)
+image = ImageTk.PhotoImage(bg_img)
+
+
+canvas = Canvas(root, width=540, height=440, bg="#FFFFFF")
+canvas.pack()
+
+
+canvas.create_image(0, 0, image=image, anchor=NW)
+canvas.image = image  
+
+# Creando los widgets
+username_entry = Entry(root, font=("Arial", 12), bg="#FFFFFF", width=20)
+username_entry.place(x=190, y=150)
+
+password_entry = Entry(root, show="*", font=("Arial", 12), bg="#FFFFFF", width=20)
+password_entry.place(x=190, y=185)
+
+login_button = Button(root, text="Ingresar", font=("Arial", 14), bg="#49B8A9", fg="#FFFFFF", width=10, command=login)
+login_button.place(x=200, y=270)
+
+# Cerrar la ventana principal al hacer clic en la "X"
+root.protocol("WM_DELETE_WINDOW", root.quit)
+
+root.mainloop()
