@@ -21,12 +21,14 @@ def transfer_cloud(blob_name, destination_blob_name):
             blobs = list(source_bucket.list_blobs(prefix=path_name))
             if not blobs:
                 print(f"Directory {path_name} does not exist or does not contain any files.")
-                return False
+                return f"El directorio {path_name} no existe."
+            
             # CHECK IF THE DESTINATION DIRECTORY EXISTS
             blobs_destination = list(destination_bucket.list_blobs(prefix=path_destination))
             if not blobs_destination:
                 print(f"Directory {path_destination} does not exist.")
-                return False
+                return f"El directorio {path_destination} no existe."
+            
             # Check if the blobs of the destination already exist - add (1) to the name or 
             list_names_exist = []
             for blob in blobs_destination:
@@ -53,12 +55,13 @@ def transfer_cloud(blob_name, destination_blob_name):
                 source_blob.delete()
 
             print("Files moved successfully.")
+            return f"Archivos de {path_name} movidos correctamente."
         else:
             # CHECK IF THE DESTINATION DIRECTORY EXISTS
             blobs = list(destination_bucket.list_blobs(prefix=path_destination))
             if not blobs:
                 print(f"Directory {path_destination} does not exist.")
-                return False
+                return f"El directorio {path_destination} no existe."
             # Check if the blobs of the destination already exist
             for blob in blobs:
                 if blob.name[len(path_destination):] == path_name.split("/")[::-1][0]:
@@ -83,11 +86,10 @@ def transfer_cloud(blob_name, destination_blob_name):
                     destination_blob.name,
                 )
             )
+            return f"Archivo {source_blob.name} movido a {destination_blob.name} correctamente."
     except NotFound:
         print(f"Blob or directory {path_name} does not exist. Error: {NotFound}")
-        return False
-
-    return None
+        return f"El archivo o directorio {path_name} no existe. Error: {NotFound}"
 
 
 if __name__ == "__main__":

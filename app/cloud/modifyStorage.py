@@ -17,11 +17,13 @@ def modify_cloud(blob_name, new_content):
         if blob.exists():
             blob.upload_from_string(new_content)
             print(f"Content of file {path_name} modified successfully.")
+            return f"Contenido del archivo {path_name} modificado correctamente."
         else:
             print(f"File {path_name} does not exist.")
-            return False
+            return f"El archivo {path_name} no existe."
     except NotFound:
         print(f"File or Directory {path_name} does not exist.")
+        return f"El archivo o directorio {path_name} no existe."
 
 
 

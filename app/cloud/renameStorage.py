@@ -25,7 +25,8 @@ def rename_cloud(blob_name, new_name):
                 if blob.name[len(directory):] ==  "/" + new_name:
                   print(blob.name[len(directory):], "/" + new_name)
                   print(f"File {new_name} already exists.")
-                  return False
+                  return f"El archivo {new_name} ya existe."
+                
             # add the new name to the path
             new_.append(new_name)
             # join the path
@@ -33,13 +34,13 @@ def rename_cloud(blob_name, new_name):
             new_blob = bucket.rename_blob(blob, new_)
 
             print(f"File {path_name} renamed to {new_}.")
+            return f"Archivo {path_name} renombrado a {new_}."
         else:
             print(f"File {path_name} does not exist.")
-            return False
+            return f"El archivo {path_name} no existe."
     except NotFound:
         print(f"File {path_name} does not exist.")
-
-    return None
+        return f"El archivo {path_name} no existe."
 
 
 if __name__ == "__main__":

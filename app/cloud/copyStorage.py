@@ -20,17 +20,19 @@ def copy_cloud(blob_name, destination_blob_name):
             blobs = list(source_bucket.list_blobs(prefix=path_name))
             if not blobs:
                 print(f"Directory {path_name} does not exist or does not contain any files.")
-                return False
+                return f"El directorio {path_name} no existe."
+            
             # CHECK IF THE DESTINATION DIRECTORY EXISTS
             blobs_destination = list(destination_bucket.list_blobs(prefix=path_destination))
             if not blobs_destination:
                 print(f"Directory {path_destination} does not exist.")
-                return False
+                return f"El directorio {path_destination} no existe."
+            
             # Check if the blobs of the destination already exist
             for blob in blobs_destination:
                 if blob.name[len(path_destination):] in [blob.name[len(path_name):] for blob in blobs]:
                     print(f"File {blob.name[len(path_destination):]} already exists in {path_destination}")
-                    return False
+                    return f"El archivo {blob.name[len(path_destination):]} ya existe en {path_destination}"
 
             for blob in blobs:
                 # Copy the blob to the destination
@@ -40,17 +42,21 @@ def copy_cloud(blob_name, destination_blob_name):
                 destination_blob.rewrite(source_blob)
 
             print("Files copied successfully.")
+            return f"Archivos de {path_name} copiados correctamente."
+        
         else:
             # CHECK IF THE DESTINATION DIRECTORY EXISTS
             blobs = list(destination_bucket.list_blobs(prefix=path_destination))
             if not blobs:
                 print(f"Directory {path_destination} does not exist.")
-                return False
+                return f"El directorio {path_destination} no existe."
+            
             # Check if the blobs of the destination already exist
             for blob in blobs:
                 if blob.name[len(path_destination):] == blob_name.split("/")[::-1][0]:
                     print(f"File {blob_name.split('/')[::-1][0]} already exists in {path_destination}")
-                    return False
+                    return f"El archivo {blob_name.split('/')[::-1][0]} ya existe en {path_destination}"
+                
 
             destination = path_destination + str(path_name.split("/")[::-1][0])
             source_blob = source_bucket.blob(path_name)
@@ -62,10 +68,11 @@ def copy_cloud(blob_name, destination_blob_name):
                     destination_blob.name,
                 )
             )
+            return f"Archivo {path_name} copiado correctamente."
     except NotFound:
         print(f"Blob or directory {path_name} does not exist.")
+        return f"El archivo o directorio {path_name} no existe."
 
-    return None
 
 
 if __name__ == "__main__":

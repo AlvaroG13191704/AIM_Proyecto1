@@ -23,21 +23,22 @@ def delete_cloud(blob_name,name):
 
       if not blobs:
           print(f"Directory {set_blob_name} does not exist.")
-          return False
+          return f"El directorio {set_blob_name} no existe."
 
       for blob in blobs:
           blob.delete()
       print(f"Directory {set_blob_name} deleted.")
+      return f"Directorio {set_blob_name} eliminado."
   else:
       # Single blob deletion
       if not blob.exists():
           print(f"Blob {set_blob_name} does not exist.")
-          return False
+          return f"El archivo {set_blob_name} no existe."
 
       blob.delete()
       print(f"Blob {set_blob_name} deleted.")
+      return f"Archivo {set_blob_name} eliminado."
 
-  return True
 
 
 if __name__ == "__main__":

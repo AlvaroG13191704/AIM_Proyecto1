@@ -19,13 +19,13 @@ def add_cloud(blob_name, additional_content):
           new_content = current_content + additional_content
           blob.upload_from_string(new_content)
           print(f"Additional content added to file {path_name} successfully.")
+          return f"Contenido adicional agregado al archivo {path_name} correctamente."
       else:
           print(f"File {path_name} does not exist.")
-          return False
+          return f"El archivo {path_name} no existe."
   except NotFound:
       print(f"File {path_name} does not exist.")
-
-  return None
+      return f"El archivo {path_name} no existe."
 
 
 if __name__ == "__main__":

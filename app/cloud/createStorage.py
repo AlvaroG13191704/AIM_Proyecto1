@@ -13,11 +13,12 @@ def create_cloud(file_data, destination_blob_name, name):
   # CHECK IF THE FILE ALREADY EXISTS
   if blob.exists():
     print(f"File {path_name} already exists.")
-    return False
+    return f"El archivo {path_name} ya existe."
 
   blob.upload_from_string(file_data)
 
   print(f"File data uploaded to {path_name}.")
+  return f"Archivo {path_name} subido correctamente."
 
 
 if __name__ == "__main__":
