@@ -1,0 +1,18 @@
+2023-06-10 16:44:54 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 16:45:16 - Input - Exec - Ejecutar hola.mia
+2023-06-10 16:45:16 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 16:45:16 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 16:45:16 - Output - Create - Archivo prueba 2.txt creado exitosamente
+2023-06-10 16:45:16 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.
+2023-06-10 16:45:16 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 16:45:16 - Output - Copy - Archivo 'prueba1.txt' copiado exitosamente a 'carpeta 2'.
+2023-06-10 16:45:16 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.
+2023-06-10 16:45:16 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicación de destino. Se ha copiado como 'prueba1(1).txt'.
+2023-06-10 16:45:16 - Output - Transfer - Error: Modo no soportado
+2023-06-10 16:45:16 - Output - Create - Archivo prueba 3.txt creado exitosamente
+2023-06-10 16:45:16 - Output - Rename - El archivo 'carpeta 2/prueba 2.txt' ha sido renombrado a b1.txt.
+2023-06-10 16:45:16 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.
+2023-06-10 16:45:16 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.
+2023-06-10 16:45:26 - Output - Backup - Backup de local a cloud completado.
+2023-06-10 16:47:51 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 16:50:12 - Output - Sesion - Se cerro sesion Usuario1

@@ -112,7 +112,13 @@ def main():
       print(f"Add: {add}")
       print(f"Path: {path}")
       print(f"Body: {body}\n")
-      add_cloud(blob_name=path, additional_content=body)
+      # add_cloud(blob_name=path, additional_content=body)
+
+    elif(token.get("exec")):
+      exec, path = scan_command_line_exec(token.get("exec"))
+      print(f"Command Exec:")
+      print(f"Exec: {exec}")
+      print(f"Path: {path}\n")
 
       
     
