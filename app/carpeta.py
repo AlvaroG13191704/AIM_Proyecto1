@@ -7,6 +7,7 @@ from cloud.renameStorage import rename_cloud
 from cloud.copyStorage import copy_cloud
 from cloud.transferStorage import transfer_cloud
 from cloud.createStorage import create_cloud
+from cloud.backupStorage import backup_cloud
 from local.createLocal import create_local
 from local.deleteLocal import delete_local
 from local.copyLocal import copy_local
@@ -14,6 +15,7 @@ from local.transferLocal import transfer_local
 from local.renameLocal import rename_local
 from local.modifyLocal import modify_local
 from local.addLocal import add_local
+from local.backupLocal import backup_local
 from local.bitacora import tiempoLocal
 from local.bitacora import tiempoCloud
 from local.bitacora import procesadosLocales
@@ -245,13 +247,17 @@ def backup():
     if tipo == "local":
         inicio = time.time()
         print("Backup LOCAL -- - - - - - - ")
+        tmp = backup_local()
         tiempo_transcurrido = round((time.time() - inicio) * 1000)
         tiempoLocal(tiempo_transcurrido)
+        bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     elif tipo == "cloud":
         inicio = time.time()
         print("Backup CLOUD -- - - - - - - ")
+        tmp = backup_cloud()
         tiempo_transcurrido = round((time.time() - inicio) * 1000)
         tiempoCloud(tiempo_transcurrido)
+        bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     else:
         tmp = "Error: No se ha configurado el tipo de almacenamiento"
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
