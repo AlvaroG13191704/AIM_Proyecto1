@@ -78,3 +78,10 @@ def procesadosTotales():
     fecha_y_hora = fechaYhora()
     total = f'{fecha_y_hora} - Output - Exec - Archivos procesados localmente: {procesados_locales} - Tiempo procesamiento local: {tiempo_local}ms - Archivos procesados en cloud: {procesados_cloud} -  Tiempo procesamiento cloud: {tiempo_cloud}ms'
     write(total)
+
+def reiniciarVariables():
+    global totalLocal, totalCloud, totalProcesadosLocales, totalProcesadosCloud
+    totalLocal = 0
+    totalCloud = 0
+    totalProcesadosLocales = 0
+    totalProcesadosCloud = 0

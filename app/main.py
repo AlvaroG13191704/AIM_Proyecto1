@@ -12,6 +12,7 @@ from scanner.tokens import extract_commands
 import scanner.scanner as scan
 from local.bitacora import bitacora
 from local.bitacora import procesadosTotales
+from local.bitacora import reiniciarVariables
 #--- CONTRASEÑAS ---
 #Pablo42
 #Alvaro123
@@ -589,6 +590,7 @@ def open_main_window():
             elif(token.get("backup")):
                 carp.backup()
         procesadosTotales()
+        reiniciarVariables()
         
 
     
@@ -659,9 +661,12 @@ def open_main_window():
     enter_b.place(x=650, y=190+espaciado*5)
 
 
+    file_lock = threading.Lock()
+
     def read_file(filename):
-        with open(filename, 'r') as file:
-            content = file.read()
+        with file_lock:
+            with open(filename, 'r') as file:
+                content = file.read()
         return content
 
     def update_console_text(console_text, content):
@@ -677,7 +682,7 @@ def open_main_window():
                 content = read_file('app/log/consola.txt')
                 update_console_text(console_txt, content)
                 last_modified = current_modified
-            time.sleep(1)  
+            time.sleep(1.5)
 
     def start_file_observer():
         file_observer = threading.Thread(target=check_file_changes)
@@ -685,8 +690,9 @@ def open_main_window():
         file_observer.start()
 
     def clear_console_file():
-        with open('app/log/consola.txt', 'w') as file:
-            file.write('')
+        with file_lock:
+            with open('app/log/consola.txt', 'w') as file:
+                file.write('')
 
     clear_console_file()
 
