@@ -1,0 +1,56 @@
+{
+    "carpeta 2": {
+        "_files": [
+            {
+                "file_name": "alvaro1.txt",
+                "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+            },
+            {
+                "file_name": "exampleSub1.txt",
+                "file_contents": "este es el nuevo contenido del archivoeste es el nuevo contenido del archivoeste es el nuevo contenido del archivo"
+            }
+        ]
+    },
+    "carpeta1": {
+        "_files": [
+            {
+                "file_name": "archivo.txt",
+                "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+            }
+        ],
+        "sub": {
+            "_files": [
+                {
+                    "file_name": "no.txt",
+                    "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+                },
+                {
+                    "file_name": "si.txt",
+                    "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+                }
+            ]
+        }
+    },
+    "carpeta5": {
+        "_files": [
+            {
+                "file_name": "example5.txt",
+                "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+            }
+        ],
+        "subcarpeta5": {
+            "_files": [
+                {
+                    "file_name": "exampleSub.txt",
+                    "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+                }
+            ]
+        }
+    },
+    "_files": [
+        {
+            "file_name": "root.txt",
+            "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+        }
+    ]
+}

@@ -28,8 +28,8 @@ if __name__ == "__main__":
 
   create_cloud(
       file_data=file_data,
-      destination_blob_name="/carpeta5/subcarpeta5/",
-      name ="exampleSub.txt",
+      destination_blob_name="/",
+      name ="root.txt",
   )
 #  create_cloud(bucket_name="iam_project1_bucket", file_data=body, destination_blob_name=f"ARCHIVOS{path[:-1]}{name}")
 
