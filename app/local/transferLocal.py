@@ -2,36 +2,32 @@ import os
 import shutil
 
 
-def transfer_local(from_path, to, mode):
-    if mode == "local":
-        from_path = from_path.replace('"', '')
-        to = to.replace('"', '')
-        from_path = from_path.lstrip('/')
-        from_path = from_path.rstrip('/')
-        to = to.lstrip('/')
-        to = to.rstrip('/')
-        from_path_full = os.path.join(os.path.dirname(__file__), "../../Archivos", from_path)
-        to_full = os.path.join(os.path.dirname(__file__), "../../Archivos", to)
+def transfer_local(from_path, to):
+    from_path = from_path.replace('"', '')
+    to = to.replace('"', '')
+    from_path = from_path.lstrip('/')
+    from_path = from_path.rstrip('/')
+    to = to.lstrip('/')
+    to = to.rstrip('/')
+    from_path_full = os.path.join(os.path.dirname(__file__), "../../Archivos", from_path)
+    to_full = os.path.join(os.path.dirname(__file__), "../../Archivos", to)
 
-        if os.path.exists(from_path_full):
+    if os.path.exists(from_path_full):
 
-            if os.path.isfile(from_path_full):
-                tmp = transferArchivo(from_path_full, to_full)
-                return (tmp)
+        if os.path.isfile(from_path_full):
+            tmp = transferArchivo(from_path_full, to_full)
+            return (tmp)
 
-            elif os.path.isdir(from_path_full):
-                transferCarpeta(from_path_full, to_full)
-                return (tmp)
-
-            else:
-                return(f"Error: El origen '{from_path_full}' no es una carpeta ni un archivo válido.")
+        elif os.path.isdir(from_path_full):
+            transferCarpeta(from_path_full, to_full)
+            return (tmp)
 
         else:
-            return(f"Error: No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
+            return(f"Error: El origen '{from_path_full}' no es una carpeta ni un archivo válido.")
+
+    else:
+        return(f"Error: No se encontró la carpeta o archivo '{from_path}' en la ruta especificada.")
         
-    elif mode == "cloud":
-        # ESCRIBIR ACÁ EL CÓDIGO PARA EL LOCAL A CLOUD
-        print("Transferir de local a cloud")
 
 
 def transferCarpeta(from_path, to_path):
