@@ -68,7 +68,7 @@ totalProcesadosCloud = 0
 def procesadosCloud(numero):
         global totalProcesadosCloud
         totalProcesadosCloud += numero
-        return totalProcesadosLocales
+        return totalProcesadosCloud
 
 def procesadosTotales():
     tiempo_local = tiempoLocal(0)

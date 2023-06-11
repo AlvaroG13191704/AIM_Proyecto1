@@ -16,3 +16,261 @@
 2023-06-10 16:45:26 - Output - Backup - Backup de local a cloud completado.
 2023-06-10 16:47:51 - Input - Sesion - Inicio de sesion de Usuario1
 2023-06-10 16:50:12 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 17:24:49 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 17:34:10 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 17:35:40 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 17:36:08 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 17:36:42 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 17:36:55 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:36:56 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:36:56 - Output - Create - Archivo prueba 2.txt creado exitosamente
+2023-06-10 17:36:56 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.
+2023-06-10 17:36:56 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:36:56 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicación de destino.
+2023-06-10 17:36:56 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.
+2023-06-10 17:36:56 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicación de destino. Se ha copiado como 'prueba1(2).txt'.
+2023-06-10 17:36:56 - Output - Transfer - Error: Modo no soportado
+2023-06-10 17:36:56 - Output - Create - Error: La carpeta y el archivo ya existen
+2023-06-10 17:36:56 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.
+2023-06-10 17:36:56 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.
+2023-06-10 17:36:56 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.
+2023-06-10 17:37:24 - Output - Backup - Backup de local a cloud completado.
+2023-06-10 17:38:52 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:38:52 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:38:52 - Output - Create - Error: La carpeta y el archivo ya existen
+2023-06-10 17:38:52 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.
+2023-06-10 17:38:52 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:38:52 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicación de destino.
+2023-06-10 17:38:52 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.
+2023-06-10 17:38:52 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicación de destino. Se ha copiado como 'prueba1(3).txt'.
+2023-06-10 17:38:52 - Output - Transfer - Error: Modo no soportado
+2023-06-10 17:38:52 - Output - Create - Error: La carpeta y el archivo ya existen
+2023-06-10 17:38:52 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.
+2023-06-10 17:38:52 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.
+2023-06-10 17:38:52 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.
+2023-06-10 17:39:04 - Output - Backup - Backup de local a cloud completado.
+2023-06-10 17:39:38 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:39:38 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:39:38 - Output - Create - Error: La carpeta y el archivo ya existen
+2023-06-10 17:39:38 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.
+2023-06-10 17:39:38 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:39:38 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicación de destino.
+2023-06-10 17:39:38 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.
+2023-06-10 17:39:38 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicación de destino. Se ha copiado como 'prueba1(4).txt'.
+2023-06-10 17:39:38 - Output - Transfer - Error: Modo no soportado
+2023-06-10 17:39:38 - Output - Create - Error: La carpeta y el archivo ya existen
+2023-06-10 17:39:38 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.
+2023-06-10 17:39:38 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.
+2023-06-10 17:39:38 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.
+2023-06-10 17:41:37 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:41:37 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:41:37 - Output - Create - Archivo prueba 2.txt creado exitosamente
+2023-06-10 17:41:37 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.
+2023-06-10 17:41:37 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:41:37 - Output - Copy - Archivo 'prueba1.txt' copiado exitosamente a 'carpeta 2'.
+2023-06-10 17:41:37 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.
+2023-06-10 17:41:37 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicación de destino. Se ha copiado como 'prueba1(1).txt'.
+2023-06-10 17:41:37 - Output - Transfer - Error: Modo no soportado
+2023-06-10 17:41:37 - Output - Create - Archivo prueba 3.txt creado exitosamente
+2023-06-10 17:41:37 - Output - Rename - El archivo 'carpeta 2/prueba 2.txt' ha sido renombrado a b1.txt.
+2023-06-10 17:41:37 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.
+2023-06-10 17:41:37 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.
+8f82e0c19b57eccaaf0c7a743bc44460ddee91aea06a8e6b044325a20423c51d3f2381907d9f6a9819700aad8f691e790364e19ae2e52f7aece7948b907c2d6187294b6cf99f5cdcbcc063f2d7e11e4e8f82e0c19b57eccaaf0c7a743bc44460ddee91aea06a8e6b044325a20423c51da0823b8dd7d53766670c89829ae9016af278348fbd2747002c196682992aceeb9eab9517991469ece5d572af03f1bac62e317665acee075d792ff5f6925a6b1b8f82e0c19b57eccaaf0c7a743bc44460ddee91aea06a8e6b044325a20423c51da0823b8dd7d53766670c89829ae9016a133d8365ebb4ff41eba26a6223b72bffda4d736c2266c3d4aa9b1b3a06a4857bb7f16c9ec3faf34696cb929247fa05588f82e0c19b57eccaaf0c7a743bc44460c028c68fb7cf69344f1b85a95bea60beba954b08ae0da143d63b72b935684a162627633572a7ae5fd6df2f6f63e8ced7f290392d5bbafc3315d59d14d9dc8d71e01963cb2c0b4d15fcb465a6566ae5908f82e0c19b57eccaaf0c7a743bc44460ddee91aea06a8e6b044325a20423c51da0823b8dd7d53766670c89829ae9016af278348fbd2747002c196682992aceeb9eab9517991469ece5d572af03f1bac62e317665acee075d792ff5f6925a6b1b8f82e0c19b57eccaaf0c7a743bc44460ddee91aea06a8e6b044325a20423c51d395f8bb38d7b81c6939dac503bb6f196ca7bd440c4af164efae964c92068e9009c642d28f035239258ff3b1b723f2263e86a10e1efb2cbd253be21c1e5b78eeea602f7cd5c8463116de30630a7a223fb2c8103ebbceeeeba1073f70952a8366b8f82e0c19b57eccaaf0c7a743bc44460ddee91aea06a8e6b044325a20423c51d4fd8f58cf51855e4d0eb9173923b845080e2fa273e08da1b5d1fe6aab217488a61876ba569c8bfa2531664ba70e9ccf820084bf4392232e2eac3237d201d7d74ba8fb459153d5e9333aa46bb7170ef2a8f82e0c19b57eccaaf0c7a743bc444606960f6b79672e1596e820949c130f77f03a8da05f4692ac5fdaaa3781da5764cd47d7746a9c958ddbbe2dc93e3ee935f4b5a48e3dcea167022c4e1c698ac8a610b6c1da590a01023458c994659b106480461d0273750ed5e7a9d4c2b9953d8cb839b8c7f2a86f2c0d876d21d909fee92b94d418ae8cafb15ad68c2a3c2f9c3a18f82e0c19b57eccaaf0c7a743bc444606960f6b79672e1596e820949c130f77f4acddb005a2e970786ba8767d1ff05158bddf87e544bad0137ccad5186e4fdaf55d3d19883cccfe740b2a2e1a6423c7a8f82e0c19b57eccaaf0c7a743bc44460ddee91aea06a8e6b044325a20423c51d1061c22d35f0e3e6145598ad13ed404a298ad89ecf5216b7b29f92b6d45e166b2f68198fdfe760ff438dd446ca9632627eb8f029c00689c937b1cb08e699d95e8f82e0c19b57eccaaf0c7a743bc44460ca94e869814fa9c31d97dd80749576833686eb11ba82d6dc2750441443044db07d2c5de90aba3aaff1e37996633711f39612f6e854906cc705bb3c3bb9fa914a4f6a700b8f0568e948b726908eeb15238f82e0c19b57eccaaf0c7a743bc44460e94f25cc3f688509428bd741444493b72e7789d4ea697f69e6ea383b186f340b44df0b53ff1594090634de3fee944d74dff8fd9077ab680656d721ad26cb4ac66c9ffc946b0e1051920993cb64743ab81d5066fbaacf8e3b037a703eb638b7db8f82e0c19b57eccaaf0c7a743bc44460849e24f7d7099d8ab7232c1f76ae43194e2f91db365fb31ec6392a67c6f4f1470d8ae99fd156d42f0f94b408e57007b95bfd25287c4faa3073746749833d249af55ccaf176529ede230c87ba244b6bfce01963cb2c0b4d15fcb465a6566ae5908f82e0c19b57eccaaf0c7a743bc444605451d8b670746ce5483b21051dd1e1b83f2381907d9f6a9819700aad8f691e790364e19ae2e52f7aece7948b907c2d6187294b6cf99f5cdcbcc063f2d7e11e4e8f82e0c19b57eccaaf0c7a743bc444605451d8b670746ce5483b21051dd1e1b8a0823b8dd7d53766670c89829ae9016af278348fbd2747002c196682992aceeb9eab9517991469ece5d572af03f1bac62e317665acee075d792ff5f6925a6b1b8f82e0c19b57eccaaf0c7a743bc444605451d8b670746ce5483b21051dd1e1b81061c22d35f0e3e6145598ad13ed404a298ad89ecf5216b7b29f92b6d45e166b2f68198fdfe760ff438dd446ca9632627eb8f029c00689c937b1cb08e699d95e8f82e0c19b57eccaaf0c7a743bc4446059ebb17d4ae2baf84c3de246f1947476ba954b08ae0da143d63b72b935684a162627633572a7ae5fd6df2f6f63e8ced7f290392d5bbafc3315d59d14d9dc8d71e01963cb2c0b4d15fcb465a6566ae5908f82e0c19b57eccaaf0c7a743bc444605451d8b670746ce5483b21051dd1e1b8a0823b8dd7d53766670c89829ae9016af278348fbd2747002c196682992aceeb9eab9517991469ece5d572af03f1bac62e317665acee075d792ff5f6925a6b1b8f82e0c19b57eccaaf0c7a743bc444605451d8b670746ce5483b21051dd1e1b8395f8bb38d7b81c6939dac503bb6f196ca7bd440c4af164efae964c92068e9009c642d28f035239258ff3b1b723f2263e86a10e1efb2cbd253be21c1e5b78eeea602f7cd5c8463116de30630a7a223fb2c8103ebbceeeeba1073f70952a8366b8f82e0c19b57eccaaf0c7a743bc44460181b56f2567256b7c91f25c68463986a4fd8f58cf51855e4d0eb9173923b845080e2fa273e08da1b5d1fe6aab217488a61876ba569c8bfa2531664ba70e9ccf820084bf4392232e2eac3237d201d7d74ba8fb459153d5e9333aa46bb7170ef2a8f82e0c19b57eccaaf0c7a743bc44460008a5d8f93182de3f1ba7a0425a1981803a8da05f4692ac5fdaaa3781da5764cd47d7746a9c958ddbbe2dc93e3ee935f4b5a48e3dcea167022c4e1c698ac8a610b6c1da590a01023458c994659b106480461d0273750ed5e7a9d4c2b9953d8cb839b8c7f2a86f2c0d876d21d909fee920e0d5c234a5c2ed4e1de663a36f3b25f8f82e0c19b57eccaaf0c7a743bc44460008a5d8f93182de3f1ba7a0425a198184acddb005a2e970786ba8767d1ff05158bddf87e544bad0137ccad5186e4fdaf55d3d19883cccfe740b2a2e1a6423c7a8f82e0c19b57eccaaf0c7a743bc44460181b56f2567256b7c91f25c68463986a1061c22d35f0e3e6145598ad13ed404a298ad89ecf5216b7b29f92b6d45e166b2f68198fdfe760ff438dd446ca9632627eb8f029c00689c937b1cb08e699d95e8f82e0c19b57eccaaf0c7a743bc444609503c3f019f2dbaef831c7b8923b8bd53686eb11ba82d6dc2750441443044db07d2c5de90aba3aaff1e37996633711f39612f6e854906cc705bb3c3bb9fa914a4f6a700b8f0568e948b726908eeb15238f82e0c19b57eccaaf0c7a743bc444606587adedc5fe9fd5eaaaeb860857009a2e7789d4ea697f69e6ea383b186f340b44df0b53ff1594090634de3fee944d74dff8fd9077ab680656d721ad26cb4ac66c9ffc946b0e1051920993cb64743ab81d5066fbaacf8e3b037a703eb638b7db8f82e0c19b57eccaaf0c7a743bc444603daf974dbe9d7b25ac0f7f01a863b5b44e2f91db365fb31ec6392a67c6f4f1470d8ae99fd156d42f0f94b408e57007b95bfd25287c4faa3073746749833d249af55ccaf176529ede230c87ba244b6bfce01963cb2c0b4d15fcb465a6566ae590d51d472b11e01228efe2c37a743e3c469949894ef4de08d8f2e803a0cf0c2ce43f2381907d9f6a9819700aad8f691e790364e19ae2e52f7aece7948b907c2d6187294b6cf99f5cdcbcc063f2d7e11e4ed51d472b11e01228efe2c37a743e3c469949894ef4de08d8f2e803a0cf0c2ce4a0823b8dd7d53766670c89829ae9016af278348fbd2747002c196682992aceeb9eab9517991469ece5d572af03f1bac62e317665acee075d792ff5f6925a6b1bd51d472b11e01228efe2c37a743e3c469949894ef4de08d8f2e803a0cf0c2ce4a0823b8dd7d53766670c89829ae9016a133d8365ebb4ff41eba26a6223b72bffda4d736c2266c3d4aa9b1b3a06a4857bb7f16c9ec3faf34696cb929247fa0558d51d472b11e01228efe2c37a743e3c46bf86d6a4b12e518be7d6f84d0fdb598eba954b08ae0da143d63b72b935684a162627633572a7ae5fd6df2f6f63e8ced7f290392d5bbafc3315d59d14d9dc8d71e01963cb2c0b4d15fcb465a6566ae590d51d472b11e01228efe2c37a743e3c469949894ef4de08d8f2e803a0cf0c2ce4a0823b8dd7d53766670c89829ae9016af278348fbd2747002c196682992aceeb9eab9517991469ece5d572af03f1bac62e317665acee075d792ff5f6925a6b1bd51d472b11e01228efe2c37a743e3c469949894ef4de08d8f2e803a0cf0c2ce4419d024550d21b3781e3270617d63b910e110e2129be2b6d277fa82e9e64b37ada4d736c2266c3d4aa9b1b3a06a4857ba750ca623272ac55b225829fcc3227022e317665acee075d792ff5f6925a6b1bd51d472b11e01228efe2c37a743e3c469949894ef4de08d8f2e803a0cf0c2ce44fd8f58cf51855e4d0eb9173923b845080e2fa273e08da1b5d1fe6aab217488a61876ba569c8bfa2531664ba70e9ccf820084bf4392232e2eac3237d201d7d74ba8fb459153d5e9333aa46bb7170ef2ad51d472b11e01228efe2c37a743e3c469bc936f14a2502a82826b026f5b91a9a03a8da05f4692ac5fdaaa3781da5764cd47d7746a9c958ddbbe2dc93e3ee935f4b5a48e3dcea167022c4e1c698ac8a610b6c1da590a01023458c994659b106480461d0273750ed5e7a9d4c2b9953d8cb839b8c7f2a86f2c0d876d21d909fee9275dd8483bd22ba27f3e41a520b8c97a5d51d472b11e01228efe2c37a743e3c469bc936f14a2502a82826b026f5b91a9a4acddb005a2e970786ba8767d1ff05158bddf87e544bad0137ccad5186e4fdaf55d3d19883cccfe740b2a2e1a6423c7ad51d472b11e01228efe2c37a743e3c46af297785a906c47f9d893677e3e82ab8a0823b8dd7d53766670c89829ae9016a4f6bb0f27161b3c31c8e540c79b15523da4d736c2266c3d4aa9b1b3a06a4857bb7f16c9ec3faf34696cb929247fa0558d51d472b11e01228efe2c37a743e3c4627e0ab552dae7d6a382ba0bd03601341cfe857d489a25f5b694f6c6efa875e06e5ddb4bc597ea4fe94d09e4d355991ff97190e2cfa30b7bffdde14ba0c97b54f23a2f30afc22958e9a9468ed5212cf64efe72353bbd996275c2a83d0d7718bddd51d472b11e01228efe2c37a743e3c466d1b80b14debcef70cbbf627b6b5b1692e7789d4ea697f69e6ea383b186f340b44df0b53ff1594090634de3fee944d74dff8fd9077ab680656d721ad26cb4ac66c9ffc946b0e1051920993cb64743ab81d5066fbaacf8e3b037a703eb638b7dbd51d472b11e01228efe2c37a743e3c461c82aaa22e4249cb027cd30b4cfe5dda4e2f91db365fb31ec6392a67c6f4f1470d8ae99fd156d42f0f94b408e57007b95bfd25287c4faa3073746749833d249af55ccaf176529ede230c87ba244b6bfce01963cb2c0b4d15fcb465a6566ae5902023-06-10 17:45:29 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:45:30 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 17:45:31 - Output - Create - El archivo ARCHIVOS/carpeta 2/prueba 2.txt ya existe.
+2023-06-10 17:45:32 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 17:45:33 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 17:45:33 - Output - Copy - El archivo prueba1.txt ya existe en ARCHIVOS/carpeta 2/
+2023-06-10 17:45:34 - Output - Copy - El archivo  ya existe en ARCHIVOS/carpeta1/
+2023-06-10 17:45:34 - Output - Transfer - Error: Modo no soportado
+2023-06-10 17:45:43 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 17:45:44 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 17:45:45 - Output - Rename - El archivo ARCHIVOS/carpeta 2/prueba 2.txt no existe.
+2023-06-10 17:45:46 - Output - Modify - El archivo ARCHIVOS/carpeta 2/b1.txt no existe.
+2023-06-10 17:45:46 - Output - Add - El archivo ARCHIVOS/carpeta 2/b1.txt no existe.
+2023-06-10 17:47:26 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:47:27 - Output - Create - El archivo ARCHIVOS/carpeta1/prueba1.txt ya existe.
+2023-06-10 17:47:27 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 2.txt subido correctamente.
+2023-06-10 17:47:28 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 17:47:29 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 17:47:31 - Output - Copy - Archivo ARCHIVOS/carpeta1/prueba1.txt copiado correctamente.
+2023-06-10 17:47:31 - Output - Copy - El archivo prueba 2.txt ya existe en ARCHIVOS/carpeta1/
+2023-06-10 17:47:31 - Output - Transfer - Error: Modo no soportado
+2023-06-10 17:47:35 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 17:47:36 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 17:47:37 - Output - Rename - El archivo ARCHIVOS/carpeta 2/prueba 2.txt no existe.
+2023-06-10 17:47:38 - Output - Modify - El archivo ARCHIVOS/carpeta 2/b1.txt no existe.
+2023-06-10 17:47:38 - Output - Add - El archivo ARCHIVOS/carpeta 2/b1.txt no existe.
+2023-06-10 17:48:06 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 17:50:59 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 17:51:05 - Input - Exec - Ejecutar hola.mia
+2023-06-10 17:51:05 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:51:06 - Output - Create - El archivo ARCHIVOS/carpeta1/prueba1.txt ya existe.
+2023-06-10 17:51:07 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 2.txt subido correctamente.
+2023-06-10 17:51:08 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 17:51:08 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 17:51:09 - Output - Copy - Archivo ARCHIVOS/carpeta1/prueba1.txt copiado correctamente.
+2023-06-10 17:51:10 - Output - Copy - El archivo prueba 2.txt ya existe en ARCHIVOS/carpeta1/
+2023-06-10 17:51:10 - Output - Transfer - Error: Modo no soportado
+2023-06-10 17:51:13 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 17:51:14 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 17:51:15 - Output - Rename - El archivo ARCHIVOS/carpeta 2/prueba 2.txt no existe.
+2023-06-10 17:51:15 - Output - Modify - El archivo ARCHIVOS/carpeta 2/b1.txt no existe.
+2023-06-10 17:51:16 - Output - Add - El archivo ARCHIVOS/carpeta 2/b1.txt no existe.
+2023-06-10 17:51:26 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 17:53:07 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 17:53:15 - Input - Exec - Ejecutar hola.mia
+2023-06-10 17:53:15 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:53:16 - Output - Create - El archivo ARCHIVOS/carpeta1/prueba1.txt ya existe.
+2023-06-10 17:53:16 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 2.txt subido correctamente.
+2023-06-10 17:53:17 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 17:53:18 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 17:53:19 - Output - Copy - Archivo ARCHIVOS/carpeta1/prueba1.txt copiado correctamente.
+2023-06-10 17:53:20 - Output - Copy - El archivo prueba 2.txt ya existe en ARCHIVOS/carpeta1/
+2023-06-10 17:53:20 - Output - Transfer - Error: Modo no soportado
+2023-06-10 17:53:24 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 17:53:24 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 17:53:25 - Output - Rename - El archivo ARCHIVOS/carpeta 2/prueba 2.txt no existe.
+2023-06-10 17:53:25 - Output - Modify - El archivo ARCHIVOS/carpeta 2/b1.txt no existe.
+2023-06-10 17:53:26 - Output - Add - El archivo ARCHIVOS/carpeta 2/b1.txt no existe.
+2023-06-10 17:55:23 - Input - Exec - Ejecutar hola.mia
+2023-06-10 17:55:23 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:55:23 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:55:23 - Output - Create - Archivo prueba 2.txt creado exitosamente
+2023-06-10 17:55:23 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.
+2023-06-10 17:55:23 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 17:55:23 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicación de destino.
+2023-06-10 17:55:23 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.
+2023-06-10 17:55:23 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicación de destino. Se ha copiado como 'prueba1(2).txt'.
+2023-06-10 17:55:23 - Output - Transfer - Error: Modo no soportado
+2023-06-10 17:55:23 - Output - Create - Error: La carpeta y el archivo ya existen
+2023-06-10 17:55:23 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.
+2023-06-10 17:55:23 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.
+2023-06-10 17:55:23 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.
+2023-06-10 17:57:35 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 17:58:51 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 17:59:01 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 17:59:01 - Output - Configure - Se configuro el programa con los siguientes datos: Tipo: cloud, Encrypt Log: false, Encrypt Read: false, Llave: 
+2023-06-10 17:59:53 - Input - Modify - Modificar el contenido de /carpeta 2/prueba 2.txt a amigossss
+2023-06-10 17:59:54 - Output - Modify - El archivo ARCHIVOS/carpeta 2/prueba 2.txt no existe.
+2023-06-10 18:00:09 - Input - Add - Agregar dfsdfsdf a /carpeta 2/b1.txt
+2023-06-10 18:00:09 - Output - Add - El archivo ARCHIVOS/carpeta 2/b1.txt no existe.
+2023-06-10 18:00:55 - Input - Create - Crear hola.txt en la ruta /carpeta5/
+2023-06-10 18:00:56 - Output - Create - Archivo ARCHIVOS/carpeta5/hola subido correctamente.
+2023-06-10 18:01:10 - Input - Create - Crear hola.txt.txt en la ruta /carpeta5/
+2023-06-10 18:01:11 - Output - Create - Archivo ARCHIVOS/carpeta5/hola.txt subido correctamente.
+2023-06-10 18:01:33 - Input - Add - Agregar dsfsdfsdf a /carpeta5/hola.txt
+2023-06-10 18:01:34 - Output - Add - Contenido adicional agregado al archivo ARCHIVOS/carpeta5/hola.txt correctamente.
+2023-06-10 18:03:50 - Input - Exec - Ejecutar hola.mia
+2023-06-10 18:03:50 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 18:03:50 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 18:03:50 - Output - Create - Error: La carpeta y el archivo ya existen
+2023-06-10 18:03:50 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.
+2023-06-10 18:03:50 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-10 18:03:50 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicación de destino.
+2023-06-10 18:03:50 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.
+2023-06-10 18:03:50 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicación de destino. Se ha copiado como 'prueba1(3).txt'.
+2023-06-10 18:03:50 - Output - Transfer - Error: Modo no soportado
+2023-06-10 18:03:50 - Output - Create - Error: La carpeta y el archivo ya existen
+2023-06-10 18:03:51 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.
+2023-06-10 18:03:51 - Output - Modify - Contenido del archivo 'carpeta1/b1.txt' modificado exitosamente.
+2023-06-10 18:03:51 - Output - Add - Contenido agregado al archivo 'carpeta1/b1.txt' exitosamente.
+2023-06-10 18:04:13 - Input - Exec - Ejecutar hola.mia
+2023-06-10 18:04:13 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 18:04:14 - Output - Create - El archivo ARCHIVOS/carpeta1/prueba1.txt ya existe.
+2023-06-10 18:04:15 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 2.txt subido correctamente.
+2023-06-10 18:04:16 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 18:04:17 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 18:04:18 - Output - Copy - Archivo ARCHIVOS/carpeta1/prueba1.txt copiado correctamente.
+2023-06-10 18:04:19 - Output - Copy - El archivo prueba 2.txt ya existe en ARCHIVOS/carpeta1/
+2023-06-10 18:04:19 - Output - Transfer - Error: Modo no soportado
+2023-06-10 18:04:23 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 18:04:24 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 18:04:25 - Output - Rename - El archivo b1.txt ya existe.
+2023-06-10 18:04:26 - Output - Modify - Contenido del archivo ARCHIVOS/carpeta1/b1.txt modificado correctamente.
+2023-06-10 18:04:27 - Output - Add - Contenido adicional agregado al archivo ARCHIVOS/carpeta1/b1.txt correctamente.
+2023-06-10 18:06:21 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 18:08:57 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 18:09:08 - Input - Exec - Ejecutar hola.mia
+2023-06-10 18:09:08 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 18:09:09 - Output - Create - El archivo ARCHIVOS/carpeta1/prueba1.txt ya existe.
+2023-06-10 18:09:09 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 2.txt subido correctamente.
+2023-06-10 18:09:10 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 18:09:11 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 18:09:12 - Output - Copy - Archivo ARCHIVOS/carpeta1/prueba1.txt copiado correctamente.
+2023-06-10 18:09:13 - Output - Copy - El archivo prueba 2.txt ya existe en ARCHIVOS/carpeta1/
+2023-06-10 18:09:13 - Output - Transfer - Error: Modo no soportado
+2023-06-10 18:09:16 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 18:09:17 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 18:09:18 - Output - Rename - El archivo b1.txt ya existe.
+2023-06-10 18:09:18 - Output - Modify - Contenido del archivo ARCHIVOS/carpeta1/b1.txt modificado correctamente.
+2023-06-10 18:09:19 - Output - Add - Contenido adicional agregado al archivo ARCHIVOS/carpeta1/b1.txt correctamente.
+2023-06-10 18:10:04 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 18:10:24 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 18:10:32 - Input - Exec - Ejecutar hola.mia
+2023-06-10 18:10:32 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 18:10:36 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 18:12:37 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 18:12:43 - Input - Exec - Ejecutar hola.mia
+2023-06-10 18:12:43 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 18:12:44 - Output - Create - El archivo ARCHIVOS/carpeta1/prueba1.txt ya existe.
+2023-06-10 18:12:45 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 2.txt subido correctamente.
+2023-06-10 18:12:46 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 18:12:47 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 18:12:48 - Output - Copy - Archivo ARCHIVOS/carpeta1/prueba1.txt copiado correctamente.
+2023-06-10 18:12:49 - Output - Copy - El archivo prueba 2.txt ya existe en ARCHIVOS/carpeta1/
+2023-06-10 18:12:49 - Output - Transfer - Error: Modo no soportado
+2023-06-10 18:12:53 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 18:12:54 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 18:12:55 - Output - Rename - El archivo b1.txt ya existe.
+2023-06-10 18:12:56 - Output - Modify - Contenido del archivo ARCHIVOS/carpeta1/b1.txt modificado correctamente.
+2023-06-10 18:12:57 - Output - Add - Contenido adicional agregado al archivo ARCHIVOS/carpeta1/b1.txt correctamente.
+2023-06-10 18:14:32 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 18:14:51 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 18:15:00 - Input - Exec - Ejecutar hola.mia
+2023-06-10 18:15:00 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 18:15:00 - Output - Create - El archivo ARCHIVOS/carpeta1/prueba1.txt ya existe.
+2023-06-10 18:15:01 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 2.txt subido correctamente.
+2023-06-10 18:15:02 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 18:15:03 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 18:15:04 - Output - Copy - Archivo ARCHIVOS/carpeta1/prueba1.txt copiado correctamente.
+2023-06-10 18:15:04 - Output - Copy - El archivo prueba 2.txt ya existe en ARCHIVOS/carpeta1/
+2023-06-10 18:15:04 - Output - Transfer - Error: Modo no soportado
+2023-06-10 18:15:08 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 18:15:09 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 18:15:09 - Output - Rename - El archivo b1.txt ya existe.
+2023-06-10 18:15:10 - Output - Modify - Contenido del archivo ARCHIVOS/carpeta1/b1.txt modificado correctamente.
+2023-06-10 18:15:11 - Output - Add - Contenido adicional agregado al archivo ARCHIVOS/carpeta1/b1.txt correctamente.
+2023-06-10 18:15:49 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 18:16:25 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 18:16:33 - Input - Exec - Ejecutar hola.mia
+2023-06-10 18:16:33 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 18:16:33 - Output - Create - El archivo ARCHIVOS/carpeta1/prueba1.txt ya existe.
+2023-06-10 18:16:34 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 2.txt subido correctamente.
+2023-06-10 18:16:35 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 18:16:36 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 18:16:37 - Output - Copy - Archivo ARCHIVOS/carpeta1/prueba1.txt copiado correctamente.
+2023-06-10 18:16:37 - Output - Copy - El archivo prueba 2.txt ya existe en ARCHIVOS/carpeta1/
+2023-06-10 18:16:37 - Output - Transfer - Error: Modo no soportado
+2023-06-10 18:16:41 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 18:16:42 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 18:16:43 - Output - Rename - El archivo b1.txt ya existe.
+2023-06-10 18:16:43 - Output - Modify - Contenido del archivo ARCHIVOS/carpeta1/b1.txt modificado correctamente.
+2023-06-10 18:16:45 - Output - Add - Contenido adicional agregado al archivo ARCHIVOS/carpeta1/b1.txt correctamente.
+2023-06-10 18:16:53 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-10 18:18:19 - Input - Sesion - Inicio de sesion de Usuario1
+2023-06-10 18:18:27 - Input - Exec - Ejecutar hola.mia
+2023-06-10 18:18:27 - Output - Configure - Archivo configurado exitosamente
+2023-06-10 18:18:28 - Output - Create - El archivo ARCHIVOS/carpeta1/prueba1.txt ya existe.
+2023-06-10 18:18:29 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 2.txt subido correctamente.
+2023-06-10 18:18:30 - Output - Delete - Archivo ARCHIVOS/carpeta1/prueba1.txt eliminado.
+2023-06-10 18:18:30 - Output - Create - Archivo ARCHIVOS/carpeta1/prueba1.txt subido correctamente.
+2023-06-10 18:18:31 - Output - Copy - Archivo ARCHIVOS/carpeta1/prueba1.txt copiado correctamente.
+2023-06-10 18:18:32 - Output - Copy - El archivo prueba 2.txt ya existe en ARCHIVOS/carpeta1/
+2023-06-10 18:18:32 - Output - Transfer - Error: Modo no soportado
+2023-06-10 18:18:36 - Output - Transfer - Archivos de ARCHIVOS/carpeta 2/ movidos correctamente.
+2023-06-10 18:18:37 - Output - Create - Archivo ARCHIVOS/carpeta 2/prueba 3.txt subido correctamente.
+2023-06-10 18:18:37 - Output - Rename - El archivo b1.txt ya existe.
+2023-06-10 18:18:38 - Output - Modify - Contenido del archivo ARCHIVOS/carpeta1/b1.txt modificado correctamente.
+2023-06-10 18:18:39 - Output - Add - Contenido adicional agregado al archivo ARCHIVOS/carpeta1/b1.txt correctamente.
+2023-06-10 18:18:47 - Output - Backup - Backup de cloud a local completado.

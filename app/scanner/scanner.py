@@ -244,22 +244,20 @@ def scan_command_line_add(command_line):
 
 # Scan exec command line
 def scan_command_line_exec(command_line):
-  # Define regular expressions for matching different components
-  pattern_exec = r'exec\s'
-  pattern_path = r'-path->(?:"([^"]*)"|/([^/]+/?)+)(\s|$)'
+    pattern_exec = r'exec\s'
+    pattern_path = r'-path->(?:"([^"]*)"|/?([^/]+/?)+)(\s|$)'
 
-  # Match the components using regular expressions
-  match_exec = re.search(pattern_exec, command_line,re.I)
-  match_path = re.search(pattern_path, command_line,re.I)
+    match_exec = re.search(pattern_exec, command_line, re.I)
+    match_path = re.search(pattern_path, command_line, re.I)
 
-  # Extract the values from the matches
-  exec = match_exec.group(0) if match_exec else None
-  path = None
-  try:
-    if match_path and match_path.group() is not None:
-      path = match_path.group().split("->")[1].replace('"', '').replace(' -mode','')
-  except AttributeError:
-    path = None
+    execu = match_exec.group(0).lower() if match_exec else None
 
-  # Return the extracted values
-  return exec.lower(), path.rstrip(" ").replace("\n","")
+    try:
+        if match_path and match_path.group() is not None:
+            path = match_path.group().split("->")[1].replace('"', '').replace(' -mode','')
+        else:
+            path = None
+    except AttributeError:
+        path = None
+
+    return execu, path.rstrip(" ").replace("\n","")

@@ -63,11 +63,12 @@ def create(name, body, path):
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     elif tipo == "cloud":
+        procesadosCloud(1)
         inicio = time.time()
         tmp = create_cloud(body, path, name)
         tiempo_transcurrido = round((time.time() - inicio) * 1000)
         tiempoCloud(tiempo_transcurrido)
-        procesadosCloud(1)
+        
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
        
     else:
@@ -90,11 +91,12 @@ def delete(path, name):
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     elif tipo == "cloud":
+        procesadosCloud(1)
         inicio = time.time()
         tmp = delete_cloud(path, name)
         tiempo_transcurrido = round((time.time() - inicio) * 1000)
         tiempoCloud(tiempo_transcurrido)
-        procesadosCloud(1)
+        
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     else:
@@ -114,11 +116,12 @@ def copy(from_path, to):
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
    
     elif tipo == "cloud":
+        procesadosCloud(1)
         inicio = time.time()
         tmp = copy_cloud(from_path, to)
         tiempo_transcurrido = round((time.time() - inicio) * 1000)
         tiempoCloud(tiempo_transcurrido)
-        procesadosCloud(1)
+       
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     else:
@@ -138,12 +141,13 @@ def transfer(from_path, to, mode):
             procesadosLocales(1)
             bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
         else:
+            procesadosCloud(1)
             inicio = time.time()
             tmp = "Error: Modo no soportado"
             bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
             tiempo_transcurrido = round((time.time() - inicio) * 1000)
             tiempoLocal(tiempo_transcurrido)
-            procesadosCloud(1)
+            
 
     elif tipo == "cloud":
 
@@ -157,11 +161,12 @@ def transfer(from_path, to, mode):
             procesadosCloud(1)
 
         else:
+            procesadosCloud(1)
             inicio = time.time()
             tmp = transfer_cloud(from_path, to)
             tiempo_transcurrido = round((time.time() - inicio) * 1000)
             tiempoCloud(tiempo_transcurrido)
-            procesadosCloud(1)
+            
             bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     else:
@@ -181,11 +186,12 @@ def rename(path, name):
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     elif tipo == "cloud":
+        procesadosCloud(1)
         inicio = time.time()
         tmp = rename_cloud(path, name)
         tiempo_transcurrido = round((time.time() - inicio) * 1000)
         tiempoCloud(tiempo_transcurrido)
-        procesadosCloud(1)
+        
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
       
     else:
@@ -205,11 +211,12 @@ def modify(path, body):
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     elif tipo == "cloud":
+        procesadosCloud(1)
         inicio = time.time()
         tmp = modify_cloud(path, body)
         tiempo_transcurrido = round((time.time() - inicio) * 1000)
         tiempoCloud(tiempo_transcurrido)
-        procesadosCloud(1)
+        
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     else:
@@ -229,11 +236,11 @@ def add(path, body):
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     elif tipo == "cloud":
+        procesadosCloud(1)
         inicio = time.time()
         tmp = add_cloud(path, body)
         tiempo_transcurrido = round((time.time() - inicio) * 1000)
         tiempoCloud(tiempo_transcurrido)
-        procesadosCloud(1)
         bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
     
     else:

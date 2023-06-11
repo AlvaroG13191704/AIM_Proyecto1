@@ -1,3 +1,0 @@
-This is the content of the text file.
-  It can have multiple lines and contain any text data.
-  

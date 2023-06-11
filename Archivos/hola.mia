@@ -1,4 +1,4 @@
-configure -type->local -encrypt_log->false -encrypt_read->false
+configure -type->cloud -encrypt_log->false -encrypt_read->false
   create -name->prueba1.txt -path->/carpeta1/ -body->"Este es el contenido del archivo 1"
   create -namE->"prueba 2.txt" -path->/"carpeta 2"/ -boDy->"Este es el contenido del archivo 2"
   delete -path->/carpeta1/ -name->prueba1.txt
@@ -8,7 +8,8 @@ configure -type->local -encrypt_log->false -encrypt_read->false
   transfer -from->/carpeta1/prueba1.txt -to->/"carpeta 2"/ -mode->"local"
   transfer -from->/"carpeta 2"/ -to->/carpeta1/ -mode->"cloud"
   create -namE->"prueba 3.txt" -path->/"carpeta 2"/ -boDy->"Este es el contenido del archivo 2"
-  renaMe -paTh->/carpeta 2/prueba 2.txt -name->b1.txt
-  modify -path->/carpeta 2/b1.txt -body->"este es el nuevo contenido del archivo"
-  add -path->/carpeta 2/b1.txt -body->"este es el nuevo contenido del archivo"
+  renaMe -paTh->/carpeta1/prueba 2.txt -name->b1.txt
+  modify -path->/carpeta1/b1.txt -body->"este es el nuevo contenido del archivo"
+  add -path->/carpeta1/b1.txt -body->"este es el nuevo contenido del archivo"
   backup
+

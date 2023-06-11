@@ -2,20 +2,80 @@
     "carpeta 2": {
         "_files": [
             {
-                "file_name": "alvaro1.txt",
-                "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
-            },
-            {
-                "file_name": "exampleSub1.txt",
-                "file_contents": "este es el nuevo contenido del archivoeste es el nuevo contenido del archivoeste es el nuevo contenido del archivo"
+                "file_name": "prueba 3.txt",
+                "file_contents": "Este es el contenido del archivo 2"
             }
         ]
     },
     "carpeta1": {
         "_files": [
             {
+                "file_name": "alvaro1(1).txt",
+                "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+            },
+            {
+                "file_name": "alvaro1.txt",
+                "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+            },
+            {
                 "file_name": "archivo.txt",
                 "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+            },
+            {
+                "file_name": "b1(1).txt",
+                "file_contents": "este es el nuevo contenido del archivoeste es el nuevo contenido del archivo"
+            },
+            {
+                "file_name": "b1.txt",
+                "file_contents": "este es el nuevo contenido del archivoeste es el nuevo contenido del archivo"
+            },
+            {
+                "file_name": "exampleSub1(1).txt",
+                "file_contents": "este es el nuevo contenido del archivoeste es el nuevo contenido del archivoeste es el nuevo contenido del archivo"
+            },
+            {
+                "file_name": "exampleSub1.txt",
+                "file_contents": "este es el nuevo contenido del archivoeste es el nuevo contenido del archivoeste es el nuevo contenido del archivo"
+            },
+            {
+                "file_name": "prueba 2(1).txt",
+                "file_contents": "Este es el contenido del archivo 2"
+            },
+            {
+                "file_name": "prueba 2.txt",
+                "file_contents": "Este es el contenido del archivo 2"
+            },
+            {
+                "file_name": "prueba 3(1).txt",
+                "file_contents": "Este es el contenido del archivo 2"
+            },
+            {
+                "file_name": "prueba 3.txt",
+                "file_contents": "Este es el contenido del archivo 2"
+            },
+            {
+                "file_name": "prueba1(1)(1).txt",
+                "file_contents": "Este es el contenido del archivo 1"
+            },
+            {
+                "file_name": "prueba1(1).txt",
+                "file_contents": "Este es el contenido del archivo 1"
+            },
+            {
+                "file_name": "prueba1(2)(1).txt",
+                "file_contents": "Este es el contenido del archivo 1"
+            },
+            {
+                "file_name": "prueba1(2).txt",
+                "file_contents": "Este es el contenido del archivo 1"
+            },
+            {
+                "file_name": "prueba1(3).txt",
+                "file_contents": "Este es el contenido del archivo 1"
+            },
+            {
+                "file_name": "prueba1.txt",
+                "file_contents": "Este es el contenido del archivo 1"
             }
         ],
         "sub": {
@@ -36,8 +96,20 @@
             {
                 "file_name": "example5.txt",
                 "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+            },
+            {
+                "file_name": "hola.txt",
+                "file_contents": "dfsdfsddsfsdfsdf"
             }
         ],
+        "hola": {
+            "_files": [
+                {
+                    "file_name": "hola.txt",
+                    "file_contents": "dfsdfsddsfsdfsdf"
+                }
+            ]
+        },
         "subcarpeta5": {
             "_files": [
                 {
@@ -49,8 +121,42 @@
     },
     "_files": [
         {
+            "file_name": "hola.txt",
+            "file_contents": "configure -type->local -encrypt_log->false -encrypt_read->false\n  create -name->prueba1.txt -path->/carpeta1/ -body->\"Este es el contenido del archivo 1\"\n  create -namE->\"prueba 2.txt\" -path->/\"carpeta 2\"/ -boDy->\"Este es el contenido del archivo 2\"\n  delete -path->/carpeta1/ -name->prueba1.txt\n  create -name->prueba1.txt -path->/carpeta1/ -body->\"Este es el contenido del archivo 1\"\n  Copy -from->/carpeta1/prueba1.txt -to->/\"carpeta 2\"/\n  Copy -from->/\"carpeta 2\"/ -to->/carpeta1/\n  transfer -from->/carpeta1/prueba1.txt -to->/\"carpeta 2\"/ -mode->\"local\"\n  transfer -from->/\"carpeta 2\"/ -to->/carpeta1/ -mode->\"cloud\"\n  create -namE->\"prueba 3.txt\" -path->/\"carpeta 2\"/ -boDy->\"Este es el contenido del archivo 2\"\n  renaMe -paTh->/carpeta 2/prueba 2.txt -name->b1.txt\n  modify -path->/carpeta 2/b1.txt -body->\"este es el nuevo contenido del archivo\"\n  add -path->/carpeta 2/b1.txt -body->\"este es el nuevo contenido del archivo\"\n  backup\n"
+        },
+        {
             "file_name": "root.txt",
             "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
         }
-    ]
+    ],
+    "log": {
+        "2023": {
+            "6": {
+                "10": {
+                    "_files": [
+                        {
+                            "file_name": "log_archivos.txt",
+                            "file_contents": "2023-06-10 16:44:54 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 16:45:16 - Input - Exec - Ejecutar hola.mia\n2023-06-10 16:45:16 - Output - Configure - Archivo configurado exitosamente\n2023-06-10 16:45:16 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Create - Archivo prueba 2.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-10 16:45:16 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Copy - Archivo 'prueba1.txt' copiado exitosamente a 'carpeta 2'.\n2023-06-10 16:45:16 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-10 16:45:16 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(1).txt'.\n2023-06-10 16:45:16 - Output - Transfer - Error: Modo no soportado\n2023-06-10 16:45:16 - Output - Create - Archivo prueba 3.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Rename - El archivo 'carpeta 2/prueba 2.txt' ha sido renombrado a b1.txt.\n2023-06-10 16:45:16 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-10 16:45:16 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-10 16:45:26 - Output - Backup - Backup de local a cloud completado.\n2023-06-10 16:47:51 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 16:50:12 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-10 17:24:49 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 17:34:10 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-10 17:35:40 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 17:36:08 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-10 17:36:42 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 17:36:55 - Output - Configure - Archivo configurado exitosamente\n2023-06-10 17:36:56 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 17:36:56 - Output - Create - Archivo prueba 2.txt creado exitosamente\n2023-06-10 17:36:56 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-10 17:36:56 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 17:36:56 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-10 17:36:56 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-10 17:36:56 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(2).txt'.\n2023-06-10 17:36:56 - Output - Transfer - Error: Modo no soportado\n2023-06-10 17:36:56 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-10 17:36:56 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-10 17:36:56 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-10 17:36:56 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-10 17:37:24 - Output - Backup - Backup de local a cloud completado.\n2023-06-10 17:38:52 - Output - Configure - Archivo configurado exitosamente\n2023-06-10 17:38:52 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 17:38:52 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-10 17:38:52 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-10 17:38:52 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 17:38:52 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-10 17:38:52 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-10 17:38:52 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(3).txt'.\n2023-06-10 17:38:52 - Output - Transfer - Error: Modo no soportado\n2023-06-10 17:38:52 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-10 17:38:52 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-10 17:38:52 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-10 17:38:52 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n"
+                        }
+                    ]
+                },
+                "9": {
+                    "_files": [
+                        {
+                            "file_name": "log_archivos.txt",
+                            "file_contents": "2023-06-09 17:20:48 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-09 17:23:39 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-09 17:23:59 - Input - Exec - Ejecutar hola.mia\n2023-06-09 17:23:59 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 17:23:59 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 17:23:59 - Output - Create - Archivo prueba 2.txt creado exitosamente\n2023-06-09 17:23:59 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 17:23:59 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 17:23:59 - Output - Copy - Archivo 'prueba1.txt' copiado exitosamente a 'carpeta 2'.\n2023-06-09 17:23:59 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 17:23:59 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(1).txt'.\n2023-06-09 17:23:59 - Output - Create - Archivo prueba 3.txt creado exitosamente\n2023-06-09 17:23:59 - Output - Rename - El archivo 'carpeta 2/prueba 2.txt' ha sido renombrado a b1.txt.\n2023-06-09 17:23:59 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 17:23:59 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 17:24:42 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-09 17:25:09 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-09 17:25:17 - Input - Exec - Ejecutar hola.mia\n2023-06-09 17:25:17 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 17:25:18 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 17:25:18 - Output - Create - Archivo prueba 2.txt creado exitosamente\n2023-06-09 17:25:18 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 17:25:18 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 17:25:18 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-09 17:25:18 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 17:25:18 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(2).txt'.\n2023-06-09 17:25:18 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 17:25:18 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-09 17:25:18 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 17:25:18 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 17:25:28 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-09 19:26:39 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-09 19:26:50 - Input - Exec - Ejecutar hola.mia\n2023-06-09 19:26:50 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 19:26:50 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:26:50 - Output - Create - Archivo prueba 2.txt creado exitosamente\n2023-06-09 19:26:50 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 19:26:50 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:26:50 - Output - Copy - Archivo 'prueba1.txt' copiado exitosamente a 'carpeta 2'.\n2023-06-09 19:26:50 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 19:26:50 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(1).txt'.\n2023-06-09 19:26:50 - Output - Create - Archivo prueba 3.txt creado exitosamente\n2023-06-09 19:26:50 - Output - Rename - El archivo 'carpeta 2/prueba 2.txt' ha sido renombrado a b1.txt.\n2023-06-09 19:26:50 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 19:26:50 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 19:27:06 - Input - Exec - Ejecutar hola.mia\n2023-06-09 19:27:06 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 19:27:06 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:27:06 - Output - Create - Archivo prueba 2.txt creado exitosamente\n2023-06-09 19:27:06 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 19:27:06 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:27:06 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-09 19:27:06 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 19:27:06 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(2).txt'.\n2023-06-09 19:27:06 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:27:06 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-09 19:27:06 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 19:27:06 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 19:27:16 - Input - Exec - Ejecutar hola.mia\n2023-06-09 19:27:16 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 19:27:16 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:27:16 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:27:16 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 19:27:16 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:27:16 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-09 19:27:16 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 19:27:16 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(3).txt'.\n2023-06-09 19:27:16 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:27:16 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-09 19:27:16 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 19:27:16 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 19:27:56 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-09 19:46:48 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-09 19:46:57 - Input - Exec - Ejecutar hola.mia\n2023-06-09 19:46:58 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 19:46:58 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:46:58 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:46:58 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 19:46:58 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:46:58 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-09 19:46:58 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 19:46:58 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(4).txt'.\n2023-06-09 19:46:58 - Output - Transfer - Error: Modo no soportado\n2023-06-09 19:46:58 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:46:58 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-09 19:46:58 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 19:46:58 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 19:47:09 - Input - Exec - Ejecutar hola.mia\n2023-06-09 19:47:09 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 19:47:09 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:47:09 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:47:09 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 19:47:09 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:47:09 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-09 19:47:09 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 19:47:09 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(5).txt'.\n2023-06-09 19:47:09 - Output - Transfer - Error: Modo no soportado\n2023-06-09 19:47:09 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:47:09 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-09 19:47:09 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 19:47:09 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 19:47:24 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-09 19:49:12 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-09 19:49:20 - Input - Exec - Ejecutar hola.mia\n2023-06-09 19:49:20 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 19:49:20 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:49:20 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:49:20 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 19:49:20 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:49:20 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-09 19:49:20 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 19:49:20 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(6).txt'.\n2023-06-09 19:49:20 - Output - Transfer - Error: Modo no soportado\n2023-06-09 19:49:20 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:49:20 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-09 19:49:20 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 19:49:20 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 19:49:27 - Input - Exec - Ejecutar hola.mia\n2023-06-09 19:49:27 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 19:49:27 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:49:27 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:49:27 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 19:49:27 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:49:27 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-09 19:49:27 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 19:49:27 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(7).txt'.\n2023-06-09 19:49:27 - Output - Transfer - Error: Modo no soportado\n2023-06-09 19:49:27 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:49:27 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-09 19:49:27 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 19:49:27 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 19:49:32 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-09 19:53:15 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-09 19:53:23 - Input - Exec - Ejecutar hola.mia\n2023-06-09 19:53:23 - Output - Configure - Archivo configurado exitosamente\n2023-06-09 19:53:23 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:53:23 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:53:23 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-09 19:53:23 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-09 19:53:23 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-09 19:53:23 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-09 19:53:23 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(8).txt'.\n2023-06-09 19:53:23 - Output - Transfer - Error: Modo no soportado\n2023-06-09 19:53:23 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-09 19:53:23 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-09 19:53:23 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-09 19:53:23 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-09 19:56:51 - Output - Sesion - Se cerro sesion Usuario1\n"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "root": {
+        "_files": [
+            {
+                "file_name": "root.txt",
+                "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
+            }
+        ]
+    }
 }

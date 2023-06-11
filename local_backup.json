@@ -14,11 +14,23 @@
                 "file_contents": "este es el nuevo contenido del archivoeste es el nuevo contenido del archivoeste es el nuevo contenido del archivo"
             },
             {
+                "file_name": "prueba 2",
+                "file_contents": "Este es el contenido del archivo 2"
+            },
+            {
                 "file_name": "prueba 3",
                 "file_contents": "Este es el contenido del archivo 2"
             },
             {
                 "file_name": "prueba1(1)",
+                "file_contents": "Este es el contenido del archivo 1"
+            },
+            {
+                "file_name": "prueba1(2)",
+                "file_contents": "Este es el contenido del archivo 1"
+            },
+            {
+                "file_name": "prueba1(3)",
                 "file_contents": "Este es el contenido del archivo 1"
             },
             {
@@ -38,12 +50,28 @@
                 "file_contents": "This is the content of the text file.\n  It can have multiple lines and contain any text data.\n  "
             },
             {
+                "file_name": "b1",
+                "file_contents": "este es el nuevo contenido del archivoeste es el nuevo contenido del archivo"
+            },
+            {
                 "file_name": "exampleSub1",
                 "file_contents": "este es el nuevo contenido del archivoeste es el nuevo contenido del archivoeste es el nuevo contenido del archivo"
             },
             {
                 "file_name": "prueba 2",
                 "file_contents": "Este es el contenido del archivo 2"
+            },
+            {
+                "file_name": "prueba 3",
+                "file_contents": "Este es el contenido del archivo 2"
+            },
+            {
+                "file_name": "prueba1(1)",
+                "file_contents": "Este es el contenido del archivo 1"
+            },
+            {
+                "file_name": "prueba1(2)",
+                "file_contents": "Este es el contenido del archivo 1"
             }
         ],
         "sub": {
@@ -92,7 +120,7 @@
                     "_files": [
                         {
                             "file_name": "log_archivos",
-                            "file_contents": "2023-06-10 16:44:54 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 16:45:16 - Input - Exec - Ejecutar hola.mia\n2023-06-10 16:45:16 - Output - Configure - Archivo configurado exitosamente\n2023-06-10 16:45:16 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Create - Archivo prueba 2.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-10 16:45:16 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Copy - Archivo 'prueba1.txt' copiado exitosamente a 'carpeta 2'.\n2023-06-10 16:45:16 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-10 16:45:16 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(1).txt'.\n2023-06-10 16:45:16 - Output - Transfer - Error: Modo no soportado\n2023-06-10 16:45:16 - Output - Create - Archivo prueba 3.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Rename - El archivo 'carpeta 2/prueba 2.txt' ha sido renombrado a b1.txt.\n2023-06-10 16:45:16 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-10 16:45:16 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n"
+                            "file_contents": "2023-06-10 16:44:54 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 16:45:16 - Input - Exec - Ejecutar hola.mia\n2023-06-10 16:45:16 - Output - Configure - Archivo configurado exitosamente\n2023-06-10 16:45:16 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Create - Archivo prueba 2.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-10 16:45:16 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Copy - Archivo 'prueba1.txt' copiado exitosamente a 'carpeta 2'.\n2023-06-10 16:45:16 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-10 16:45:16 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(1).txt'.\n2023-06-10 16:45:16 - Output - Transfer - Error: Modo no soportado\n2023-06-10 16:45:16 - Output - Create - Archivo prueba 3.txt creado exitosamente\n2023-06-10 16:45:16 - Output - Rename - El archivo 'carpeta 2/prueba 2.txt' ha sido renombrado a b1.txt.\n2023-06-10 16:45:16 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-10 16:45:16 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-10 16:45:26 - Output - Backup - Backup de local a cloud completado.\n2023-06-10 16:47:51 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 16:50:12 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-10 17:24:49 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 17:34:10 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-10 17:35:40 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 17:36:08 - Output - Sesion - Se cerro sesion Usuario1\n2023-06-10 17:36:42 - Input - Sesion - Inicio de sesion de Usuario1\n2023-06-10 17:36:55 - Output - Configure - Archivo configurado exitosamente\n2023-06-10 17:36:56 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 17:36:56 - Output - Create - Archivo prueba 2.txt creado exitosamente\n2023-06-10 17:36:56 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-10 17:36:56 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 17:36:56 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-10 17:36:56 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-10 17:36:56 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(2).txt'.\n2023-06-10 17:36:56 - Output - Transfer - Error: Modo no soportado\n2023-06-10 17:36:56 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-10 17:36:56 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-10 17:36:56 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-10 17:36:56 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n2023-06-10 17:37:24 - Output - Backup - Backup de local a cloud completado.\n2023-06-10 17:38:52 - Output - Configure - Archivo configurado exitosamente\n2023-06-10 17:38:52 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 17:38:52 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-10 17:38:52 - Output - Delete - Archivo prueba1.txt eliminado exitosamente.\n2023-06-10 17:38:52 - Output - Create - Archivo prueba1.txt creado exitosamente\n2023-06-10 17:38:52 - Output - Copy - Error: Ya existe un archivo con el nombre 'prueba1.txt' en la ubicaci\u00f3n de destino.\n2023-06-10 17:38:52 - Output - Copy - Contenido de la carpeta 'carpeta 2' copiado exitosamente a 'carpeta1'.\n2023-06-10 17:38:52 - Output - Transfer - El archivo 'prueba1.txt' ya existe en la ubicaci\u00f3n de destino. Se ha copiado como 'prueba1(3).txt'.\n2023-06-10 17:38:52 - Output - Transfer - Error: Modo no soportado\n2023-06-10 17:38:52 - Output - Create - Error: La carpeta y el archivo ya existen\n2023-06-10 17:38:52 - Output - Rename - Error: Ya existe un archivo con el nombre b1.txt.\n2023-06-10 17:38:52 - Output - Modify - Contenido del archivo 'carpeta 2/b1.txt' modificado exitosamente.\n2023-06-10 17:38:52 - Output - Add - Contenido agregado al archivo 'carpeta 2/b1.txt' exitosamente.\n"
                         }
                     ]
                 },

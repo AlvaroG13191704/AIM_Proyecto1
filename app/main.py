@@ -536,6 +536,7 @@ def open_main_window():
                 carp.add(path, body)
             elif(token.get("exec")):
                 execu, path = scan.scan_command_line_exec(token.get("exec"))
+                print(path)
                 exec_aux(path)
             elif(token.get("backup")):
                 carp.backup()
