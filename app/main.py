@@ -591,7 +591,6 @@ def open_main_window():
         eliminarConsola()
         directorio_actual = os.getcwd()
         ruta_archivo = os.path.join(directorio_actual, "Archivos", path)
-        print(ruta_archivo)
         with open(ruta_archivo, "r") as archivo:
             content = archivo.read()
         
