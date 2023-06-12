@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import messagebox
 import os
 from PIL import Image, ImageTk
+from encriptado import decrypt
 import encriptado as enc
 import carpeta as carp
 import threading
@@ -495,52 +496,96 @@ def open_main_window():
     def enter():
         eliminarConsola()
         content = console_txt2.get("1.0", tk.END)
-        comandos = extract_commands(content)
-        for token in comandos:
-            if(token.get("configure")):
-                configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(token.get("configure"))
-                carp.configure(type, encrypt_log, encrypt_read, llave)
-            elif(token.get("create")):
-                create, name, path, body = scan.scan_command_line_create(token.get("create"))
-                name = name.rstrip()
-                path = path.rstrip()
-                carp.create(name, body, path)
-            elif(token.get("delete")):
-                delete, path, name = scan.scan_command_line_delete(token.get("delete"))
-                path = path.rstrip()
-                name = name.rstrip()
-                carp.delete(path, name)
-            elif(token.get("copy")):
-                copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
-                from_ = from_.rstrip()
-                to = to.rstrip()
-                carp.copy(from_, to)
-            elif(token.get("transfer")):
-                transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
-                from_ = from_.rstrip()
-                to = to.rstrip()
-                mode = mode.rstrip()
-                carp.transfer(from_, to, mode)
-            elif(token.get("rename")):
-                rename, path, name = scan.scan_command_line_rename(token.get("rename"))
-                path = path.rstrip()
-                name = name.rstrip()
-                carp.rename(path, name)
-            elif(token.get("modify")):
-                modify, path, body = scan.scan_command_line_modify(token.get("modify"))
-                path = path.rstrip()
-                carp.modify(path, body)
-            elif(token.get("add")):
-                add, path, body = scan.scan_command_line_add(token.get("add"))
-                path = path.rstrip()
-                carp.add(path, body)
-            elif(token.get("exec")):
-                execu, path = scan.scan_command_line_exec(token.get("exec"))
-                print(path)
-                exec_aux(path)
-            elif(token.get("backup")):
-                carp.backup()
-        
+        configure_command, message_crypted = extract_commands(content)
+        if message_crypted != None:
+            configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(configure_command)
+            carp.configure(type, encrypt_log, encrypt_read, llave="miaproyecto12345")
+            message_decrypted = decrypt(message_crypted, llave="miaproyecto12345")
+            comandos = extract_commands(message_decrypted)
+            for token in comandos[0]:      
+                if(token.get("create")):
+                    create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                    name = name.rstrip()
+                    path = path.rstrip()
+                    carp.create(name, body, path)
+                elif(token.get("delete")):
+                    delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.delete(path, name)
+                elif(token.get("copy")):
+                    copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    carp.copy(from_, to)
+                elif(token.get("transfer")):
+                    transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    mode = mode.rstrip()
+                    carp.transfer(from_, to, mode)
+                elif(token.get("rename")):
+                    rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.rename(path, name)
+                elif(token.get("modify")):
+                    modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                    path = path.rstrip()
+                    carp.modify(path, body)
+                elif(token.get("add")):
+                    add, path, body = scan.scan_command_line_add(token.get("add"))
+                    path = path.rstrip()
+                    carp.add(path, body)
+                elif(token.get("backup")):
+                    carp.backup()
+            procesadosTotales()
+            reiniciarVariables()
+        else:
+            comandos = extract_commands(content)
+            for token in comandos[0]:
+                if(token.get("configure")):
+                    configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(token.get("configure"))
+                    carp.configure(type, encrypt_log, encrypt_read, llave)
+                    
+                elif(token.get("create")):
+                    create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                    name = name.rstrip()
+                    path = path.rstrip()
+                    carp.create(name, body, path)
+                elif(token.get("delete")):
+                    delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.delete(path, name)
+                elif(token.get("copy")):
+                    copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    carp.copy(from_, to)
+                elif(token.get("transfer")):
+                    transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    mode = mode.rstrip()
+                    carp.transfer(from_, to, mode)
+                elif(token.get("rename")):
+                    rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.rename(path, name)
+                elif(token.get("modify")):
+                    modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                    path = path.rstrip()
+                    carp.modify(path, body)
+                elif(token.get("add")):
+                    add, path, body = scan.scan_command_line_add(token.get("add"))
+                    path = path.rstrip()
+                    carp.add(path, body)
+                elif(token.get("backup")):
+                    carp.backup()
+            procesadosTotales()
+            reiniciarVariables()
     
     def exec_aux(path):
         eliminarConsola()
@@ -549,49 +594,97 @@ def open_main_window():
         print(ruta_archivo)
         with open(ruta_archivo, "r") as archivo:
             content = archivo.read()
-        comandos = extract_commands(content)
-        for token in comandos:
-            if(token.get("configure")):
-                configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(token.get("configure"))
-                carp.configure(type, encrypt_log, encrypt_read, llave)
-            elif(token.get("create")):
-                create, name, path, body = scan.scan_command_line_create(token.get("create"))
-                name = name.rstrip()
-                path = path.rstrip()
-                carp.create(name, body, path)
-            elif(token.get("delete")):
-                delete, path, name = scan.scan_command_line_delete(token.get("delete"))
-                path = path.rstrip()
-                name = name.rstrip()
-                carp.delete(path, name)
-            elif(token.get("copy")):
-                copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
-                from_ = from_.rstrip()
-                to = to.rstrip()
-                carp.copy(from_, to)
-            elif(token.get("transfer")):
-                transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
-                from_ = from_.rstrip()
-                to = to.rstrip()
-                mode = mode.rstrip()
-                carp.transfer(from_, to, mode)
-            elif(token.get("rename")):
-                rename, path, name = scan.scan_command_line_rename(token.get("rename"))
-                path = path.rstrip()
-                name = name.rstrip()
-                carp.rename(path, name)
-            elif(token.get("modify")):
-                modify, path, body = scan.scan_command_line_modify(token.get("modify"))
-                path = path.rstrip()
-                carp.modify(path, body)
-            elif(token.get("add")):
-                add, path, body = scan.scan_command_line_add(token.get("add"))
-                path = path.rstrip()
-                carp.add(path, body)
-            elif(token.get("backup")):
-                carp.backup()
-        procesadosTotales()
-        reiniciarVariables()
+        
+        configure_command, message_crypted = extract_commands(content)
+        if message_crypted != None:
+            configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(configure_command)
+            carp.configure(type, encrypt_log, encrypt_read, llave="miaproyecto12345")
+            message_decrypted = decrypt(message_crypted, llave="miaproyecto12345")
+            comandos = extract_commands(message_decrypted)
+            for token in comandos[0]:      
+                if(token.get("create")):
+                    create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                    name = name.rstrip()
+                    path = path.rstrip()
+                    carp.create(name, body, path)
+                elif(token.get("delete")):
+                    delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.delete(path, name)
+                elif(token.get("copy")):
+                    copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    carp.copy(from_, to)
+                elif(token.get("transfer")):
+                    transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    mode = mode.rstrip()
+                    carp.transfer(from_, to, mode)
+                elif(token.get("rename")):
+                    rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.rename(path, name)
+                elif(token.get("modify")):
+                    modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                    path = path.rstrip()
+                    carp.modify(path, body)
+                elif(token.get("add")):
+                    add, path, body = scan.scan_command_line_add(token.get("add"))
+                    path = path.rstrip()
+                    carp.add(path, body)
+                elif(token.get("backup")):
+                    carp.backup()
+            procesadosTotales()
+            reiniciarVariables()
+        else:
+            comandos = extract_commands(content)
+            for token in comandos[0]:
+                if(token.get("configure")):
+                    configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(token.get("configure"))
+                    carp.configure(type, encrypt_log, encrypt_read, llave)
+                    
+                elif(token.get("create")):
+                    create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                    name = name.rstrip()
+                    path = path.rstrip()
+                    carp.create(name, body, path)
+                elif(token.get("delete")):
+                    delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.delete(path, name)
+                elif(token.get("copy")):
+                    copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    carp.copy(from_, to)
+                elif(token.get("transfer")):
+                    transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    mode = mode.rstrip()
+                    carp.transfer(from_, to, mode)
+                elif(token.get("rename")):
+                    rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.rename(path, name)
+                elif(token.get("modify")):
+                    modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                    path = path.rstrip()
+                    carp.modify(path, body)
+                elif(token.get("add")):
+                    add, path, body = scan.scan_command_line_add(token.get("add"))
+                    path = path.rstrip()
+                    carp.add(path, body)
+                elif(token.get("backup")):
+                    carp.backup()
+            procesadosTotales()
+            reiniciarVariables()
         
 
     

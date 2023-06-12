@@ -22,7 +22,7 @@ def extract_commands(command_string):
        command_encrypted = data[1].replace("\n","").replace(" ","")
        if(command_encrypted != " " or command_encrypted != "\n"):
         return data[0] , command_encrypted
-  return tokens
+  return tokens, None
 
 
 
