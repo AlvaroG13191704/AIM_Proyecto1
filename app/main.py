@@ -497,6 +497,8 @@ def open_main_window():
         eliminarConsola()
         content = console_txt2.get("1.0", tk.END)
         command = extract_commands(content)
+        print(command)
+        return 
         if command[0][0].get("exec"):
             exec, path = scan.scan_command_line_exec(command[0][0].get("exec"))
             directorio_actual = os.getcwd()
@@ -504,7 +506,7 @@ def open_main_window():
             with open(ruta_archivo, "r") as archivo:
                 content = archivo.read()
             configure_command, message_crypted = extract_commands(content)
-            if message_crypted != None:
+            if message_crypted != None or message_crypted != " " or message_crypted != "\n":
                 configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(configure_command)
                 carp.configure(type, encrypt_log, encrypt_read, llave="miaproyecto12345")
                 message_decrypted = decrypt(message_crypted, llave="miaproyecto12345")
@@ -646,7 +648,7 @@ def open_main_window():
             content = archivo.read()
         
         configure_command, message_crypted = extract_commands(content)
-        if message_crypted != None:
+        if message_crypted != None or message_crypted != " " or message_crypted != "\n":
             configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(configure_command)
             carp.configure(type, encrypt_log, encrypt_read, llave="miaproyecto12345")
             message_decrypted = decrypt(message_crypted, llave="miaproyecto12345")
