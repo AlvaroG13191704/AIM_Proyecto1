@@ -6,11 +6,12 @@ def bitacora(type, comand, instruction, bitacoraConfigure, llaveConfigure):
     fecha=""
     fecha = fechaYhora()
     if bitacoraConfigure=="true":
-        instruccion = (enc.encrypt(f"{fecha} - {type} - {comand} - {instruction}", llaveConfigure)+"\n")        
+        instruccion = (enc.encrypt(f"{fecha} - {type} - {comand} - {instruction}", llaveConfigure)+"\n")
+        output = f"{fecha} - {type} - {comand} - {instruction}\n"         
         bitacoraLog(instruccion)
         ejecucion = f"{comand} ejecutando..."
         write(ejecucion)
-        write(instruccion)
+        write(output)
     else:
         instruccion = f"{fecha} - {type} - {comand} - {instruction}\n"        
         bitacoraLog(instruccion)
