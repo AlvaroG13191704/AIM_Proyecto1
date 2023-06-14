@@ -573,11 +573,6 @@ def open_main_window():
                         carp.copy(from_, to)
                     elif(token.get("transfer")):
                         transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
-                        from_ = from_.rstrip()
-                        to = to.rstrip()
-                        mode = mode.rstrip()
-                        from_ = from_.lstrip('/')
-                        to = to.lstrip('/')
                         carp.transfer(from_, to, mode)
                     elif(token.get("rename")):
                         rename, path, name = scan.scan_command_line_rename(token.get("rename"))
@@ -619,11 +614,6 @@ def open_main_window():
                     carp.copy(from_, to)
                 elif(token.get("transfer")):
                     transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
-                    from_ = from_.rstrip()
-                    to = to.rstrip()
-                    mode = mode.rstrip()
-                    from_ = from_.lstrip('/')
-                    to = to.lstrip('/')
                     carp.transfer(from_, to, mode)
                 elif(token.get("rename")):
                     rename, path, name = scan.scan_command_line_rename(token.get("rename"))
