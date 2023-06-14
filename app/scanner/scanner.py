@@ -58,7 +58,7 @@ def scan_command_line_create(command_line):
 def scan_command_line_delete(command_line):
   # Define regular expressions for matching different components
   pattern_delete = r'delete\s'
-  pattern_path = r'-path->(?:"([^"]+)"|/([^/]+/)+)(\s|$)'
+  pattern_path = r'-path->(?:"([^"]*)"|/([^/]+/?)+)\s' #(?:"([^"]+)"|/([^/]+/)+)(\s|$)
   pattern_name = r'-name->(?:"([^"]+)"|(\S+))(\s|$)' # could come or not
 
   # Match the components using regular expressions

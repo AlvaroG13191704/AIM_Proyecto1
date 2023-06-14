@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Configure ejecutando...
 2023-06-13 19:43:49 - Output - Configure - Archivo configurado exitosamente
 
@@ -37,3 +38,5 @@ Modify ejecutando...
 Sesion ejecutando...
 2023-06-13 19:53:38 - Output - Sesion - Se cerro sesion Usuario1
 
+=======
+>>>>>>> 529948fe8fc4db7aa2b546e3218b29f96ccafa1b

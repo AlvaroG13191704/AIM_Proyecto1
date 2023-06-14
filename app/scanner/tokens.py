@@ -21,7 +21,11 @@ def extract_commands(command_string):
        data = command_.get("configure").split("\n")
        command_encrypted = data[1].replace("\n","").replace(" ","")
        if(command_encrypted != " " or command_encrypted != "\n"):
-        return data[0] , command_encrypted
+        return data[0] , command_encrypted       
+  # if there is any other command, could be a encrypted data
+  if len(tokens) == 0:
+    return None, command_string.replace("\n","")
+  
   return tokens, None
 
 
