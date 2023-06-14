@@ -6,11 +6,12 @@ def bitacora(type, comand, instruction, bitacoraConfigure, llaveConfigure):
     fecha=""
     fecha = fechaYhora()
     if bitacoraConfigure=="true":
-        instruccion = (enc.encrypt(f"{fecha} - {type} - {comand} - {instruction}", llaveConfigure)+"\n")        
+        instruccion = (enc.encrypt(f"{fecha} - {type} - {comand} - {instruction}", llaveConfigure)+"\n")
+        output = f"{fecha} - {type} - {comand} - {instruction}\n"         
         bitacoraLog(instruccion)
         ejecucion = f"{comand} ejecutando..."
         write(ejecucion)
-        write(instruccion)
+        write(output)
     else:
         instruccion = f"{fecha} - {type} - {comand} - {instruction}\n"        
         bitacoraLog(instruccion)
@@ -82,6 +83,7 @@ def procesadosTotales():
     fecha_y_hora = fechaYhora()
     total = f'{fecha_y_hora} - Output - Exec - Archivos procesados localmente: {procesados_locales} - Tiempo procesamiento local: {tiempo_local}ms - Archivos procesados en cloud: {procesados_cloud} -  Tiempo procesamiento cloud: {tiempo_cloud}ms'
     write(total)
+    bitacoraLog(total)
 
 def reiniciarVariables():
     global totalLocal, totalCloud, totalProcesadosLocales, totalProcesadosCloud
