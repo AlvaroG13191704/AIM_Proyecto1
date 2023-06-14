@@ -495,11 +495,11 @@ def open_main_window():
 
     def enter():
         eliminarConsola()
+        reiniciarVariables()
         content = console_txt2.get("1.0", tk.END)
         command = extract_commands(content)
-        # print(command)
-        # return 
         if command[0][0].get("exec"):
+
             exec, path = scan.scan_command_line_exec(command[0][0].get("exec"))
             directorio_actual = os.getcwd()
             ruta_archivo = os.path.join(directorio_actual, "Archivos", path)
@@ -508,8 +508,8 @@ def open_main_window():
             configure_command, message_crypted = extract_commands(content)
             if message_crypted != None or message_crypted != " " or message_crypted != "\n":
                 configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(configure_command)
-                carp.configure(type, encrypt_log, encrypt_read, llave="miaproyecto12345")
-                message_decrypted = decrypt(message_crypted, llave="miaproyecto12345")
+                carp.configure(type, encrypt_log, encrypt_read, llave)
+                message_decrypted = decrypt(message_crypted, llave)
                 comandos = extract_commands(message_decrypted)
                 for token in comandos[0]:      
                     if(token.get("create")):
@@ -549,7 +549,6 @@ def open_main_window():
                     elif(token.get("backup")):
                         carp.backup()
                 procesadosTotales()
-                reiniciarVariables()
             else:
                 comandos = extract_commands(content)
                 for token in comandos[0]:
@@ -577,6 +576,8 @@ def open_main_window():
                         from_ = from_.rstrip()
                         to = to.rstrip()
                         mode = mode.rstrip()
+                        from_ = from_.lstrip('/')
+                        to = to.lstrip('/')
                         carp.transfer(from_, to, mode)
                     elif(token.get("rename")):
                         rename, path, name = scan.scan_command_line_rename(token.get("rename"))
@@ -594,7 +595,7 @@ def open_main_window():
                     elif(token.get("backup")):
                         carp.backup()
                 procesadosTotales()
-                reiniciarVariables()
+                
         else:
             for token in command[0]:
                 if(token.get("configure")):
@@ -621,6 +622,8 @@ def open_main_window():
                     from_ = from_.rstrip()
                     to = to.rstrip()
                     mode = mode.rstrip()
+                    from_ = from_.lstrip('/')
+                    to = to.lstrip('/')
                     carp.transfer(from_, to, mode)
                 elif(token.get("rename")):
                     rename, path, name = scan.scan_command_line_rename(token.get("rename"))
@@ -638,10 +641,10 @@ def open_main_window():
                 elif(token.get("backup")):
                     carp.backup()
             procesadosTotales()
-            reiniciarVariables() 
     
     def exec_aux(path):
         eliminarConsola()
+        reiniciarVariables()
         directorio_actual = os.getcwd()
         ruta_archivo = os.path.join(directorio_actual, "Archivos", path)
         with open(ruta_archivo, "r") as archivo:
@@ -650,8 +653,8 @@ def open_main_window():
         configure_command, message_crypted = extract_commands(content)
         if message_crypted != None or message_crypted != " " or message_crypted != "\n":
             configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(configure_command)
-            carp.configure(type, encrypt_log, encrypt_read, llave="miaproyecto12345")
-            message_decrypted = decrypt(message_crypted, llave="miaproyecto12345")
+            carp.configure(type, encrypt_log, encrypt_read, llave)
+            message_decrypted = decrypt(message_crypted, llave)
             comandos = extract_commands(message_decrypted)
             for token in comandos[0]:      
                 if(token.get("create")):
@@ -691,7 +694,7 @@ def open_main_window():
                 elif(token.get("backup")):
                     carp.backup()
             procesadosTotales()
-            reiniciarVariables()
+            
         else:
             comandos = extract_commands(content)
             for token in comandos[0]:
@@ -736,7 +739,6 @@ def open_main_window():
                 elif(token.get("backup")):
                     carp.backup()
             procesadosTotales()
-            reiniciarVariables()
         
 
     
