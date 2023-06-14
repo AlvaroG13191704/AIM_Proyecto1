@@ -1,4 +1,4 @@
-from scanner.scanner import scan_command_line_create, scan_command_line_configure,scan_command_line_delete,scan_command_line_copy, scan_command_line_transfer, scan_command_line_rename, scan_command_line_modify, scan_command_line_add, scan_command_line_exec
+from scanner.scanner import scan_command_line_create, scan_command_line_backup, scan_command_line_configure,scan_command_line_delete,scan_command_line_copy, scan_command_line_transfer, scan_command_line_rename, scan_command_line_modify, scan_command_line_add, scan_command_line_exec
 from scanner.tokens import extract_commands
 from cloud.createStorage import create_cloud
 from cloud.deleteStorage import delete_cloud
@@ -132,6 +132,10 @@ transfer -from->/carpeta1/ -to->/"Carpeta Ejemplo"/ -mode->"local"
       print(f"Exec: {exec}")
       print(f"Path: {path}\n")
 
+    elif(token.get("backup")):
+      backup = scan_command_line_backup(token.get("backup"))
+      print(f"Command Backup:")
+      print(f"Backup: {backup}")
       
     
 

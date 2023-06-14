@@ -261,3 +261,10 @@ def scan_command_line_exec(command_line):
         path = None
 
     return execu, path.rstrip(" ").replace("\n","")
+
+# Scan backup command line
+def scan_command_line_backup(command_line):
+  pattern_backup = r'backup\s'
+  match_backup = re.search(pattern_backup, command_line, re.I)
+  backup = match_backup.group(0).lower() if match_backup else None
+  return backup

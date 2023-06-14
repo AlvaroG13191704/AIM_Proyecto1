@@ -497,8 +497,8 @@ def open_main_window():
         eliminarConsola()
         content = console_txt2.get("1.0", tk.END)
         command = extract_commands(content)
-        print(command)
-        return 
+        # print(command)
+        # return 
         if command[0][0].get("exec"):
             exec, path = scan.scan_command_line_exec(command[0][0].get("exec"))
             directorio_actual = os.getcwd()
