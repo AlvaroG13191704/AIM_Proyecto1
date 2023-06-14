@@ -25,7 +25,6 @@ def extract_commands(command_string):
   # if there is any other command, could be a encrypted data
   if len(tokens) == 0:
     return None, command_string.replace("\n","")
-  
   return tokens, None
 
 

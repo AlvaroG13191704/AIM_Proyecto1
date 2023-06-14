@@ -496,9 +496,113 @@ def open_main_window():
     def enter():
         eliminarConsola()
         content = console_txt2.get("1.0", tk.END)
+        # evaluate if the console recieves the encrypted data with the configure command
         command = extract_commands(content)
-        # print(command)
-        # return 
+        # first case 
+        if command[0] != None and command[1] == "":
+            print("Viene configure y no viene encriptado")
+            configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(command[0])
+            carp.configure(type, encrypt_log, encrypt_read, llave)
+            procesadosTotales()
+            reiniciarVariables()
+            return
+        # second case
+        elif command[0] != None and command[1] != None :
+            print("Viene configure y encriptado")
+            configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(command[0])
+            carp.configure(type, encrypt_log, encrypt_read, llave="miaproyecto12345")
+            message_decrypted = decrypt(command[1], llave="miaproyecto12345")
+            comandos = extract_commands(message_decrypted)
+            for token in comandos[0]:      
+                    if(token.get("create")):
+                        create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                        name = name.rstrip()
+                        path = path.rstrip()
+                        carp.create(name, body, path)
+                    elif(token.get("delete")):
+                        delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                        path = path.rstrip()
+                        name = name.rstrip()
+                        carp.delete(path, name)
+                    elif(token.get("copy")):
+                        copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                        from_ = from_.rstrip()
+                        to = to.rstrip()
+                        carp.copy(from_, to)
+                    elif(token.get("transfer")):
+                        transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                        from_ = from_.rstrip()
+                        to = to.rstrip()
+                        mode = mode.rstrip()
+                        carp.transfer(from_, to, mode)
+                    elif(token.get("rename")):
+                        rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                        path = path.rstrip()
+                        name = name.rstrip()
+                        carp.rename(path, name)
+                    elif(token.get("modify")):
+                        modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                        path = path.rstrip()
+                        carp.modify(path, body)
+                    elif(token.get("add")):
+                        add, path, body = scan.scan_command_line_add(token.get("add"))
+                        path = path.rstrip()
+                        carp.add(path, body)
+                    elif(token.get("backup")):
+                        carp.backup()
+            procesadosTotales()
+            reiniciarVariables()
+            return
+        # third case
+        elif command[0] == None and command[1] != None:
+            print("Viene encriptado y no viene configure")
+            message_decrypted = decrypt(command[1], llave="miaproyecto12345")
+            comandos = extract_commands(message_decrypted)
+            for token in comandos[0]:
+                if(token.get("configure")):
+                    configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(token.get("configure"))
+                    carp.configure(type, encrypt_log, encrypt_read, llave)
+                elif(token.get("create")):
+                    create, name, path, body = scan.scan_command_line_create(token.get("create"))
+                    name = name.rstrip()
+                    path = path.rstrip()
+                    carp.create(name, body, path)
+                elif(token.get("delete")):
+                    delete, path, name = scan.scan_command_line_delete(token.get("delete"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.delete(path, name)
+                elif(token.get("copy")):
+                    copy, from_, to = scan.scan_command_line_copy(token.get("copy"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    carp.copy(from_, to)
+                elif(token.get("transfer")):
+                    transfer, from_, to, mode = scan.scan_command_line_transfer(token.get("transfer"))
+                    from_ = from_.rstrip()
+                    to = to.rstrip()
+                    mode = mode.rstrip()
+                    carp.transfer(from_, to, mode)
+                elif(token.get("rename")):
+                    rename, path, name = scan.scan_command_line_rename(token.get("rename"))
+                    path = path.rstrip()
+                    name = name.rstrip()
+                    carp.rename(path, name)
+                elif(token.get("modify")):
+                    modify, path, body = scan.scan_command_line_modify(token.get("modify"))
+                    path = path.rstrip()
+                    carp.modify(path, body)
+                elif(token.get("add")):
+                    add, path, body = scan.scan_command_line_add(token.get("add"))
+                    path = path.rstrip()
+                    carp.add(path, body)
+                elif(token.get("backup")):
+                    carp.backup()
+            procesadosTotales()
+            reiniciarVariables()
+            return
+        # if the console recieves commands without the configure command and without encryption
+        command = extract_commands(content)
         if command[0][0].get("exec"):
             exec, path = scan.scan_command_line_exec(command[0][0].get("exec"))
             directorio_actual = os.getcwd()
@@ -556,7 +660,6 @@ def open_main_window():
                     if(token.get("configure")):
                         configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(token.get("configure"))
                         carp.configure(type, encrypt_log, encrypt_read, llave)
-                        
                     elif(token.get("create")):
                         create, name, path, body = scan.scan_command_line_create(token.get("create"))
                         name = name.rstrip()

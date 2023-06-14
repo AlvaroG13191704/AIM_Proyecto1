@@ -20,17 +20,16 @@ create -name->prueba3.txt  -path->/"Carpeta Ejemplo"/ -body->"Se trata de habili
 rename -path->/carpeta1/prueba1.txt -name->nuevo_nombre1.txt
 rename -path->/carpeta1/prueba1.txt -name->nuevo_nombre2.txt
 rename -path->/carpeta1/prueba2.txt -name->nuevo_nombre2.txt
-copy -from->/carpeta1/nuevo_nombre1.txt -to->/"Carpeta Ejemplo"/ 
+copy -from->/carpeta1/nuevo_nombre1.txt -to->/"Carpeta Ejemplo"/
+transfer -from->/carpeta1/ -to->/"Carpeta Ejemplo"/ -mode->"local"
 transfer -from->/carpeta1/nuevo_nombre2.txt -to->/"Carpeta Ejemplo"/ -mode->"local"
-delete -path->/carpeta1/prueba2.txt 
-delete -path->/"Carpeta Ejemplo"/prueba3.txt 
+delete -path->/carpeta1/prueba2.txt
+delete -path->/"Carpeta Ejemplo"/prueba3.txt
 modify -path->/"Carpeta Ejemplo"/nuevo_nombre1.txt -body->"Se trata de habilitar uno o varios discos duros en una red local, de forma que los datos que allí se almacenen permanezcan accesibles a todos los dispositivos que quieran utilizarlos"
 backup
-add -path->/"Carpeta Ejemplo"/nuevo_nombre1.txt  -body->/"De esa forma, el usuario no solo tiene acceso al propio almacenamiento del dispositivo que está usando, sino que también dispone de un almacenamiento común que comparte con otros dispositivos conectados a esa misma red."/
+add -path->/"Carpeta Ejemplo"/nuevo_nombre1.txt  -body->"De esa forma, el usuario no solo tiene acceso al propio almacenamiento del dispositivo que está usando, sino que también dispone de un almacenamiento común que comparte con otros dispositivos conectados a esa misma red."
 create -name->prueba4.txt  -path->/carpeta1/ejemplo/ -body->"Este es el contenido del archivo4"
 create -name->prueba5.txt  -path->/carpeta1/ejemplo/ -body->"Este es el contenido del archivo5"
-create -name->prueba6.txt  -path->/carpeta1/ejemplo/ -body->"Este es el contenido del archivo6"
-transfer -from->/carpeta1/ -to->/"Carpeta Ejemplo"/ -mode->"local"
   '''
   # configure -type->local -encrypt_log->true -encrypt_read->true -llave->miaproyecto12345
   # configure -type->local -encrypt_log->falsE -encrypt_read->false -llave->"hola123" 
@@ -38,11 +37,17 @@ transfer -from->/carpeta1/ -to->/"Carpeta Ejemplo"/ -mode->"local"
   commad_crypted = '''
   405AF6813A5E62DC3875DC69AE4D3EC89C9B9E111D79CDFB4647EA4A2E5984A645641D4339D7668D9D6BC81BAAE1D658A8F38B1216878F0F13CF9C1E17356DAF408A68E3B4C61E2938863D0F7CCD5A5C1DBF166FDB03E2EF2DF4817600DF989FBB0405DDF131757DF46363A912151D21B211B3D439B98963B0DE7FC369D199F9E7E19538049B2323AF1F99A1172218A1A8F38B1216878F0F13CF9C1E17356DAF408A68E3B4C61E2938863D0F7CCD5A5C83E217A53FFC6244BF53183FEE3E67AAE584F64EFE64ED2483578CDCDB600D44DCB93A1CD90671068A22BFCFB2DAD3CA02944CA4B2668B9501E80DDAB09F598B02677B5D30BA63F5472BFF9DA73132FB394B018AC139C49E51C275043CD7B21485DEAB471E33279ECEF67B322F5A4F9FE1FCFD63B4878CE6342E0EAA2945C4FF2D1C0959FEC97373CC234C4B2DEFE2DE51E1B5791621EDE9F8127F7ECC9FCFA7AA4BBF35DA824770052873F61A77FF1D2835FC7EADB8004563AD7D8FC76F2081F943EA27CF2630793C4DAC59E1FDF2F344D0961883B334A26B91DA41162FB2107B9920185E542F2D40863DDC56093BEB90271BA1B08A45D22EB2554CF99D5226F754B5C6A71945F89EDC68520B61AC50C3CD56DFB04C94BC84CD7FA96D1D29FFCD292FECFCC7D96D991F55B9F726A7D6F753064C0FBAA3E073FA47517600FE35C71F8A5E16505573CBF76A425B9FCAA4E5B97E6AA901ED9C040A77A2F847CA325B38529AE74BEA89856BBDC0E13E6E30243DA23C2A5E8987ACF2DA98A02107DD35580924DCCAB2E80DBC57272703C8A9CC61E5B0C8BBB7CC4E696CC79106C66863C75FBF0CE7FD82486D398AFE2B99E8F2C27F924A0EC20B1407F358D9B0A6A83C86FC49F97D63EF714133EC5682B9620DD7667C91C0F94B9F8F9BADE4349621EBA743CCBB38A87C5D3A0249150165AD21AB56BE9DA7BA4717E49C8E250AE725EC6FC0D2E17E086866EA9903902577824ADA0505592334064E6FDFE68338C38AB1301B35D41CB7880962D48F64B0269039771FF9EF859E36D145A3E2A3D80954BF6F28EDCB0EEF906F453000B864ABDC045C5CD67A467154BFC255D412878615F47CCEC007A241815744B002223515C1AB9260046A08978EF672585F8B65BAB4731FFAAEEC601C6229908F5F996E280BC1B9DD63E01A28143268E6A1278D379B649F0E94AE8988735001AB431A3A2FDBE69DAB88150661F6F2B364A51CFBCC67A50A5093E69911D99BA99B4882AB72EEA587C547AFA3F605E411F37B34B3AC3FE188B2FDE176C97C549B883D582983FA256F4FF731F13E880EE6F9D5D4BCE2FD
   '''
-  # result_crypted, message_crypted = extract_commands(commad_crypted)
-  # if message_crypted == "":
-  #   print("Espacio vacio")
-  # print(result_crypted, message_crypted)
-  # return 
+  command = extract_commands(commad_crypted)
+  print(command)
+  if command[0] != None and command[1] == ""  :
+    print("Viene configure y no viene encriptado")
+  elif command[0] != None and command[1] != None :
+    print("Viene configure y encriptado")
+  elif command[0] == None and command[1] != None:
+    print("Viene encriptado y no viene configure")
+
+
+  return 
   # message_decrypted = decrypt(message_crypted, "miaproyecto12345")
   # print(result_crypted, message_crypted)
   # print(message_decrypted)
@@ -100,7 +105,9 @@ transfer -from->/carpeta1/ -to->/"Carpeta Ejemplo"/ -mode->"local"
       print(f"Command Transfer:")
       print(f"Transfer: {transfer}")
       print(f"From: {from_path}")
+      print(f"ARCHIVOS{from_path}")
       print(f"To: {to_path}")
+      print(f"ARCHIVOS{to_path}")
       print(f"Mode: {mode}\n")
       # transfer_cloud(from_path,to_path)
 
