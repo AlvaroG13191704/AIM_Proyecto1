@@ -1,64 +1,64 @@
 Configure ejecutando...
-2023-06-14 11:28:01 - Output - Configure - Archivo configurado exitosamente
+2023-06-14 20:15:34 - Output - Configure - Archivo configurado exitosamente
 
 Create ejecutando...
-2023-06-14 11:28:01 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-14 20:15:34 - Output - Create - Archivo prueba1.txt creado exitosamente
 
 Create ejecutando...
-2023-06-14 11:28:01 - Output - Create - Archivo prueba2.txt creado exitosamente
+2023-06-14 20:15:34 - Output - Create - Archivo prueba2.txt creado exitosamente
 
 Create ejecutando...
-2023-06-14 11:28:01 - Output - Create - Archivo prueba1.txt creado exitosamente
+2023-06-14 20:15:34 - Output - Create - Archivo prueba1.txt creado exitosamente
 
 Create ejecutando...
-2023-06-14 11:28:01 - Output - Create - Archivo prueba2.txt creado exitosamente
+2023-06-14 20:15:34 - Output - Create - Archivo prueba2.txt creado exitosamente
 
 Create ejecutando...
-2023-06-14 11:28:01 - Output - Create - Archivo prueba3.txt creado exitosamente
+2023-06-14 20:15:34 - Output - Create - Archivo prueba3.txt creado exitosamente
 
 Rename ejecutando...
-2023-06-14 11:28:01 - Output - Rename - El archivo 'carpeta1/prueba1.txt' ha sido renombrado a nuevo_nombre1.txt.
+2023-06-14 20:15:34 - Output - Rename - El archivo 'carpeta1/prueba1.txt' ha sido renombrado a nuevo_nombre1.txt.
 
 Rename ejecutando...
-2023-06-14 11:28:01 - Output - Rename - Error: No se encontro el archivo o carpeta 'carpeta1/prueba1.txt' en la ruta especificada.
+2023-06-14 20:15:34 - Output - Rename - Error: No se encontro el archivo o carpeta 'carpeta1/prueba1.txt' en la ruta especificada.
 
 Rename ejecutando...
-2023-06-14 11:28:01 - Output - Rename - El archivo 'carpeta1/prueba2.txt' ha sido renombrado a nuevo_nombre2.txt.
+2023-06-14 20:15:34 - Output - Rename - El archivo 'carpeta1/prueba2.txt' ha sido renombrado a nuevo_nombre2.txt.
 
 Copy ejecutando...
-2023-06-14 11:28:01 - Output - Copy - Archivo 'nuevo_nombre1.txt' copiado exitosamente a 'Carpeta Ejemplo'.
+2023-06-14 20:15:34 - Output - Copy - Archivo 'nuevo_nombre1.txt' copiado exitosamente a 'Carpeta Ejemplo'.
 
 Transfer ejecutando...
-2023-06-14 11:28:01 - Output - Transfer - Archivo transferido exitosamente.
+2023-06-14 20:15:34 - Output - Transfer - Archivo transferido exitosamente.
 
 Delete ejecutando...
-2023-06-14 11:28:01 - Output - Delete - Error: No se encontro el archivo o carpeta en la ruta especificada.
+2023-06-14 20:15:34 - Output - Delete - Error: No se encontro el archivo o carpeta en la ruta especificada.
 
 Delete ejecutando...
-2023-06-14 11:28:01 - Output - Delete - Error: No se encontro el archivo o carpeta en la ruta especificada.
+2023-06-14 20:15:34 - Output - Delete - Error: No se encontro el archivo o carpeta en la ruta especificada.
 
 Modify ejecutando...
-2023-06-14 11:28:01 - Output - Modify - Contenido del archivo 'Carpeta Ejemplo/nuevo_nombre1.txt' modificado exitosamente.
+2023-06-14 20:15:34 - Output - Modify - Contenido del archivo 'Carpeta Ejemplo/nuevo_nombre1.txt' modificado exitosamente.
 
 Backup ejecutando...
-2023-06-14 11:28:11 - Output - Backup - Backup de local a cloud completado.
+2023-06-14 20:15:46 - Output - Backup - Backup de local a cloud completado.
 
 Add ejecutando...
-2023-06-14 11:28:11 - Output - Add - Contenido agregado al archivo 'Carpeta Ejemplo/nuevo_nombre1.txt' exitosamente.
+2023-06-14 20:15:46 - Output - Add - Contenido agregado al archivo 'Carpeta Ejemplo/nuevo_nombre1.txt' exitosamente.
 
 Create ejecutando...
-2023-06-14 11:28:11 - Output - Create - Archivo prueba4.txt creado exitosamente
+2023-06-14 20:15:46 - Output - Create - Archivo prueba4.txt creado exitosamente
 
 Create ejecutando...
-2023-06-14 11:28:11 - Output - Create - Archivo prueba5.txt creado exitosamente
+2023-06-14 20:15:46 - Output - Create - Archivo prueba5.txt creado exitosamente
 
 Create ejecutando...
-2023-06-14 11:28:11 - Output - Create - Archivo prueba6.txt creado exitosamente
+2023-06-14 20:15:46 - Output - Create - Archivo prueba6.txt creado exitosamente
 
 Transfer ejecutando...
-2023-06-14 11:28:11 - Output - Transfer - Contenido de la carpeta transferido exitosamente.
+2023-06-14 20:15:46 - Output - Transfer - Contenido de la carpeta transferido exitosamente.
 
-2023-06-14 11:28:11 - Output - Exec - Archivos procesados localmente: 18 - Tiempo procesamiento local: 10206ms - Archivos procesados en cloud: 0 -  Tiempo procesamiento cloud: 0ms
+2023-06-14 20:15:46 - Output - Exec - Archivos procesados localmente: 18 - Tiempo procesamiento local: 11701ms - Archivos procesados en cloud: 0 -  Tiempo procesamiento cloud: 0ms
 Sesion ejecutando...
-2023-06-14 11:28:29 - Output - Sesion - Se cerro sesion Usuario1
+2023-06-14 20:16:03 - Output - Sesion - Se cerro sesion Usuario1
 
