@@ -504,15 +504,14 @@ def open_main_window():
             print("Viene configure y no viene encriptado")
             configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(command[0])
             carp.configure(type, encrypt_log, encrypt_read, llave)
-            procesadosTotales()
             reiniciarVariables()
             return
         # second case
         elif command[0] != None and command[1] != None :
             print("Viene configure y encriptado")
             configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(command[0])
-            carp.configure(type, encrypt_log, encrypt_read, llave="miaproyecto12345")
-            message_decrypted = decrypt(command[1], llave="miaproyecto12345")
+            carp.configure(type, encrypt_log, encrypt_read, llave)
+            message_decrypted = decrypt(command[1], llave)
             comandos = extract_commands(message_decrypted)
             for token in comandos[0]:      
                     if(token.get("create")):
@@ -551,13 +550,12 @@ def open_main_window():
                         carp.add(path, body)
                     elif(token.get("backup")):
                         carp.backup()
-            procesadosTotales()
             reiniciarVariables()
             return
         # third case
         elif command[0] == None and command[1] != None:
             print("Viene encriptado y no viene configure")
-            message_decrypted = decrypt(command[1], llave="miaproyecto12345")
+            message_decrypted = decrypt(command[1], llave)
             comandos = extract_commands(message_decrypted)
             for token in comandos[0]:
                 if(token.get("configure")):
@@ -599,7 +597,6 @@ def open_main_window():
                     carp.add(path, body)
                 elif(token.get("backup")):
                     carp.backup()
-            procesadosTotales()
             reiniciarVariables()
             return
         # if the console recieves commands without the configure command and without encryption
@@ -739,7 +736,6 @@ def open_main_window():
                     carp.add(path, body)
                 elif(token.get("backup")):
                     carp.backup()
-            procesadosTotales()
     
     def exec_aux(path):
         eliminarConsola()

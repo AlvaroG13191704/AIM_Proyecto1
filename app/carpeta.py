@@ -1,4 +1,5 @@
 import time
+from tkinter import messagebox
 from local.bitacora import bitacora
 from cloud.addStorage import add_cloud
 from cloud.deleteStorage import delete_cloud
@@ -81,27 +82,32 @@ def create(name, body, path):
 
 
 def delete(path, name):
+    print(path)
+    print(name)
+    path=path.replace(' -name','')
     comando="Delete"
-    if tipo == "local":
-        inicio = time.time()
-        tmp = delete_local(path, name)
-        tiempo_transcurrido = round((time.time() - inicio) * 1000)
-        tiempoLocal(tiempo_transcurrido)
-        procesadosLocales(1)
-        bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
-    
-    elif tipo == "cloud":
-        procesadosCloud(1)
-        inicio = time.time()
-        tmp = delete_cloud(path, name)
-        tiempo_transcurrido = round((time.time() - inicio) * 1000)
-        tiempoCloud(tiempo_transcurrido)
+    answer = messagebox.askyesno("Confirmar eliminación", "¿Estás seguro de que deseas eliminar?")
+    if answer:
+        if tipo == "local":
+            inicio = time.time()
+            tmp = delete_local(path, name)
+            tiempo_transcurrido = round((time.time() - inicio) * 1000)
+            tiempoLocal(tiempo_transcurrido)
+            procesadosLocales(1)
+            bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
         
-        bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
-    
-    else:
-        tmp = "Error: No se ha configurado el tipo de almacenamiento"
-        bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
+        elif tipo == "cloud":
+            procesadosCloud(1)
+            inicio = time.time()
+            tmp = delete_cloud(path, name)
+            tiempo_transcurrido = round((time.time() - inicio) * 1000)
+            tiempoCloud(tiempo_transcurrido)
+            
+            bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
+        
+        else:
+            tmp = "Error: No se ha configurado el tipo de almacenamiento"
+            bitacora("Output", comando, tmp, bitacoraConfigure, llaveConfigure)
 
 
 
