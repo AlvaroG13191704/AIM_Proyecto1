@@ -612,7 +612,9 @@ def open_main_window():
             with open(ruta_archivo, "r") as archivo:
                 content = archivo.read()
             configure_command, message_crypted = extract_commands(content)
-            if message_crypted != None or message_crypted != " " or message_crypted != "\n":
+            if message_crypted != None :
+                # print(configure_command,message_crypted)
+                # return
                 configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(configure_command)
                 carp.configure(type, encrypt_log, encrypt_read, llave)
                 message_decrypted = decrypt(message_crypted, llave)
@@ -657,6 +659,8 @@ def open_main_window():
                 procesadosTotales()
             else:
                 comandos = extract_commands(content)
+                print(comandos[0])
+                # return 
                 for token in comandos[0]:
                     if(token.get("configure")):
                         configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(token.get("configure"))
@@ -746,7 +750,7 @@ def open_main_window():
             content = archivo.read()
         
         configure_command, message_crypted = extract_commands(content)
-        if message_crypted != None or message_crypted != " " or message_crypted != "\n":
+        if message_crypted != None:
             configure, type, encrypt_log, encrypt_read, llave = scan.scan_command_line_configure(configure_command)
             carp.configure(type, encrypt_log, encrypt_read, llave)
             message_decrypted = decrypt(message_crypted, llave)
