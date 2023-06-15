@@ -7,7 +7,7 @@ def scan_command_line_configure(command_line):
   pattern_type = r'-type->(.*?)\s'
   pattern_encrypt_log = r'-encrypt_log->(.*?)\s' # \s is a whitespace character
   pattern_encrypt_read = r'-encrypt_read->(.*?)(\s|$)' # $ is the end of the string
-  patter_key = r'-llave->"(.*?)"(\s|$)'
+  patter_key = r'-llave->(.*?)(\s|$)'
   # Match the components using regular expressions
   match_configure = re.search(pattern_configure, command_line,re.I)
   match_type = re.search(pattern_type, command_line,re.I)
@@ -22,7 +22,7 @@ def scan_command_line_configure(command_line):
   encrypt_read = match_encrypt_read.group(1) if match_encrypt_read else None
   key = match_key.group(1) if match_key else None
   # Return the extracted values
-  return configure.lower(),type.lower(), encrypt_log.lower(), encrypt_read.lower(), key
+  return configure.lower(),type.lower(), encrypt_log.lower(), encrypt_read.lower(), key.rstrip(" ").replace("\n","")
 
 # Scan create command line
 def scan_command_line_create(command_line):
