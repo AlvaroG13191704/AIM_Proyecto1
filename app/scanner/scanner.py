@@ -22,6 +22,8 @@ def scan_command_line_configure(command_line):
   encrypt_read = match_encrypt_read.group(1) if match_encrypt_read else None
   key = match_key.group(1) if match_key else None
   # Return the extracted values
+  if key is None:
+    return configure.lower(),type.lower(), encrypt_log.lower(), encrypt_read.lower(), None
   return configure.lower(),type.lower(), encrypt_log.lower(), encrypt_read.lower(), key.rstrip(" ").replace("\n","")
 
 # Scan create command line
